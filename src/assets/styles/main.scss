@@ -1,0 +1,12 @@
+@use 'vars';
+@use 'fonts';
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  font-family: vars.$base-font-family !important;
+  margin: 0;
+  padding: 0;
+}
