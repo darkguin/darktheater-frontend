@@ -1,0 +1,74 @@
+@use "~src/assets/styles/vars";
+@use "~src/assets/styles/fonts";
+
+.text-field {
+  &__wrapper {
+    position: relative;
+    width: fit-content;
+  }
+
+  &__control {
+    position: absolute;
+    top: 4px;
+    right: 14px;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    color: vars.$descriptions-color;
+    transition: all 0.5s;
+
+    &.text-field--focus {
+      color: rgba(vars.$primary-color, 0.75);
+    }
+
+    &.text-field--valid {
+      color: rgba(vars.$success-color, 0.75);
+    }
+
+    &.text-field--error {
+      color: rgba(vars.$danger-color, 0.75);
+    }
+  }
+}
+
+:host ::ng-deep {
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  .text-field {
+    @include fonts.font-regular;
+
+    outline: none;
+    box-shadow: none;
+    padding: 14px;
+    min-height: 38px;
+    min-width: 256px;
+    border: 2px solid vars.$border-color;
+    border-radius: vars.$border-radius-sm;
+    background: rgba(vars.$dark-color, 0.1);
+    color: vars.$descriptions-color;
+    font-size: 18px;
+    transition: all 0.5s;
+
+    &.text-field--focus {
+      border-color: rgba(vars.$primary-color, 0.75);
+      color: vars.$descriptions-color;
+    }
+
+    &.ng-dirty.ng-valid {
+      border-color: rgba(vars.$success-color, 0.75);
+      color: rgba(vars.$success-color, 0.75);
+    }
+
+    &.ng-dirty.ng-invalid {
+      border-color: rgba(vars.$danger-color, 0.75);
+      color: rgba(vars.$danger-color, 0.75);
+    }
+  }
+}

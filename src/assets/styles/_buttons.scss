@@ -1,0 +1,31 @@
+@use "vars";
+@use "fonts";
+
+.btn {
+  @include fonts.font-extra-bold;
+
+  outline: none;
+  border: none;
+  box-shadow: none;
+  min-height: 54px;
+  min-width: 54px;
+  border-radius: vars.$border-radius-sm;
+  padding: 14px 48px;
+  gap: 10px;
+  font-size: 18px;
+  cursor: pointer;
+
+  &.btn--short {
+    padding: 20px;
+  }
+
+  &.btn--contrast {
+    background: vars.$contrast-color;
+    color: vars.$dark-color;
+  }
+
+  &:hover {
+    opacity: 0.5;
+    transition: opacity 0.5s;
+  }
+}

@@ -1,0 +1,16 @@
+<section class='auth-wrapper'>
+  <div class='auth-wrapper__container'>
+    <div class='auth-wrapper__header'>
+      <a [href]='homePath' class='auth-wrapper__header_logo title-bold-4'>
+        {{appInfo.name}}
+      </a>
+    </div>
+
+    <div class='auth-wrapper__title-container'>
+      <div *ngIf='subtitle' class='auth-wrapper__subtitle title-bold-2'>{{subtitle}}</div>
+      <div *ngIf='title' class='auth-wrapper__title title-bold-7'>{{title}}</div>
+    </div>
+
+    <ng-content></ng-content>
+  </div>
+</section>

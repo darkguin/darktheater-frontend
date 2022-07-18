@@ -2,12 +2,12 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { MainLayoutComponent } from '@features/layouts/main-layout/main-layout.component';
 import { EmptyLayoutComponent } from '@features/layouts/empty-layout/empty-layout.component';
-import { NavigationPath } from '@core/values';
+import { NavigationLayout, NavigationPath } from '@core/values';
 
 const routes: Routes = [
   { path: '', redirectTo: `/${NavigationPath.HOME}`, pathMatch: 'full' },
   {
-    path: '',
+    path: `${NavigationLayout.MAIN}`,
     component: MainLayoutComponent,
     children: [
       {
@@ -18,7 +18,7 @@ const routes: Routes = [
     ]
   },
   {
-    path: 'auth',
+    path: `${NavigationLayout.AUTH}`,
     component: EmptyLayoutComponent,
     children: [
       { path: '', redirectTo: `/auth/${NavigationPath.SIGN_IN}`, pathMatch: 'full' },

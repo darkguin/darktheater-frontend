@@ -177,3 +177,134 @@
   font-style: italic;
 }
 
+$base-font-family: 'Gilroy' !important;
+
+@mixin font-extra-heavy {
+  font-family: $base-font-family;
+  font-weight: 900;
+}
+
+@mixin font-extra-bold {
+  font-family: $base-font-family;
+  font-weight: 800;
+}
+
+@mixin font-bold {
+  font-family: $base-font-family;
+  font-weight: bold;
+}
+
+@mixin font-semi-bold {
+  font-family: $base-font-family;
+  font-weight: 600;
+}
+
+@mixin font-medium {
+  font-family: $base-font-family;
+  font-weight: 500;
+}
+
+@mixin font-regular {
+  font-family: $base-font-family;
+  font-weight: normal;
+}
+
+@mixin font-light {
+  font-family: $base-font-family;
+  font-weight: 300;
+}
+
+@mixin font-ultra-light {
+  font-family: $base-font-family;
+  font-weight: 200;
+}
+
+@mixin font-thin {
+  font-family: $base-font-family;
+  font-weight: 100;
+}
+
+
+.title {
+  &-regular-0 {
+    @include font-regular;
+    font-size: 14px;
+  }
+
+  &-regular-1 {
+    @include font-regular;
+    font-size: 18px;
+  }
+
+  &-regular-2 {
+    @include font-regular;
+    font-size: 22px;
+  }
+
+  &-regular-3 {
+    @include font-regular;
+    font-size: 26px;
+  }
+
+  &-regular-4 {
+    @include font-regular;
+    font-size: 30px;
+  }
+
+  &-regular-5 {
+    @include font-regular;
+    font-size: 34px;
+  }
+
+  &-regular-6 {
+    @include font-regular;
+    font-size: 38px;
+  }
+
+  &-regular-7 {
+    @include font-regular;
+    font-size: 42px;
+  }
+
+  &-bold-0 {
+    @include font-bold;
+    font-size: 14px;
+  }
+
+  &-bold-1 {
+    @include font-bold;
+    font-size: 18px;
+  }
+
+  &-bold-2 {
+    @include font-bold;
+    font-size: 22px;
+  }
+
+  &-bold-3 {
+    @include font-bold;
+    font-size: 26px;
+  }
+
+  &-bold-4 {
+    @include font-bold;
+    font-size: 30px;
+  }
+
+  &-bold-5 {
+    @include font-bold;
+    font-size: 34px;
+  }
+
+  &-bold-6 {
+    @include font-bold;
+    font-size: 38px;
+  }
+
+  &-bold-7 {
+    @include font-bold;
+    font-size: 42px;
+  }
+}
+
+

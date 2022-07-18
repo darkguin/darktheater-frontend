@@ -1,0 +1,15 @@
+<div class='text-field__wrapper'>
+  <div
+    *ngIf='isPasswordFiled'
+    class='text-field__control'
+    [class.text-field--focus]='hasFocus'
+    [class.text-field--error]='isInvalid'
+    [class.text-field--valid]='isValid'
+    (click)='onHidePassword()'
+  >
+    <fa-icon *ngIf='isShowPassword' [icon]="icons.faEye"></fa-icon>
+    <fa-icon *ngIf='!isShowPassword' [icon]="icons.faEyeSlash"></fa-icon>
+  </div>
+
+  <ng-content></ng-content>
+</div>

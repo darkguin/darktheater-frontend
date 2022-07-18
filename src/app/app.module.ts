@@ -7,6 +7,7 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '@/environments/environment';
 import { MainLayoutModule } from '@features/layouts/main-layout/main-layout.module';
 import { EmptyLayoutModule } from '@features/layouts/empty-layout/empty-layout.module';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { EmptyLayoutModule } from '@features/layouts/empty-layout/empty-layout.m
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: environment.production,
       registrationStrategy: 'registerWhenStable:30000'
-    })
+    }),
+    FontAwesomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]
