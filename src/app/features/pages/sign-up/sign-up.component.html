@@ -1,1 +1,48 @@
-Sign up
+<auth-wrapper
+  subtitle='Start for free'
+  title='Create new account'
+>
+  <form class='form' [formGroup]='authForm'>
+    <div class='form__control' text-field>
+      <input
+        type='email'
+        placeholder='Email'
+        formControlName='email'
+        textFieldRef
+      />
+    </div>
+
+    <div class='form__control' text-field>
+      <input
+        type='text'
+        placeholder='username'
+        formControlName='username'
+        textFieldRef
+      />
+    </div>
+
+    <div class='form__control'  [type]='textFieldType.PASSWORD' text-field>
+      <input
+        type='password'
+        formControlName='password'
+        placeholder='Password'
+        textFieldRef
+      />
+    </div>
+
+    <div class='form__container'>
+      <button type='submit' class='form__btn btn btn--contrast'>Create account</button>
+    </div>
+  </form>
+
+  <div class='form__container form__container--info title-regular-1'>
+    <div>
+      <span style='padding-right: 10px'>Already have an account?</span>
+      <a [href]='signInPath' class='form__link'>Sign in</a>
+    </div>
+  </div>
+  <div class='form__container title-regular-1' style='margin-top: 4px'>
+    <a [href]='forgotPasswordPath' class='form__link'>Forgot password?</a>
+  </div>
+</auth-wrapper>
+

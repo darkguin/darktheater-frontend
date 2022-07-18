@@ -1,1 +1,22 @@
-$base-font-family: 'Gilroy Regular', sans-serif;
+@use "fonts";
+
+// MAIN COLORS
+$dark-color: rgba(21, 24, 30, 1);
+$second-color: rgba(32, 36, 44, 1);
+$light-color: rgba(249, 249, 249, 1);
+$contrast-color: rgba(0, 185, 174, 1);
+
+$primary-color: rgba(67, 160, 255, 1);
+$success-color: $contrast-color;
+$danger-color: rgb(247, 114, 73);
+$warning-color: rgb(254, 222, 107);
+
+// OPTIONAL COLORS
+$descriptions-color: rgba(249, 249, 249, 0.7);
+$title-color: rgba(249, 249, 249, 0.67);
+$btn-light-color: rgba(249, 249, 249, 0.2);
+$border-color: rgba(249, 249, 249, 0.1);
+
+
+$border-radius-sm: 15px;
+$border-radius-lg: 50px;

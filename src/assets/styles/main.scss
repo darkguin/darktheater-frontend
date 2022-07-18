@@ -6,7 +6,8 @@
 }
 
 html, body {
-  font-family: vars.$base-font-family !important;
+  font-family: fonts.$base-font-family !important;
   margin: 0;
   padding: 0;
+  background: vars.$dark-color;
 }
