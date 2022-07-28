@@ -266,6 +266,86 @@ $base-font-family: 'Gilroy' !important;
     font-size: 42px;
   }
 
+  &-medium-0 {
+    @include font-medium;
+    font-size: 14px;
+  }
+
+  &-medium-1 {
+    @include font-medium;
+    font-size: 18px;
+  }
+
+  &-medium-2 {
+    @include font-medium;
+    font-size: 22px;
+  }
+
+  &-medium-3 {
+    @include font-medium;
+    font-size: 26px;
+  }
+
+  &-medium-4 {
+    @include font-medium;
+    font-size: 30px;
+  }
+
+  &-medium-5 {
+    @include font-medium;
+    font-size: 34px;
+  }
+
+  &-medium-6 {
+    @include font-medium;
+    font-size: 38px;
+  }
+
+  &-medium-7 {
+    @include font-medium;
+    font-size: 42px;
+  }
+
+  &-semi-bold-0 {
+    @include font-semi-bold;
+    font-size: 14px;
+  }
+
+  &-semi-bold-1 {
+    @include font-semi-bold;
+    font-size: 18px;
+  }
+
+  &-semi-bold-2 {
+    @include font-semi-bold;
+    font-size: 22px;
+  }
+
+  &-semi-bold-3 {
+    @include font-semi-bold;
+    font-size: 26px;
+  }
+
+  &-semi-bold-4 {
+    @include font-semi-bold;
+    font-size: 30px;
+  }
+
+  &-semi-bold-5 {
+    @include font-semi-bold;
+    font-size: 34px;
+  }
+
+  &-semi-bold-6 {
+    @include font-semi-bold;
+    font-size: 38px;
+  }
+
+  &-semi-bold-7 {
+    @include font-semi-bold;
+    font-size: 42px;
+  }
+
   &-bold-0 {
     @include font-bold;
     font-size: 14px;

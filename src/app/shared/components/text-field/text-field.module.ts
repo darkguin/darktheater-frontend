@@ -3,14 +3,11 @@ import { NgModule } from '@angular/core';
 
 import { TextFieldComponent } from './text-field.component';
 import { TextFieldRefDirective } from './directives/text-field-ref.directive';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { IconModule } from '@shared/components/icon';
 
 @NgModule({
   declarations: [TextFieldComponent, TextFieldRefDirective],
-  imports: [
-    CommonModule,
-    FontAwesomeModule,
-  ],
+  imports: [CommonModule, IconModule],
   exports: [TextFieldComponent, TextFieldRefDirective],
 })
 export class TextFieldModule {}

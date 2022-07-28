@@ -3,7 +3,14 @@
   "useTabs": false,
   "semi": true,
   "singleQuote": true,
-  "quoteProps": "as-needed",
+  "overrides": [
+    {
+      "files": ["**/*.css", "**/*.scss", "**/*.html"],
+      "options": {
+        "singleQuote": false
+      }
+    }
+  ],
   "trailingComma": "all",
   "bracketSpacing": true,
   "jsxBracketSameLine": false,

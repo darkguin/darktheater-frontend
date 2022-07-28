@@ -1,8 +1,7 @@
 import { Component, ContentChild, Input } from '@angular/core';
-import { TextFieldRefDirective } from '@shared/components/text-field/directives/text-field-ref.directive';
-import { TextFieldType } from '@shared/components/text-field/values/text-field-type.enum';
-import * as Icons  from '@fortawesome/free-regular-svg-icons';
-
+import { TextFieldRefDirective } from './directives/text-field-ref.directive';
+import { TextFieldType } from './values/text-field-type.enum';
+import { Icon } from '@shared/components/icon';
 
 @Component({
   selector: 'text-field, [text-field]',
@@ -15,7 +14,7 @@ export class TextFieldComponent {
   @ContentChild(TextFieldRefDirective)
   textField?: TextFieldRefDirective;
 
-  icons = Icons;
+  icons = Icon;
   isShowPassword = false;
 
   get isPasswordFiled() {

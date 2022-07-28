@@ -17,7 +17,7 @@
     justify-content: center;
     align-items: center;
     cursor: pointer;
-    color: vars.$descriptions-color;
+    color: vars.$btn-light-color;
     transition: all 0.5s;
 
     &.text-field--focus {
