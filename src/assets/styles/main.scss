@@ -1,5 +1,6 @@
 @use 'vars';
 @use 'fonts';
+@use 'icons';
 
 * {
   box-sizing: border-box;
@@ -10,4 +11,6 @@ html, body {
   margin: 0;
   padding: 0;
   background: vars.$dark-color;
+  min-height: 100vh;
+  height: 100%;
 }

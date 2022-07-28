@@ -1,0 +1,58 @@
+<nav
+  class="nav-bar title-semi-bold-1"
+  [class.nav-bar--short]="!isLargeBar"
+  [class.nav-bar--open]="isOpenBar"
+>
+  <header class="nav-bar__header">
+    <a [href]="homePath" class="nav-bar__logo title-bold-4">
+      {{ isLargeBar ? appInfo.name : appInfo.shortName }}
+    </a>
+
+    <div class="nav-bar__controls nav-bar__size_controls">
+      <ng-template [ngIf]="isLargeBar" [ngIfElse]="shortTypeControl">
+        <div class="nav-bar__control" (click)="onClickSizeControl(navbarSizes.SMALL)">
+          <icon [name]="icons.LEFT_ARROW_1"></icon>
+        </div>
+      </ng-template>
+
+      <ng-template #shortTypeControl>
+        <div class="nav-bar__control" (click)="onClickSizeControl(navbarSizes.BIG)">
+          <icon [name]="icons.RIGHT_ARROW_1"></icon>
+        </div>
+      </ng-template>
+    </div>
+
+    <div
+      class="nav-bar__controls nav-bar__visibility_controls"
+      (click)="onClickVisibilityControl()"
+    >
+      <div class="nav-bar__control"></div>
+    </div>
+  </header>
+
+  <div class="nav-bar__categories">
+    <!--Navbar category-->
+    <ng-container *ngFor="let group of itemGroups; let last = last">
+      <div class="nav-bar__category" [class.nav-bar__category--last]="last">
+        <div class="nav-bar__category_title">
+          {{ group[0].category.name }}
+        </div>
+        <div class="nav-bar__category_items">
+          <!--Navbar item-->
+          <ng-container *ngFor="let item of group">
+            <div
+              *ngIf="item.auth === isAuthenticated"
+              class="nav-bar__item"
+              (click)="onClickItem(item)"
+            >
+              <div class="nav-bar__item_icon">
+                <icon [name]="item.icon"></icon>
+              </div>
+              <div class="nav-bar__item_title">{{ item.title }}</div>
+            </div>
+          </ng-container>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+</nav>

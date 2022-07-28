@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { MainLayoutComponent } from '@features/layouts/main-layout/main-layout.component';
-import { EmptyLayoutComponent } from '@features/layouts/empty-layout/empty-layout.component';
+import { AuthLayoutComponent } from '@features/layouts/auth-layout/auth-layout.component';
 import { NavigationLayout, NavigationPath } from '@core/values';
 
 const routes: Routes = [
@@ -19,7 +19,7 @@ const routes: Routes = [
   },
   {
     path: `${NavigationLayout.AUTH}`,
-    component: EmptyLayoutComponent,
+    component: AuthLayoutComponent,
     children: [
       { path: '', redirectTo: `/auth/${NavigationPath.SIGN_IN}`, pathMatch: 'full' },
       {

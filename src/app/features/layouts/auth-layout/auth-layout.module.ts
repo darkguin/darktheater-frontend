@@ -2,13 +2,13 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
-import { EmptyLayoutComponent } from './empty-layout.component';
+import { AuthLayoutComponent } from './auth-layout.component';
 
 @NgModule({
-  declarations: [EmptyLayoutComponent],
+  declarations: [AuthLayoutComponent],
   imports: [
     CommonModule,
     RouterModule,
   ]
 })
-export class EmptyLayoutModule {}
+export class AuthLayoutModule {}

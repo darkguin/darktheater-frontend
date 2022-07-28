@@ -1,0 +1,15 @@
+@use "~src/assets/styles/vars";
+
+.main-layout {
+  display: grid;
+  grid-template-columns: fit-content(250px) 1fr;
+  grid-template-rows: fit-content(1fr);
+  height: 100%;
+}
+
+@media screen and (max-width: vars.$screen-sm) {
+  .main-layout {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr;
+  }
+}
