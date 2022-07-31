@@ -5,6 +5,8 @@ export abstract class DialogView {
 
   protected result = new Subject<any>();
 
+  isVisible = false;
+
   get buttonEvent$(): Observable<boolean> {
     return this.buttonEvent.asObservable();
   }

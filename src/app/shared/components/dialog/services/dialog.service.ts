@@ -14,14 +14,6 @@ export class DialogService {
 
   private dialogContainerRef?: ViewContainerRef;
 
-  // protected get dialogResult$(): Observable<any> {
-  //   return this.componentRef?.instance?.result$;
-  // }
-  //
-  // protected get dialogButtonEvent$(): Observable<boolean> {
-  //   return this.componentRef?.instance?.buttonEvent$;
-  // }
-
   get dialogOptions$(): Observable<DialogOptions> {
     return this.dialogOptions.asObservable();
   }
@@ -41,7 +33,7 @@ export class DialogService {
     const maxRefCount = this.dialogOptions.value.maxCount || 1;
 
     if (this.dialogStack.size() >= maxRefCount) {
-      this.dialogStack.peek()?.componentRef?.destroy();
+      this.close(this.dialogStack.peek()?.id!);
       this.dialogStack.dequeue();
     }
 
@@ -65,7 +57,17 @@ export class DialogService {
     const dialogRef = this.getDialogRef(dialogId);
     const componentRef = dialogRef?.componentRef;
 
-    setTimeout(() => componentRef?.destroy(), delay);
+    setTimeout(() => {
+      if (componentRef?.instance?.isVisible) {
+        componentRef.instance.isVisible = false;
+
+        // @NOTE: уничтожаем компонент с задержкой, чтобы успела отыграть
+        // анимация исчезовения
+        setTimeout(() => componentRef?.destroy(), 1000);
+      } else {
+        componentRef?.destroy();
+      }
+    }, delay);
   }
 
   setDialogContainerRef(container?: ViewContainerRef) {
