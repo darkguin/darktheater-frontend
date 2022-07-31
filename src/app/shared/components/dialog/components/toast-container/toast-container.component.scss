@@ -1,0 +1,32 @@
+.toast__container {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  pointer-events: none;
+  padding: 29px 38px;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+
+  &.dialog--center {
+    justify-content: center;
+    align-items: center;
+  }
+
+  &.dialog--top {
+    align-items: flex-start;
+  }
+
+  &.dialog--bottom {
+    align-items: flex-end;
+  }
+
+  &.dialog--right {
+    justify-content: flex-end;
+  }
+
+  &.dialog--left {
+    justify-content: flex-start;
+  }
+}

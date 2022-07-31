@@ -2,7 +2,7 @@ import { Component, Input } from '@angular/core';
 import { Icon } from '@shared/components/icon/values/icon.enum';
 
 @Component({
-  selector: 'icon',
+  selector: 'icon, [icon]',
   templateUrl: './icon.component.html',
   styleUrls: ['./icon.component.scss'],
 })

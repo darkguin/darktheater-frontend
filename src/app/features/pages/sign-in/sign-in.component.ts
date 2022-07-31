@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { TextFieldType } from '@shared/components/text-field/values/text-field-type.enum';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { NavigationFullPath, NavigationPath } from '@core/values';
+import { ToastService } from '@shared/components/dialog';
 
 @Component({
   selector: 'sign-in-page',
@@ -20,13 +21,13 @@ export class SignInComponent {
   }
 
   authForm = new FormGroup({
-    'email': new FormControl('', [
-      Validators.required,
-      Validators.email,
-    ]),
-    'password': new FormControl('', [
-      Validators.required,
-      Validators.minLength(6),
-    ]),
+    email: new FormControl('', [Validators.required, Validators.email]),
+    password: new FormControl('', [Validators.required, Validators.minLength(6)]),
   });
+
+  constructor(private toastService: ToastService) {}
+
+  onSubmit() {
+    this.toastService.success('Signing in...');
+  }
 }
