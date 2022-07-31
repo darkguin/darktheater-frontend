@@ -1,38 +1,27 @@
-<auth-wrapper
-  subtitle='Welcome back'
-  title='Sign in to account'
->
-  <form class='form' [formGroup]='authForm'>
-    <div class='form__control' text-field>
-      <input
-        type='email'
-        placeholder='Email'
-        formControlName='email'
-        textFieldRef
-      />
+<auth-wrapper subtitle="Welcome back" title="Sign in to account">
+  <form class="form" [formGroup]="authForm">
+    <div class="form__control" text-field>
+      <input type="email" placeholder="Email" formControlName="email" textFieldRef />
     </div>
 
-    <div class='form__control'  [type]='textFieldType.PASSWORD' text-field>
-      <input
-        type='password'
-        formControlName='password'
-        placeholder='Password'
-        textFieldRef
-      />
+    <div class="form__control" [type]="textFieldType.PASSWORD" text-field>
+      <input type="password" formControlName="password" placeholder="Password" textFieldRef />
     </div>
-    <div class='form__control form__container f-end'>
-      <a [href]='forgotPasswordPath' class='form__link title-regular-1'>Forgot password?</a>
+    <div class="form__control form__container f-end">
+      <a [href]="forgotPasswordPath" class="form__link title-regular-1">Forgot password?</a>
     </div>
 
-    <div class='form__container'>
-      <button type='submit' class='form__btn btn btn--contrast'>Sign in</button>
+    <div class="form__container">
+      <button type="submit" class="form__btn btn btn--contrast" (click)="onSubmit()">
+        Sign in
+      </button>
     </div>
   </form>
 
-  <div class='form__container form__container--info title-regular-1'>
+  <div class="form__container form__container--info title-regular-1">
     <div>
-      <span style='padding-right: 10px'>Do you have no account?</span>
-      <a [href]='signUpPath' class='form__link'>Sign up</a>
+      <span style="padding-right: 10px">Do you have no account?</span>
+      <a [href]="signUpPath" class="form__link">Sign up</a>
     </div>
   </div>
 </auth-wrapper>

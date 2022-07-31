@@ -7,11 +7,14 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '@/environments/environment';
 import { MainLayoutModule } from '@features/layouts/main-layout/main-layout.module';
 import { AuthLayoutModule } from '@features/layouts/auth-layout/auth-layout.module';
+import { DialogModule } from '@shared/components/dialog';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     MainLayoutModule,
     AuthLayoutModule,
@@ -19,6 +22,7 @@ import { AuthLayoutModule } from '@features/layouts/auth-layout/auth-layout.modu
       enabled: environment.production,
       registrationStrategy: 'registerWhenStable:30000',
     }),
+    DialogModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

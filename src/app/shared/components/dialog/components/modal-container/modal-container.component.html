@@ -1,0 +1,8 @@
+<div
+  [id]="containerId"
+  class="modal__container"
+  (click)="onClickOutside($event)"
+  [class.active]="isModalShowing"
+>
+  <ng-container #modal_container></ng-container>
+</div>

@@ -1,0 +1,39 @@
+@use "~src/assets/styles/vars";
+
+.toast {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  min-width: 250px;
+  max-width: 350px;
+  padding: 18px;
+  margin: 9px 0;
+  border-radius: vars.$border-radius-sm;
+  background: vars.$primary-color;
+  color: vars.$dark-color;
+  pointer-events: visible;
+  cursor: pointer;
+  z-index: 1000;
+
+  &__icon {
+    font-size: 24px;
+    line-height: 0;
+    margin-right: 18px;
+  }
+
+  &.toast--success {
+    background: vars.$success-color;
+  }
+
+  &.toast--error {
+    background: vars.$danger-color;
+  }
+
+  &.toast--warning {
+    background: vars.$warning-color;
+  }
+
+  &.toast--info {
+    background: vars.$primary-color;
+  }
+}
