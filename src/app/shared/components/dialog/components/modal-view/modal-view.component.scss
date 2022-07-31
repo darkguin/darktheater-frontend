@@ -1,0 +1,53 @@
+@use "~src/assets/styles/vars";
+@use "~src/assets/styles/buttons";
+
+.modal {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+
+  min-width: 350px;
+  max-width: 85vw;
+  min-height: 100px;
+  max-height: 85vh;
+  background: vars.$dark-color;
+  border: 3px solid vars.$border-color;
+  border-radius: vars.$border-radius-sm;
+  z-index: 100;
+  padding: 28px;
+  cursor: default;
+  overflow-y: auto;
+
+  &__header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    color: vars.$title-color;
+  }
+
+  &__body {
+    color: vars.$descriptions-color;
+    margin: 38px 0;
+  }
+
+  &__footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+  }
+
+  &__close {
+    font-size: 24px;
+    line-height: 0;
+    color: vars.$danger-color;
+    cursor: pointer;
+    margin-left: 38px;
+  }
+
+  &__button {
+    cursor: pointer;
+  }
+}
