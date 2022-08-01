@@ -1,5 +1,7 @@
 @use "~src/assets/styles/vars";
 
+$nav-bar-height: 60px;
+
 .main-layout {
   display: grid;
   grid-template-columns: fit-content(250px) 1fr;
@@ -10,6 +12,6 @@
 @media screen and (max-width: vars.$screen-sm) {
   .main-layout {
     grid-template-columns: 1fr;
-    grid-template-rows: auto 1fr;
+    grid-template-rows: $nav-bar-height 1fr;
   }
 }

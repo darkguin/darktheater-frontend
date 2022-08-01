@@ -1,32 +1,33 @@
-import { AfterViewInit, Component, OnDestroy, ViewChild, ViewContainerRef } from '@angular/core';
-import { takeUntil } from 'rxjs';
+import { Component, OnDestroy } from '@angular/core';
+import { Subject, takeUntil } from 'rxjs';
 import { DialogPositionStyles } from '../../values/dialog-position-styles.value';
 import { DialogPosition } from '@shared/components/dialog/values/dialog-position.enum';
 import { ToastService } from '@shared/components/dialog/services/toast.service';
-import { DialogContainer } from '@shared/components/dialog/models/dialog-container.model';
+import { DialogService } from '@shared/components/dialog/services/dialog.service';
 
 @Component({
   selector: 'toast-container, [toast-container]',
   templateUrl: './toast-container.component.html',
   styleUrls: ['./toast-container.component.scss'],
+  providers: [
+    {
+      provide: DialogService,
+      useExisting: ToastService,
+    },
+  ],
 })
-export class ToastContainerComponent extends DialogContainer implements OnDestroy, AfterViewInit {
+export class ToastContainerComponent implements OnDestroy {
+  protected destroy = new Subject();
+
   positionStyle = DialogPositionStyles[DialogPosition.BOTTOM_RIGHT];
 
-  @ViewChild('toast_container', { read: ViewContainerRef })
-  dialogContainer!: ViewContainerRef;
-
   constructor(private toastService: ToastService) {
-    super(toastService);
-
     this.toastService.dialogOptions$.pipe(takeUntil(this.destroy)).subscribe((options) => {
       this.positionStyle = DialogPositionStyles[options.position];
     });
   }
 
-  ngAfterViewInit() {
-    this.toastService.setDialogContainerRef(this.dialogContainer);
+  ngOnDestroy() {
+    this.destroy.next(true);
   }
-
-  ngOnDestroy = () => this.destroyContainer();
 }

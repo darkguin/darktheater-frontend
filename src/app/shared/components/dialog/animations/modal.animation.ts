@@ -5,7 +5,7 @@ export const modalAnimation = () => {
   const endState = { opacity: 1, transform: 'scale(100%)' };
 
   return trigger('modalAnimation', [
-    transition(':enter', [style(startState), animate('500ms ease-out', style(endState))]),
-    transition(':leave', [style(endState), animate('500ms ease-in', style(startState))]),
+    transition(':enter', [style(startState), animate('200ms ease-out', style(endState))]),
+    transition(':leave', [style(endState), animate('200ms ease-in', style(startState))]),
   ]);
 };
