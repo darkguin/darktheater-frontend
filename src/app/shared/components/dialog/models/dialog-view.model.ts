@@ -1,9 +1,12 @@
 import { Observable, Subject } from 'rxjs';
+import { DialogOptions } from '@shared/components/dialog';
 
 export abstract class DialogView {
   protected buttonEvent = new Subject<boolean>();
 
   protected result = new Subject<any>();
+
+  options!: DialogOptions;
 
   isVisible = false;
 

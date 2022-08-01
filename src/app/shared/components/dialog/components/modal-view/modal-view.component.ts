@@ -13,7 +13,6 @@ import { modalAnimation } from '../../animations/modal.animation';
   animations: [modalAnimation()],
 })
 export class ModalViewComponent extends DialogView implements OnInit, OnDestroy {
-  private destroy = new Subject();
   icons = Icon;
   title = 'THIS IS MODAL WINDOW';
 
@@ -27,7 +26,6 @@ export class ModalViewComponent extends DialogView implements OnInit, OnDestroy 
 
   ngOnDestroy() {
     this.isVisible = false;
-    this.destroy.next(true);
   }
 
   onClose() {
