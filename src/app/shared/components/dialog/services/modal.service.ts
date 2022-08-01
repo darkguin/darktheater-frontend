@@ -1,13 +1,7 @@
-import {
-  ComponentFactoryResolver,
-  ComponentRef,
-  Injectable,
-  Type,
-  ViewContainerRef,
-} from '@angular/core';
+import { ComponentRef, Injectable, Type } from '@angular/core';
 import { DialogView } from '@shared/components/dialog/models/dialog-view.model';
 import { DialogOptions } from '@shared/components/dialog/models/dialog-options.model';
-import { Observable, Subject } from 'rxjs';
+import { Observable } from 'rxjs';
 import { DialogService } from '@shared/components/dialog/services/dialog.service';
 
 @Injectable({
@@ -26,10 +20,6 @@ export class ModalService extends DialogService {
 
   get buttonEvent$(): Observable<boolean> | undefined {
     return this.componentRef?.instance?.result$;
-  }
-
-  constructor(private componentFactoryResolver: ComponentFactoryResolver) {
-    super(componentFactoryResolver);
   }
 
   public show(componentClass: Type<DialogView>): string {

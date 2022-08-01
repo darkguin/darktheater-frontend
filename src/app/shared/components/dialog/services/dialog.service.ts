@@ -1,4 +1,4 @@
-import { ComponentFactoryResolver, ComponentRef, Type, ViewContainerRef } from '@angular/core';
+import { ComponentRef, Type, ViewContainerRef } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import * as uuid from 'uuid';
 
@@ -20,11 +20,8 @@ export class DialogService {
     return this.dialogOptions.asObservable();
   }
 
-  constructor(private factoryResolver: ComponentFactoryResolver) {}
-
   private createDialogComponent(componentClass: Type<DialogView>): ComponentRef<DialogView> {
-    const factory = this.factoryResolver.resolveComponentFactory(componentClass);
-    return this.dialogContainerRef!.createComponent(factory);
+    return this.dialogContainerRef!.createComponent(componentClass);
   }
 
   private setDialogOptions(options: DialogOptions, dialogView: DialogView) {

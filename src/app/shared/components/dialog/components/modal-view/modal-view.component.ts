@@ -1,5 +1,4 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Subject } from 'rxjs';
 
 import { Icon } from '@shared/components/icon';
 import { DialogView } from '../../models/dialog-view.model';

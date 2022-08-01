@@ -1,31 +1,26 @@
-import { AfterViewInit, Component, OnDestroy, ViewChild, ViewContainerRef } from '@angular/core';
+import { Component } from '@angular/core';
 import { ModalService } from '@shared/components/dialog/services/modal.service';
-import { DialogContainer } from '@shared/components/dialog/models/dialog-container.model';
+import { DialogService } from '@shared/components/dialog/services/dialog.service';
 
 @Component({
   selector: 'modal-container, [modal-container]',
   templateUrl: './modal-container.component.html',
   styleUrls: ['./modal-container.component.scss'],
+  providers: [
+    {
+      provide: DialogService,
+      useExisting: ModalService,
+    },
+  ],
 })
-export class ModalContainerComponent extends DialogContainer implements OnDestroy, AfterViewInit {
+export class ModalContainerComponent {
   containerId = 'modal-container';
-
-  @ViewChild('modal_container', { read: ViewContainerRef })
-  dialogContainer!: ViewContainerRef;
 
   get isModalShowing() {
     return !!this.modalService.dialogId;
   }
 
-  constructor(private modalService: ModalService) {
-    super(modalService);
-  }
-
-  ngAfterViewInit() {
-    this.modalService.setDialogContainerRef(this.dialogContainer);
-  }
-
-  ngOnDestroy = () => this.destroyContainer();
+  constructor(private modalService: ModalService) {}
 
   onClickOutside(event: MouseEvent) {
     if ((event.target as HTMLElement).id === this.containerId) {
