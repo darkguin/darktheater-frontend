@@ -1,12 +1,10 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Observable, Subject, takeUntil } from 'rxjs';
 
-import { Icon } from '@shared/components/icon';
-import { ToastService } from '../../services/toast.service';
 import { DialogView } from '../../models/dialog-view.model';
 import { ToastStyles } from '../../values/toast-styles.value';
 import { ToastTypes } from '../../values/toast-types.enum';
 import { toastAnimation } from '../../animations/toast.animation';
+import { ToastOptions } from '@shared/components/dialog';
 
 @Component({
   selector: 'toast-view',
@@ -15,31 +13,23 @@ import { toastAnimation } from '../../animations/toast.animation';
   animations: [toastAnimation()],
 })
 export class ToastViewComponent extends DialogView implements OnInit, OnDestroy {
-  private destroy = new Subject();
-  icons = Icon;
   toastStyle = ToastStyles[ToastTypes.INFO];
 
-  get text$(): Observable<string> {
-    return this.toastService.text$;
+  get toastOptions(): ToastOptions {
+    return this.options as ToastOptions;
   }
 
-  get toastType$(): Observable<ToastTypes> {
-    return this.toastService.toastType$;
-  }
-
-  constructor(private toastService: ToastService) {
-    super();
+  get text() {
+    return this.toastOptions.text || '';
   }
 
   ngOnInit() {
-    this.toastType$.pipe(takeUntil(this.destroy)).subscribe((type) => {
-      this.toastStyle = ToastStyles[type];
-    });
+    const toastType = this.toastOptions?.type || ToastTypes.INFO;
+    this.toastStyle = ToastStyles[toastType];
     this.isVisible = true;
   }
 
   ngOnDestroy() {
     this.isVisible = false;
-    this.destroy.next(true);
   }
 }

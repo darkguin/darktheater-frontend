@@ -18,33 +18,19 @@ import { ToastOptions } from '@shared/components/dialog/models/toast-options.mod
   providedIn: 'root',
 })
 export class ToastService extends DialogService {
-  private textValue = new BehaviorSubject('');
-  private toastType = new BehaviorSubject(ToastTypes.INFO);
-
-  get text$(): Observable<string> {
-    return this.textValue.asObservable();
-  }
-
-  get toastType$(): Observable<ToastTypes> {
-    return this.toastType.asObservable();
-  }
-
   constructor(private componentFactoryResolver: ComponentFactoryResolver) {
     super(componentFactoryResolver);
   }
 
-  public show({ text, type, position, maxCount }: ToastOptions): string {
-    this.textValue.next(text || '');
-    this.toastType.next(type || ToastTypes.INFO);
-
-    return this.showDialog(ToastViewComponent, { position, maxCount });
+  public show(componentClass: Type<DialogView>, options: ToastOptions): string {
+    return super.showDialog(componentClass, options);
   }
 
   public info(text: string, delay = 5000, options = new ToastOptions()): string {
     options.type = ToastTypes.INFO;
     options.text = text;
 
-    const dialogId = this.show(options);
+    const dialogId = this.show(ToastViewComponent, options);
     this.close(dialogId, delay);
     return dialogId;
   }
@@ -53,7 +39,7 @@ export class ToastService extends DialogService {
     options.type = ToastTypes.SUCCESS;
     options.text = text;
 
-    const dialogId = this.show(options);
+    const dialogId = this.show(ToastViewComponent, options);
     this.close(dialogId, delay);
     return dialogId;
   }
@@ -62,7 +48,7 @@ export class ToastService extends DialogService {
     options.type = ToastTypes.ERROR;
     options.text = text;
 
-    const dialogId = this.show(options);
+    const dialogId = this.show(ToastViewComponent, options);
     this.close(dialogId, delay);
     return dialogId;
   }
@@ -71,7 +57,7 @@ export class ToastService extends DialogService {
     options.type = ToastTypes.WARNING;
     options.text = text;
 
-    const dialogId = this.show(options);
+    const dialogId = this.show(ToastViewComponent, options);
     this.close(dialogId, delay);
     return dialogId;
   }

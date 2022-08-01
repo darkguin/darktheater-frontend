@@ -14,6 +14,8 @@ export class DialogService {
 
   private dialogContainerRef?: ViewContainerRef;
 
+  // @NOTE: Нужен для задания позиционирования диалогов. Изменения применяются сразу ко
+  // всем диалогам, находящимся в dialogContainerRef.
   get dialogOptions$(): Observable<DialogOptions> {
     return this.dialogOptions.asObservable();
   }
@@ -25,8 +27,9 @@ export class DialogService {
     return this.dialogContainerRef!.createComponent(factory);
   }
 
-  private setDialogOptions(options: DialogOptions) {
+  private setDialogOptions(options: DialogOptions, dialogView: DialogView) {
     this.dialogOptions.next(options);
+    dialogView.options = options;
   }
 
   private setDialogRef(ref: DialogRef) {
@@ -46,7 +49,7 @@ export class DialogService {
 
   protected showDialog(componentClass: Type<DialogView>, options: DialogOptions): string {
     const componentRef = this.createDialogComponent(componentClass);
-    this.setDialogOptions(options);
+    this.setDialogOptions(options, componentRef.instance);
 
     const dialogId = uuid.v4();
     this.setDialogRef({ id: dialogId, componentRef });
