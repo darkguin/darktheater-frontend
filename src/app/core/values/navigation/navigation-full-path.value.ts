@@ -1,10 +1,14 @@
 import { NavigationPath } from './navigation-path.enum';
 import { NavigationLayout } from './navigation-layout.enum';
 
+const getPath = (layout: NavigationLayout) => (!!layout.length ? `/${layout}` : layout);
+
 export const NavigationFullPath = {
-  [NavigationPath.HOME]: `${NavigationLayout.MAIN}/${NavigationPath.HOME}`,
-  [NavigationPath.SIGN_IN]: `${NavigationLayout.AUTH}/${NavigationPath.SIGN_IN}`,
-  [NavigationPath.SIGN_UP]: `${NavigationLayout.AUTH}/${NavigationPath.SIGN_UP}`,
-  [NavigationPath.CONFIRM]: `${NavigationLayout.AUTH}/${NavigationPath.CONFIRM}`,
-  [NavigationPath.RESET_PASSWORD]: `${NavigationLayout.AUTH}/${NavigationPath.RESET_PASSWORD}`,
-}
+  [NavigationPath.HOME]: `${getPath(NavigationLayout.MAIN)}/${NavigationPath.HOME}`,
+  [NavigationPath.SIGN_IN]: `${getPath(NavigationLayout.AUTH)}/${NavigationPath.SIGN_IN}`,
+  [NavigationPath.SIGN_UP]: `${getPath(NavigationLayout.AUTH)}/${NavigationPath.SIGN_UP}`,
+  [NavigationPath.CONFIRM]: `${getPath(NavigationLayout.AUTH)}/${NavigationPath.CONFIRM}`,
+  [NavigationPath.RESET_PASSWORD]: `${getPath(NavigationLayout.AUTH)}/${
+    NavigationPath.RESET_PASSWORD
+  }`,
+};

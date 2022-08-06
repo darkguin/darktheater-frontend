@@ -1,4 +1,9 @@
-<auth-wrapper subtitle="Welcome back" title="Sign in to account">
+<section>
+  <header class="auth-page__title-container">
+    <div class="auth-page__subtitle title-bold-2">Welcome back</div>
+    <div class="auth-page__title title-bold-7">Sign in to account</div>
+  </header>
+
   <form class="form" [formGroup]="authForm">
     <div class="form__control" text-field>
       <input type="email" placeholder="Email" formControlName="email" textFieldRef />
@@ -8,7 +13,7 @@
       <input type="password" formControlName="password" placeholder="Password" textFieldRef />
     </div>
     <div class="form__control form__container f-end">
-      <a [href]="forgotPasswordPath" class="form__link title-regular-1">Forgot password?</a>
+      <a [routerLink]="forgotPasswordPath" class="form__link title-regular-1">Forgot password?</a>
     </div>
 
     <div class="form__container">
@@ -21,7 +26,7 @@
   <div class="form__container form__container--info title-regular-1">
     <div>
       <span style="padding-right: 10px">Do you have no account?</span>
-      <a [href]="signUpPath" class="form__link">Sign up</a>
+      <a [routerLink]="signUpPath" class="form__link">Sign up</a>
     </div>
   </div>
-</auth-wrapper>
+</section>

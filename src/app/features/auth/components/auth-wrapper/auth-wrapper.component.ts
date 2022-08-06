@@ -8,9 +8,6 @@ import { NavigationFullPath } from '@core/values';
   styleUrls: ['./auth-wrapper.component.scss'],
 })
 export class AuthWrapperComponent {
-  @Input() title = '';
-  @Input() subtitle = '';
-
   appInfo = AppInfo;
 
   get homePath() {
