@@ -5,9 +5,7 @@ import { AuthWrapperComponent } from './components/auth-wrapper/auth-wrapper.com
 
 @NgModule({
   declarations: [AuthWrapperComponent],
-  imports: [
-    CommonModule,
-  ],
+  imports: [CommonModule],
   exports: [AuthWrapperComponent],
 })
 export class AuthModule {}

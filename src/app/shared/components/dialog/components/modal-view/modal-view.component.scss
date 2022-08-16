@@ -18,6 +18,7 @@
   padding: 28px;
   cursor: default;
   overflow-y: auto;
+  margin: 32px;
 
   &__header {
     display: flex;
@@ -25,11 +26,12 @@
     justify-content: space-between;
     align-items: center;
     color: vars.$title-color;
+    margin-bottom: 38px;
   }
 
   &__body {
     color: vars.$descriptions-color;
-    margin: 38px 0;
+    margin-bottom: 38px;
   }
 
   &__footer {
@@ -37,6 +39,7 @@
     flex-direction: row;
     justify-content: flex-end;
     align-items: center;
+    width: 100%;
   }
 
   &__close {

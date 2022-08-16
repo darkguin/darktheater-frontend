@@ -2,7 +2,9 @@ import { Injectable } from '@angular/core';
 import { StorageInterface } from '@models/storage/storage.interface';
 import { StorageKey } from '@core/values';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root',
+})
 export class LocalStorageService implements StorageInterface {
   public length(): number {
     return localStorage.length;

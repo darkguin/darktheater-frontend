@@ -4,20 +4,26 @@
     <div class="auth-page__title title-bold-7">Sign in to account</div>
   </header>
 
-  <form class="form" [formGroup]="authForm">
-    <div class="form__control" text-field>
+  <form
+    class="form"
+    [class.form--loading]="isLoading$ | async"
+    [formGroup]="authForm"
+    (ngSubmit)="onSubmit($event)"
+  >
+    <div class="form__control" [error]="emailError" text-field>
       <input type="email" placeholder="Email" formControlName="email" textFieldRef />
     </div>
 
-    <div class="form__control" [type]="textFieldType.PASSWORD" text-field>
+    <div class="form__control" [type]="textFieldType.PASSWORD" [error]="passwordError" text-field>
       <input type="password" formControlName="password" placeholder="Password" textFieldRef />
     </div>
+
     <div class="form__control form__container f-end">
       <a [routerLink]="forgotPasswordPath" class="form__link title-regular-1">Forgot password?</a>
     </div>
 
     <div class="form__container">
-      <button type="submit" class="form__btn btn btn--contrast" (click)="onSubmit()">
+      <button type="submit" class="form__btn btn btn--contrast" [disabled]="isInvalidForm">
         Sign in
       </button>
     </div>
@@ -30,3 +36,17 @@
     </div>
   </div>
 </section>
+
+<ng-template #errorModal>
+  <div class="form__modal">
+    <div class="form__modal_header title-semi-bold-3 text-contrast">
+      This account has not been confirmed
+    </div>
+    <div class="form__modal_text title-medium-1">
+      We have re-sent you an email to confirm your account. <br />
+      You need to go to your
+      <b class="text-contrast">{{ emailControl.value }}</b>
+      mailbox and go through the email confirmation procedure.
+    </div>
+  </div>
+</ng-template>

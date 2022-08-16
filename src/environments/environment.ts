@@ -1,3 +1,4 @@
 export const environment = {
-  production: false
+  production: false,
+  baseUrl: 'https://api-darktheater.herokuapp.com',
 };

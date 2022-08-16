@@ -1,8 +1,8 @@
 import { ComponentRef, Injectable, Type } from '@angular/core';
 import { DialogView } from '@shared/components/dialog/models/dialog-view.model';
-import { DialogOptions } from '@shared/components/dialog/models/dialog-options.model';
 import { Observable } from 'rxjs';
 import { DialogService } from '@shared/components/dialog/services/dialog.service';
+import { ModalOptions } from '@shared/components/dialog/models/modal-options.model';
 
 @Injectable({
   providedIn: 'root',
@@ -22,8 +22,7 @@ export class ModalService extends DialogService {
     return this.componentRef?.instance?.result$;
   }
 
-  public show(componentClass: Type<DialogView>): string {
-    const options = new DialogOptions();
+  public show(componentClass: Type<DialogView>, options = new ModalOptions()): string {
     this.dialogId = super.showDialog(componentClass, options);
     return this.dialogId;
   }
