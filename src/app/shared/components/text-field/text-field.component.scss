@@ -7,6 +7,15 @@
     width: fit-content;
   }
 
+  &__error-msg {
+    max-width: 256px;
+    text-align: right;
+    margin-top: 8px;
+    text-wrap: normal;
+    overflow-wrap: break-word;
+    color: rgba(vars.$danger-color, 0.75);
+  }
+
   &__control {
     position: absolute;
     top: 4px;
@@ -41,6 +50,20 @@
     margin: 0;
   }
 
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus,
+  textarea:-webkit-autofill,
+  textarea:-webkit-autofill:hover,
+  textarea:-webkit-autofill:focus,
+  select:-webkit-autofill,
+  select:-webkit-autofill:hover,
+  select:-webkit-autofill:focus {
+    -webkit-text-fill-color: vars.$descriptions-color;
+    -webkit-box-shadow: 0 0 0 1000px vars.$input-bg-color inset;
+    transition: background-color 5000s ease-in-out 0s;
+  }
+
   .text-field {
     @include fonts.font-regular;
 
@@ -51,7 +74,7 @@
     min-width: 256px;
     border: 2px solid vars.$border-color;
     border-radius: vars.$border-radius-sm;
-    background: rgba(vars.$dark-color, 0.1);
+    background: vars.$input-bg-color;
     color: vars.$descriptions-color;
     font-size: 18px;
     transition: all 0.5s;
@@ -59,16 +82,19 @@
     &.text-field--focus {
       border-color: rgba(vars.$primary-color, 0.75);
       color: vars.$descriptions-color;
+      -webkit-text-fill-color: vars.$descriptions-color;
     }
 
     &.ng-dirty.ng-valid {
       border-color: rgba(vars.$success-color, 0.75);
       color: rgba(vars.$success-color, 0.75);
+      -webkit-text-fill-color: rgba(vars.$success-color, 0.75);
     }
 
     &.ng-dirty.ng-invalid {
       border-color: rgba(vars.$danger-color, 0.75);
       color: rgba(vars.$danger-color, 0.75);
+      -webkit-text-fill-color: rgba(vars.$danger-color, 0.75);
     }
   }
 }

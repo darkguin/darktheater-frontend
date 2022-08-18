@@ -1,15 +1,18 @@
 <ng-template [ngIf]="isVisible" id="app-modal">
-  <div class="modal" [@modalAnimation]>
-    <div class="modal__header">
-      <div class="modal__title title-bold-3">{{ title }}</div>
-      <!--      <div class="modal__close" (click)="onClose()">-->
-      <!--        <icon [name]="icons.CLOSE"></icon>-->
-      <!--      </div>-->
+  <div class="modal" [@modalAnimation] [style.max-width]="maxWidth">
+    <div *ngIf="!!title || withCloseButton" class="modal__header">
+      <div *ngIf="!!title" class="modal__title title-bold-3">{{ title }}</div>
+      <div *ngIf="withCloseButton" class="modal__close" (click)="onClose()">
+        <icon [name]="icons.CLOSE"></icon>
+      </div>
     </div>
-    <div class="modal__body title-regular-2">Something text</div>
+    <div class="modal__body title-regular-2">
+      <ng-container *ngTemplateOutlet="bodyViewRef"></ng-container>
+      {{ bodyText }}
+    </div>
     <div class="modal__footer">
-      <div class="modal__button btn btn--contrast-text" (click)="onClose()">Close</div>
-      <div class="modal__button btn btn--contrast" (click)="onResult()">Ok</div>
+      <div class="modal__button btn btn--contrast-text" (click)="onClose()">{{ closeText }}</div>
+      <div class="modal__button btn btn--contrast" (click)="onResult()">{{ okText }}</div>
     </div>
   </div>
 </ng-template>

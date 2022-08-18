@@ -4,6 +4,12 @@
   width: fit-content;
   padding: 8px 0;
 
+  &.form--loading {
+    cursor: default;
+    pointer-events: none;
+    opacity: 0.25;
+  }
+
   &__help_text {
     display: flex;
     flex-direction: row;
@@ -22,6 +28,11 @@
 
   &__btn {
     width: 100%;
+
+    &:disabled {
+      opacity: 0.5;
+      cursor: default;
+    }
   }
 
   &__container {
@@ -40,6 +51,24 @@
 
     &.form__container--info {
       margin-top: 38px;
+    }
+  }
+
+  &__modal {
+    &_header,
+    &_icon,
+    &_text {
+      text-align: center;
+    }
+
+    &_header {
+      margin-bottom: 38px;
+    }
+
+    &_icon {
+      margin-top: -8px;
+      margin-bottom: 8px;
+      font-size: 54px;
     }
   }
 }

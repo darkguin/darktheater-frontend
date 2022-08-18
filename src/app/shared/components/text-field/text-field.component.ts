@@ -10,6 +10,7 @@ import { Icon } from '@shared/components/icon';
 })
 export class TextFieldComponent {
   @Input() type = TextFieldType.TEXT;
+  @Input() error = '';
 
   @ContentChild(TextFieldRefDirective)
   textField?: TextFieldRefDirective;
