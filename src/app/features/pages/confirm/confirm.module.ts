@@ -6,12 +6,11 @@ import { ConfirmGuard } from './guards/confirm.guard';
 import { ConfirmComponent } from './confirm.component';
 import { ConfirmRoutingModule } from './confirm-routing.module';
 import { ConfirmationService } from './services/confirmation.service';
-import { PasswordFormComponent } from './components/password-form.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { TextFieldModule } from '@shared/components/text-field/text-field.module';
 
 @NgModule({
-  declarations: [ConfirmComponent, PasswordFormComponent],
+  declarations: [ConfirmComponent],
   providers: [ConfirmGuard, ConfirmationService],
   imports: [CommonModule, ConfirmRoutingModule, AuthModule, ReactiveFormsModule, TextFieldModule],
 })

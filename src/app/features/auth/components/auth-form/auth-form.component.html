@@ -1,0 +1,36 @@
+<form
+  class="form"
+  [class.form--loading]="isLoading$ | async"
+  [formGroup]="authForm"
+  (ngSubmit)="onSubmit()"
+>
+  <ng-template [ngIf]="formConfig.usernameControl">
+    <div class="form__control" text-field>
+      <input type="text" placeholder="username" formControlName="username" textFieldRef />
+    </div>
+  </ng-template>
+
+  <ng-template [ngIf]="formConfig.emailControl">
+    <div class="form__control" [error]="emailError" text-field>
+      <input type="email" placeholder="Email" formControlName="email" textFieldRef />
+    </div>
+  </ng-template>
+
+  <ng-template [ngIf]="formConfig.passwordControl">
+    <div class="form__control" [type]="textFieldType.PASSWORD" [error]="passwordError" text-field>
+      <input type="password" formControlName="password" placeholder="Password" textFieldRef />
+    </div>
+  </ng-template>
+
+  <ng-template [ngIf]="type === authFormType.SIGN_IN">
+    <div class="form__control form__container f-end">
+      <a [routerLink]="forgotPasswordPath" class="form__link title-regular-1">Forgot password?</a>
+    </div>
+  </ng-template>
+
+  <div class="form__container">
+    <button type="submit" class="form__btn btn btn--contrast" [disabled]="isInvalidForm">
+      {{ formConfig.btnName }}
+    </button>
+  </div>
+</form>

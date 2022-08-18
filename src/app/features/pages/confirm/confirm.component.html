@@ -1,5 +1,22 @@
 <section>
-  <ng-container>
-    <password-form (submitted)="onPasswordFormSubmit($event)"></password-form>
+  <ng-container *ngIf="!(isLoading$ | async)">
+    <header class="auth-page__title-container">
+      <div class="auth-page__subtitle title-bold-2">Almost everything is ready!</div>
+      <div class="auth-page__title title-bold-7">Enter the new password</div>
+    </header>
+
+    <auth-form
+      [type]="authFormType.CONFIRM_RESET_PASSWORD"
+      (submitted)="onPasswordFormSubmit($event)"
+    ></auth-form>
+
+    <div class="form__container form__container--info title-regular-1">
+      <div>
+        <span style="padding-right: 10px">Back to</span>
+        <a [routerLink]="signInPath" class="form__link">Sign in</a>
+        <span style="padding: 0 10px">or</span>
+        <a [routerLink]="signUpPath" class="form__link">Sign up</a>
+      </div>
+    </div>
   </ng-container>
 </section>

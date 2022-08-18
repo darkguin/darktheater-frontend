@@ -4,30 +4,7 @@
     <div class="auth-page__title title-bold-7">Create new account</div>
   </header>
 
-  <form
-    class="form"
-    [class.form--loading]="isLoading$ | async"
-    [formGroup]="authForm"
-    (ngSubmit)="onSubmit($event)"
-  >
-    <div class="form__control" [error]="emailError" text-field>
-      <input type="email" placeholder="Email" formControlName="email" textFieldRef />
-    </div>
-
-    <div class="form__control" text-field>
-      <input type="text" placeholder="username" formControlName="username" textFieldRef />
-    </div>
-
-    <div class="form__control" [type]="textFieldType.PASSWORD" [error]="passwordError" text-field>
-      <input type="password" formControlName="password" placeholder="Password" textFieldRef />
-    </div>
-
-    <div class="form__container">
-      <button type="submit" class="form__btn btn btn--contrast" [disabled]="isInvalidForm">
-        Create account
-      </button>
-    </div>
-  </form>
+  <auth-form [type]="authFormType.SIGN_UP" (submitted)="onSubmit($event)"></auth-form>
 
   <div class="form__container form__container--info title-regular-1">
     <div>
@@ -47,7 +24,7 @@
     </div>
     <div class="form__modal_text title-medium-1">
       To use the account, you need to go to your
-      <b class="text-contrast">{{ emailControl.value }}</b>
+      <b class="text-contrast">{{ credentials.email }}</b>
       mailbox and go through the email confirmation procedure.
     </div>
   </div>

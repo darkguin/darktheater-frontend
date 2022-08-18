@@ -24,7 +24,7 @@ export class AccountApi {
   }
 
   changePassword(password: string, token: string): Observable<ApiSuccessResponse> {
-    return this.api.put<ApiSuccessResponse>(ApiPath.CURRENT_USER, {
+    return this.api.put<ApiSuccessResponse>(ApiPath.CHANGE_PASSWORD, {
       token,
       new_password: password,
     });

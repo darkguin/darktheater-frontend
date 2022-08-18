@@ -7,6 +7,8 @@ import { ConfirmationService } from '@features/pages/confirm/services/confirmati
 import { NavigationFullPath, NavigationPath } from '@core/values';
 import { ToastService } from '@shared/components/dialog';
 import { ConfirmMessages } from '@features/pages/confirm/values/confirm-messages.enum';
+import { Credentials } from '@core/models';
+import { AuthFormType } from '@features/auth/values/auth-form-type.enum';
 
 @Component({
   selector: 'confirm-page',
@@ -17,9 +19,18 @@ export class ConfirmComponent implements OnInit, OnDestroy {
   private destroy = new Subject();
   private token = '';
   private confirmationType!: ConfirmationType;
+  authFormType = AuthFormType;
 
   get isLoading$(): Observable<boolean> {
     return this.loadingService.isLoading$;
+  }
+
+  get signUpPath() {
+    return NavigationFullPath[NavigationPath.SIGN_UP];
+  }
+
+  get signInPath() {
+    return NavigationFullPath[NavigationPath.SIGN_IN];
   }
 
   constructor(
@@ -73,7 +84,7 @@ export class ConfirmComponent implements OnInit, OnDestroy {
     this.router.navigate([signInPath]);
   }
 
-  onPasswordFormSubmit(password: string) {
+  onPasswordFormSubmit({ password }: Credentials) {
     this.loadingService.isLoading = true;
     this.confirmAction(ConfirmationType.PASSWORD_CHANGE, this.token, password).subscribe(() => {
       this.loadingService.isLoading = false;

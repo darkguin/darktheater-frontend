@@ -11,6 +11,8 @@ import { ModalOptions } from '@shared/components/dialog/models/modal-options.mod
 import { ModalService } from '@shared/components/dialog';
 import { ModalViewComponent } from '@shared/components/dialog/components/modal-view/modal-view.component';
 import { Router } from '@angular/router';
+import { AuthFormType } from '@features/auth/values/auth-form-type.enum';
+import { AuthFormService } from '@features/auth/services/auth-form.service';
 
 @Component({
   selector: 'sign-up-page',
@@ -19,7 +21,10 @@ import { Router } from '@angular/router';
 })
 export class SignUpComponent implements OnDestroy {
   private destroy = new Subject();
+
   textFieldType = TextFieldType;
+  authFormType = AuthFormType;
+  credentials: Credentials = {};
 
   @ViewChild('successModal')
   public successModalRef!: TemplateRef<any>;
@@ -32,55 +37,12 @@ export class SignUpComponent implements OnDestroy {
     return NavigationFullPath[NavigationPath.SIGN_IN];
   }
 
-  get isInvalidForm() {
-    return !this.authForm.dirty || this.authForm.invalid;
-  }
-
-  get isLoading$(): Observable<boolean> {
-    return this.loadingService.isLoading$;
-  }
-
-  get emailControl() {
-    return this.authForm.controls.email;
-  }
-
-  get passwordControl() {
-    return this.authForm.controls.password;
-  }
-
-  get emailError(): string {
-    if (!(this.emailControl.invalid && this.emailControl.dirty)) return '';
-
-    return this.emailControl.errors?.['email']?.message;
-  }
-
-  get passwordError(): string {
-    if (!(this.passwordControl.invalid && this.passwordControl.dirty)) return '';
-
-    return (
-      this.passwordControl.errors?.['numberContains']?.message ||
-      this.passwordControl.errors?.['upperCaseLetterContains']?.message ||
-      this.passwordControl.errors?.['lowerCaseLetterContains']?.message
-    );
-  }
-
-  authForm = new FormGroup({
-    email: new FormControl('', [Validators.required, ValidationUtil.email]),
-    username: new FormControl('', [Validators.required, Validators.minLength(3)]),
-    password: new FormControl('', [
-      Validators.required,
-      Validators.minLength(8),
-      ValidationUtil.numberContains,
-      ValidationUtil.upperCaseLetterContains,
-      ValidationUtil.lowerCaseLetterContains,
-    ]),
-  });
-
   constructor(
     private router: Router,
     private authService: AuthService,
     private modalService: ModalService,
     private loadingService: LoadingService,
+    private authFormService: AuthFormService,
   ) {}
 
   ngOnDestroy() {
@@ -98,13 +60,10 @@ export class SignUpComponent implements OnDestroy {
     this.router.navigate([this.signInPath]);
   }
 
-  onSubmit(event: SubmitEvent) {
+  onSubmit(credentials: Credentials) {
+    this.credentials = credentials;
     this.loadingService.isLoading = true;
-    event.preventDefault();
 
-    if (this.isInvalidForm) return;
-
-    const credentials = this.authForm.value as Credentials;
     const modalOptions = this.initModalOptions();
 
     this.authService
@@ -117,7 +76,7 @@ export class SignUpComponent implements OnDestroy {
         }),
       )
       .subscribe((_: boolean) => {
-        this.authForm.reset();
+        this.authFormService.resetForm();
         this.loadingService.isLoading = false;
 
         this.modalService.show(ModalViewComponent, modalOptions);

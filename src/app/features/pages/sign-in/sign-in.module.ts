@@ -5,18 +5,10 @@ import { AuthModule } from '@features/auth';
 import { SignInComponent } from './sign-in.component';
 import { SignInRoutingModule } from './sign-in-routing.module';
 import { TextFieldModule } from '@shared/components/text-field/text-field.module';
-import { ReactiveFormsModule } from '@angular/forms';
 import { IconModule } from '@shared/components/icon';
 
 @NgModule({
   declarations: [SignInComponent],
-  imports: [
-    CommonModule,
-    SignInRoutingModule,
-    AuthModule,
-    TextFieldModule,
-    ReactiveFormsModule,
-    IconModule,
-  ],
+  imports: [CommonModule, SignInRoutingModule, AuthModule, TextFieldModule, IconModule],
 })
 export class SignInModule {}

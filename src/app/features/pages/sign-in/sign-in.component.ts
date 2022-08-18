@@ -1,8 +1,6 @@
 import { Component, TemplateRef, ViewChild } from '@angular/core';
 import { TextFieldType } from '@shared/components/text-field/values/text-field-type.enum';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { NavigationFullPath, NavigationPath } from '@core/values';
-import { ValidationUtil } from '@features/auth/utils/validation.util';
 import { ModalOptions } from '@shared/components/dialog/models/modal-options.model';
 import { Router } from '@angular/router';
 import { AuthService } from '@features/auth/services/auth.service';
@@ -13,6 +11,8 @@ import { catchError, map, Observable, take, throwError } from 'rxjs';
 import { ApiErrorCodes } from '@values/api/api-error-codes.enum';
 import { ModalViewComponent } from '@shared/components/dialog/components/modal-view/modal-view.component';
 import { ConfirmationType } from '@features/auth/values/confirmation-type.enum';
+import { AuthFormType } from '@features/auth/values/auth-form-type.enum';
+import { AuthFormService } from '@features/auth/services/auth-form.service';
 
 @Component({
   selector: 'sign-in-page',
@@ -21,6 +21,8 @@ import { ConfirmationType } from '@features/auth/values/confirmation-type.enum';
 })
 export class SignInComponent {
   textFieldType = TextFieldType;
+  authFormType = AuthFormType;
+  credentials: Credentials = {};
 
   @ViewChild('errorModal')
   public errorModalRef!: TemplateRef<any>;
@@ -33,54 +35,12 @@ export class SignInComponent {
     return NavigationFullPath[NavigationPath.SIGN_UP];
   }
 
-  get isInvalidForm() {
-    return !this.authForm.dirty || this.authForm.invalid;
-  }
-
-  get isLoading$(): Observable<boolean> {
-    return this.loadingService.isLoading$;
-  }
-
-  get emailControl() {
-    return this.authForm.controls.email;
-  }
-
-  get passwordControl() {
-    return this.authForm.controls.password;
-  }
-
-  get emailError(): string {
-    if (!(this.emailControl.invalid && this.emailControl.dirty)) return '';
-
-    return this.emailControl.errors?.['email']?.message;
-  }
-
-  get passwordError(): string {
-    if (!(this.passwordControl.invalid && this.passwordControl.dirty)) return '';
-
-    return (
-      this.passwordControl.errors?.['numberContains']?.message ||
-      this.passwordControl.errors?.['upperCaseLetterContains']?.message ||
-      this.passwordControl.errors?.['lowerCaseLetterContains']?.message
-    );
-  }
-
-  authForm = new FormGroup({
-    email: new FormControl('', [Validators.required, ValidationUtil.email]),
-    password: new FormControl('', [
-      Validators.required,
-      Validators.minLength(8),
-      ValidationUtil.numberContains,
-      ValidationUtil.upperCaseLetterContains,
-      ValidationUtil.lowerCaseLetterContains,
-    ]),
-  });
-
   constructor(
     private router: Router,
     private authService: AuthService,
     private modalService: ModalService,
     private loadingService: LoadingService,
+    private authFormService: AuthFormService,
   ) {}
 
   private resendConfirmationEmail(email: string): Observable<boolean> {
@@ -107,13 +67,14 @@ export class SignInComponent {
     return options;
   }
 
-  onSubmit(event: SubmitEvent) {
+  private navigateTo(path: NavigationPath) {
+    this.router.navigate([NavigationFullPath[path]]);
+  }
+
+  onSubmit(credentials: Credentials) {
+    this.credentials = credentials;
     this.loadingService.isLoading = true;
-    event.preventDefault();
 
-    if (this.isInvalidForm) return;
-
-    const credentials = this.authForm.value as Credentials;
     const modalOptions = this.initModalOptions();
 
     this.authService
@@ -127,9 +88,9 @@ export class SignInComponent {
         }),
       )
       .subscribe((_: boolean) => {
-        this.authForm.reset();
+        this.authFormService.resetForm();
         this.loadingService.isLoading = false;
-        this.router.navigate([NavigationFullPath[NavigationPath.HOME]]);
+        this.navigateTo(NavigationPath.HOME);
       });
   }
 }
