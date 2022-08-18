@@ -21,13 +21,6 @@ export class AuthApi {
     return this.api.post<ApiAuthorization>(ApiPath.SIGN_UP, { ...credentials });
   }
 
-  sendConfirmEmail(email: string, type: string): Observable<any> {
-    return this.api.post<ApiAuthorization>(ApiPath.EMAIL_CONFIRMATION, {
-      email: email,
-      email_type: type,
-    });
-  }
-
   resetPassword(password: string, token: string): Observable<any> {
     return this.api.post(ApiPath.CHANGE_PASSWORD, {
       new_password: password,

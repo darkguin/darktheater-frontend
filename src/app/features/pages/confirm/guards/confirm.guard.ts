@@ -7,20 +7,26 @@ import { NavigationFullPath, NavigationPath } from '@core/values';
 export class ConfirmGuard implements CanActivate {
   constructor(private router: Router) {}
 
-  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-    const confirmationType = route.queryParamMap.get('type') as ConfirmationType;
+  private navigateToSignIn() {
+    const signInPath = NavigationFullPath[NavigationPath.SIGN_IN];
+    this.router.navigate([signInPath]);
+  }
 
-    switch (confirmationType) {
-      case ConfirmationType.EMAIL_VERIFICATION:
-        break;
-      case ConfirmationType.PASSWORD_CHANGE:
-        break;
-      case ConfirmationType.ACCOUNT_DELETION:
-        break;
-      default: {
-        this.router.navigate([NavigationFullPath[NavigationPath.SIGN_IN]]);
-        return false;
-      }
+  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
+    const confirmationTypes = [
+      ConfirmationType.EMAIL_VERIFICATION,
+      ConfirmationType.PASSWORD_CHANGE,
+      ConfirmationType.ACCOUNT_DELETION,
+    ];
+
+    const confirmationType = route.queryParamMap.get('type') as ConfirmationType;
+    const token = route.queryParamMap.get('token') || '';
+
+    const isValidConfirmationType = confirmationTypes.includes(confirmationType);
+
+    if (!isValidConfirmationType || !token) {
+      this.navigateToSignIn();
+      return false;
     }
 
     return true;

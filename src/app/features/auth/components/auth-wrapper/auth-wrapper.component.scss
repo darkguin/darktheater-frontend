@@ -19,8 +19,9 @@
     height: 70%;
     padding: 60px 80px;
     border-radius: vars.$border-radius-lg;
-    border: 3px solid vars.$border-color;
-    box-shadow: 0 0 32px rgba(vars.$light-color, 0.1);
+    //border: 3px solid vars.$border-color;
+    //box-shadow: 0 0 32px rgba(vars.$light-color, 0.1);
+    box-shadow: 0 0 32px vars.$dark-color;
     color: vars.$light-color;
     background: vars.$second-color;
     background: linear-gradient(

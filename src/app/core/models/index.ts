@@ -8,6 +8,7 @@ export * from './api/api-credentials.model';
 export * from './api/api-authorization.model';
 export * from './api/api-user.model';
 export * from './api/api-error.model';
+export * from './api/token-payload.model';
 
 /* COMMON: AUTH MODELS */
 export * from './auth/credentials.model';

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { AuthApi } from '@core/services';
+import { AuthApi, ConfirmApi } from '@core/services';
 import { BehaviorSubject, map, Observable, tap } from 'rxjs';
 import { Credentials } from '@core/models';
 import { TokenService } from '@features/auth/services/token.service';
@@ -20,10 +20,14 @@ export class AuthService {
     return this.authorizationState.asObservable();
   }
 
-  constructor(private api: AuthApi, private tokenService: TokenService) {}
+  constructor(
+    private authApi: AuthApi,
+    private confirmApi: ConfirmApi,
+    private tokenService: TokenService,
+  ) {}
 
   signIn({ email, password }: Credentials): Observable<boolean> {
-    return this.api.signIn({ username: email, password }).pipe(
+    return this.authApi.signIn({ username: email, password }).pipe(
       map(({ access_token, user }) => {
         const { isActive } = UserMapper.map(user);
 
@@ -37,14 +41,10 @@ export class AuthService {
   }
 
   signUp({ email, username, password }: Credentials): Observable<boolean> {
-    return this.api.signUp({ email, username, password }).pipe(map(() => true));
+    return this.authApi.signUp({ email, username, password }).pipe(map(() => true));
   }
 
   sendConfirmEmail(email: string, type: ConfirmationType): Observable<boolean> {
-    return this.api.sendConfirmEmail(email, type).pipe(
-      tap((data: any) => {
-        console.log('resp: ', data);
-      }),
-    );
+    return this.confirmApi.sendConfirmEmail(email, type).pipe(map(() => true));
   }
 }

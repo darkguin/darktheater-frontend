@@ -1,9 +1,23 @@
-@use '~src/assets/styles/vars';
+@use "~src/assets/styles/vars";
 
-.empty-layout {
+.auth-layout {
   width: 100vw;
   height: 100%;
   overflow-y: auto;
   padding: 0;
   margin: 0;
+
+  background: (
+    radial-gradient(
+      28.08% 43.19% at 101.25% 21.92%,
+      rgba(vars.$contrast-color, 0.2) 0%,
+      rgba(0, 0, 0, 0) 100%
+    ),
+    radial-gradient(
+      24.74% 39.4% at 12.22% 54.79%,
+      rgba(vars.$contrast-color, 0.13) 0%,
+      rgba(0, 0, 0, 0) 100%
+    ),
+    vars.$dark-color
+  );
 }
