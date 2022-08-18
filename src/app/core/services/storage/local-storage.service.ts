@@ -15,8 +15,11 @@ export class LocalStorageService implements StorageInterface {
   }
 
   public getItem(key: StorageKey): unknown {
-    const item = localStorage.getItem(key) || '{}';
-    return JSON.parse(item);
+    try {
+      return JSON.parse(localStorage.getItem(key) || '');
+    } catch {
+      return null;
+    }
   }
 
   public removeItem(key: StorageKey) {
