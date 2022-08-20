@@ -10,6 +10,10 @@
     opacity: 0.25;
   }
 
+  @media screen and (max-width: vars.$screen-sm) {
+    width: 100%;
+  }
+
   &__help_text {
     display: flex;
     flex-direction: row;
