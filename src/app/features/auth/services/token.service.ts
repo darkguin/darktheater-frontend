@@ -15,4 +15,8 @@ export class TokenService {
   }
 
   constructor(private storage: LocalStorageService) {}
+
+  public clear() {
+    this.storage.removeItem(StorageKey.ACCESS_TOKEN);
+  }
 }

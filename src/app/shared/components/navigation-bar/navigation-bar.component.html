@@ -8,7 +8,7 @@
       {{ isLargeBar ? appInfo.name : appInfo.shortName }}
     </a>
 
-    <div class="nav-bar__controls nav-bar__size_controls">
+    <div class="nav-bar__controls nav-bar__size-control">
       <ng-template [ngIf]="isLargeBar" [ngIfElse]="shortTypeControl">
         <div class="nav-bar__control" (click)="onClickSizeControl(navbarSizes.SMALL)">
           <icon [name]="icons.LEFT_ARROW_1"></icon>
@@ -22,34 +22,28 @@
       </ng-template>
     </div>
 
-    <div
-      class="nav-bar__controls nav-bar__visibility_controls"
-      (click)="onClickVisibilityControl()"
-    >
+    <div class="nav-bar__controls nav-bar__visibility-control" (click)="onClickVisibilityControl()">
       <div class="nav-bar__control"></div>
     </div>
   </header>
 
+  <!--Navbar categories-->
   <div class="nav-bar__categories">
-    <!--Navbar category-->
     <ng-container *ngFor="let group of itemGroups; let last = last">
       <div class="nav-bar__category" [class.nav-bar__category--last]="last">
-        <div class="nav-bar__category_title">
-          {{ group[0].category.name }}
-        </div>
-        <div class="nav-bar__category_items">
-          <!--Navbar item-->
+        <div class="nav-bar__category-title">{{ group[0].category.name }}</div>
+
+        <!--Navbar items-->
+        <div class="nav-bar__category-items">
           <ng-container *ngFor="let item of group">
-            <div
-              *ngIf="item.auth === isAuthenticated"
-              class="nav-bar__item"
-              (click)="onClickItem(item)"
+            <ng-template
+              [ngIf]="item.global || (!item.global && item.auth === (authorized$ | async))"
             >
-              <div class="nav-bar__item_icon">
-                <icon [name]="item.icon"></icon>
+              <div class="nav-bar__item" (click)="onClickItem(item)">
+                <div class="nav-bar__item-icon" icon [name]="item.icon"></div>
+                <div class="nav-bar__item-title">{{ item.title }}</div>
               </div>
-              <div class="nav-bar__item_title">{{ item.title }}</div>
-            </div>
+            </ng-template>
           </ng-container>
         </div>
       </div>

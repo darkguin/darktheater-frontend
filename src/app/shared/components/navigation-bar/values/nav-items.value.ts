@@ -11,6 +11,7 @@ export const NavItems: NavItem[] = [
     routerPath: NavigationFullPath[NavigationPath.HOME],
     category: NavCategories[0],
     icon: Icon.HOME,
+    global: true,
     auth: false,
   } as NavItem,
   {
@@ -19,6 +20,7 @@ export const NavItems: NavItem[] = [
     routerPath: '/',
     category: NavCategories[0],
     icon: Icon.SAFARI,
+    global: true,
     auth: false,
   } as NavItem,
   {
@@ -27,6 +29,7 @@ export const NavItems: NavItem[] = [
     routerPath: '/',
     category: NavCategories[1],
     icon: Icon.TIME,
+    global: true,
     auth: false,
   } as NavItem,
   {
@@ -35,6 +38,7 @@ export const NavItems: NavItem[] = [
     routerPath: '/',
     category: NavCategories[1],
     icon: Icon.STAR,
+    global: true,
     auth: false,
   } as NavItem,
   {
@@ -43,6 +47,7 @@ export const NavItems: NavItem[] = [
     routerPath: '/',
     category: NavCategories[1],
     icon: Icon.ADD,
+    global: true,
     auth: false,
   } as NavItem,
   {
@@ -51,7 +56,17 @@ export const NavItems: NavItem[] = [
     routerPath: '/',
     category: NavCategories[1],
     icon: Icon.CHECKED,
+    global: true,
     auth: false,
+  } as NavItem,
+  {
+    title: 'Profile',
+    action: NavAction.ROUTING,
+    routerPath: '/',
+    category: NavCategories[2],
+    icon: Icon.USER,
+    global: false,
+    auth: true,
   } as NavItem,
   {
     title: 'Settings',
@@ -59,6 +74,7 @@ export const NavItems: NavItem[] = [
     routerPath: '/',
     category: NavCategories[2],
     icon: Icon.SETTINGS,
+    global: true,
     auth: false,
   } as NavItem,
   {
@@ -67,13 +83,16 @@ export const NavItems: NavItem[] = [
     routerPath: NavigationFullPath[NavigationPath.SIGN_IN],
     category: NavCategories[2],
     icon: Icon.EXIT,
+    global: false,
     auth: false,
   } as NavItem,
+
   {
     title: 'Sign out',
     action: NavAction.SIGN_OUT,
     category: NavCategories[2],
     icon: Icon.EXIT,
+    global: false,
     auth: true,
   } as NavItem,
 ];

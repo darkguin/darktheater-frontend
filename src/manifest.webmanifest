@@ -1,8 +1,8 @@
 {
   "name": "darktheater",
   "short_name": "darktheater",
-  "theme_color": "#15181EFF",
-  "background_color": "#15181EFF",
+  "theme_color": "rgba(32, 36, 44, 1)",
+  "background_color": "rgba(21, 24, 30, 1)",
   "display": "standalone",
   "scope": "./",
   "id": "./",
