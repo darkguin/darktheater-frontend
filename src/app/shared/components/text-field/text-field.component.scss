@@ -5,6 +5,10 @@
   &__wrapper {
     position: relative;
     width: fit-content;
+
+    @media screen and (max-width: vars.$screen-sm) {
+      width: 100%;
+    }
   }
 
   &__error-msg {
@@ -78,6 +82,11 @@
     color: vars.$descriptions-color;
     font-size: 18px;
     transition: all 0.5s;
+
+    @media screen and (max-width: vars.$screen-sm) {
+      width: 100%;
+      min-width: 156px;
+    }
 
     &.text-field--focus {
       border-color: rgba(vars.$primary-color, 0.75);

@@ -1,10 +1,11 @@
 {
   "name": "darktheater",
   "short_name": "darktheater",
-  "theme_color": "#1976d2",
-  "background_color": "#fafafa",
+  "theme_color": "#15181EFF",
+  "background_color": "#15181EFF",
   "display": "standalone",
   "scope": "./",
+  "id": "./",
   "start_url": "./",
   "icons": [
     {
