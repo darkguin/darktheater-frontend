@@ -5,6 +5,8 @@ import { AppInfo, NavigationFullPath, NavigationPath } from '@core/values';
 import { NavBarService } from './services/nav-bar.service';
 import { NavItem } from './models/nav-item.model';
 import { NavbarSize } from './values/navbar-size.enum';
+import { AuthService } from '@features/auth/services/auth.service';
+import { NavAction } from '@shared/components/navigation-bar/values/nav-action.enum';
 
 @Component({
   selector: 'nav-bar',
@@ -16,15 +18,15 @@ export class NavigationBarComponent {
   readonly appInfo = AppInfo;
   readonly icons = Icon;
 
-  navbarSize = NavbarSize.BIG;
+  navbarSize = this.navBarService.navbarSize;
   isOpenBar = false;
 
   get itemGroups() {
     return this.navBarService.itemGroups;
   }
 
-  get isAuthenticated() {
-    return false;
+  get authorized$() {
+    return this.authService.authorized$;
   }
 
   get homePath() {
@@ -32,13 +34,18 @@ export class NavigationBarComponent {
   }
 
   get isLargeBar() {
-    return this.navbarSizes.BIG === this.navbarSize;
+    return NavbarSize.BIG === this.navbarSize;
   }
 
-  constructor(private navBarService: NavBarService, private router: Router) {}
+  constructor(
+    private navBarService: NavBarService,
+    private authService: AuthService,
+    private router: Router,
+  ) {}
 
   onClickSizeControl(type: NavbarSize) {
     this.navbarSize = type;
+    this.navBarService.navbarSize = type;
   }
 
   onClickVisibilityControl(isOpen = !this.isOpenBar) {
@@ -47,6 +54,14 @@ export class NavigationBarComponent {
 
   onClickItem(item: NavItem) {
     this.isOpenBar = false;
-    this.router.navigate([item.routerPath || '/']);
+
+    switch (item.action) {
+      case NavAction.ROUTING:
+        this.router.navigate([item.routerPath || '/']);
+        break;
+      case NavAction.SIGN_OUT:
+        this.authService.signOut();
+        break;
+    }
   }
 }

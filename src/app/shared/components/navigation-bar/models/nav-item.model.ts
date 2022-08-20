@@ -4,9 +4,10 @@ import { Icon } from '@shared/components/icon';
 
 export interface NavItem {
   title: string;
-  action: NavAction,
+  action: NavAction;
   routerPath?: string;
   icon: Icon;
   category: NavCategory;
+  global?: boolean;
   auth?: boolean;
 }
