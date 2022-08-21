@@ -1,0 +1,18 @@
+@use "~src/assets/styles/vars";
+@use "~src/assets/styles/fonts";
+@use "~src/assets/styles/mixins";
+@use "~src/assets/styles/colors";
+@use "~src/assets/styles/buttons";
+
+.not-found-page {
+  @include mixins.main-bg-gradient;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+
+  color: vars.$light-color;
+}

@@ -1,0 +1,67 @@
+@use "~src/assets/styles/vars";
+@use "~src/assets/styles/fonts";
+@use "~src/assets/styles/mixins";
+@use "~src/assets/styles/badge";
+
+.profile {
+  padding: 24px;
+  color: vars.$light-color;
+
+  @media screen and (max-width: vars.$screen-sm) {
+    padding: 0 18px;
+  }
+
+  &__header {
+    position: relative;
+    width: 100%;
+    padding-left: 250px;
+
+    @media screen and (max-width: vars.$screen-md) {
+      padding-left: 150px;
+    }
+
+    @media screen and (max-width: vars.$screen-sm) {
+      padding-left: 0;
+      padding-top: 50px;
+    }
+  }
+
+  &__avatar {
+    position: absolute;
+    top: -75px;
+    left: 50px;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background: vars.$second-color;
+    border: 6px solid vars.$dark-color;
+    overflow: hidden;
+
+    @media screen and (max-width: vars.$screen-md) {
+      top: -50px;
+      left: 25px;
+      width: 100px;
+      height: 100px;
+    }
+  }
+
+  &__information {
+    padding: 18px 18px 18px 0;
+
+    &-title {
+      margin-bottom: 8px;
+      color: vars.$title-color;
+    }
+
+    &-subtitle {
+      margin-bottom: 8px;
+      color: vars.$descriptions-color;
+    }
+  }
+
+  &__container {
+    margin-top: 8px;
+    border-top: 3px solid vars.$border-color;
+    border-radius: 3px;
+  }
+}

@@ -5,6 +5,7 @@ import { Credentials } from '@core/models';
 import { TokenService } from '@features/auth/services/token.service';
 import { UserMapper } from '@core/mappers/user.mapper';
 import { ConfirmationType } from '@features/auth/values/confirmation-type.enum';
+import { AccountService } from '@services/account.service';
 
 @Injectable({
   providedIn: 'root',
@@ -24,17 +25,19 @@ export class AuthService {
     private authApi: AuthApi,
     private confirmApi: ConfirmApi,
     private tokenService: TokenService,
+    private accountService: AccountService,
   ) {}
 
   signIn({ email, password }: Credentials): Observable<boolean> {
     return this.authApi.signIn({ username: email, password }).pipe(
       map(({ access_token, user }) => {
-        const { isActive } = UserMapper.map(user);
+        const currentUser = UserMapper.map(user!);
 
-        if (!isActive) return false;
+        if (!currentUser.isActive) return false;
 
         this.tokenService.accessToken = access_token || '';
-        this.authorizationState.next(isActive);
+        this.authorizationState.next(currentUser.isActive);
+        this.accountService.updateCurrentUser(currentUser);
         return true;
       }),
     );

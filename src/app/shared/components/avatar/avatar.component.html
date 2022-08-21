@@ -1,0 +1,18 @@
+<div
+  #avatar
+  class="avatar"
+  [ngClass]="variantClass"
+  [style.width]="avatar"
+  [style.height]="height"
+  [style.font-size]="avatar.offsetHeight / 42 + 'rem'"
+>
+  <ng-template [ngIf]="src" [ngIfElse]="initials">
+    <img class="avatar__image" [src]="src" alt="avatar" />
+  </ng-template>
+
+  <ng-template #initials>
+    {{ text | avatar }}
+  </ng-template>
+
+  <ng-content></ng-content>
+</div>

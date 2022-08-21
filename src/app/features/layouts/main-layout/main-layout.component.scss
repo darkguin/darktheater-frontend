@@ -16,6 +16,10 @@ $nav-bar-height: 60px;
     overflow: hidden;
   }
 
+  &__page {
+    width: 100%;
+  }
+
   @media screen and (max-width: vars.$screen-sm) {
     grid-template-columns: 1fr;
     grid-template-rows: $nav-bar-height 1fr;
@@ -25,6 +29,18 @@ $nav-bar-height: 60px;
       margin: 0;
       background: none;
       border-radius: 0;
+    }
+  }
+
+  @media screen and (min-width: vars.$screen-xxl) {
+    &__content {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+    }
+
+    &__page {
+      width: vars.$screen-xxl;
     }
   }
 }

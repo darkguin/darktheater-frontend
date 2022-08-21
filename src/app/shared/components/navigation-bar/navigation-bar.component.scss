@@ -46,6 +46,7 @@
     height: 100%;
 
     @media screen and (max-width: vars.$screen-sm) {
+      visibility: hidden;
       opacity: 0;
       font-size: 0;
       height: 0;
@@ -248,9 +249,11 @@
     border-right: none;
     border-bottom: 2px solid vars.$border-color;
     border-radius: 0 0 vars.$border-radius-sm vars.$border-radius-sm;
+    z-index: 1000;
 
     &.nav-bar--open {
       .nav-bar__categories {
+        visibility: visible;
         opacity: 1;
         max-height: 100vh;
         height: fit-content;

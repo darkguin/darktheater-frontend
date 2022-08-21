@@ -62,7 +62,7 @@ export const NavItems: NavItem[] = [
   {
     title: 'Profile',
     action: NavAction.ROUTING,
-    routerPath: '/',
+    routerPath: NavigationFullPath[NavigationPath.PROFILE],
     category: NavCategories[2],
     icon: Icon.USER,
     global: false,
@@ -86,7 +86,6 @@ export const NavItems: NavItem[] = [
     global: false,
     auth: false,
   } as NavItem,
-
   {
     title: 'Sign out',
     action: NavAction.SIGN_OUT,

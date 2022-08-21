@@ -1,12 +1,10 @@
 import { Component, OnDestroy, TemplateRef, ViewChild } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { TextFieldType } from '@shared/components/text-field/values/text-field-type.enum';
 import { NavigationFullPath, NavigationPath } from '@core/values';
 import { AuthService } from '@features/auth/services/auth.service';
 import { Credentials } from '@core/models';
-import { catchError, Observable, Subject, take, takeUntil, throwError } from 'rxjs';
+import { catchError, Subject, take, takeUntil, throwError } from 'rxjs';
 import { LoadingService } from '@core/services';
-import { ValidationUtil } from '@features/auth/utils/validation.util';
 import { ModalOptions } from '@shared/components/dialog/models/modal-options.model';
 import { ModalService } from '@shared/components/dialog';
 import { ModalViewComponent } from '@shared/components/dialog/components/modal-view/modal-view.component';
@@ -15,7 +13,6 @@ import { AuthFormType } from '@features/auth/values/auth-form-type.enum';
 import { AuthFormService } from '@features/auth/services/auth-form.service';
 
 @Component({
-  selector: 'sign-up-page',
   templateUrl: './sign-up.component.html',
   styleUrls: ['./sign-up.component.scss'],
 })

@@ -1,0 +1,32 @@
+@use "~src/assets/styles/vars";
+@use "~src/assets/styles/fonts";
+
+.avatar {
+  @include fonts.font-bold;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: vars.$second-color;
+  color: vars.$light-color;
+  line-height: 0;
+
+  &__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  &.avatar--circle {
+    border-radius: 50%;
+  }
+
+  &.avatar--square {
+    border-radius: 0;
+  }
+
+  &.avatar--rounded {
+    border-radius: vars.$border-radius-md;
+  }
+}
