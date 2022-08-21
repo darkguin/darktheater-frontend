@@ -31,6 +31,11 @@
     text-decoration: none;
     color: vars.$contrast-color;
 
+    &-icon {
+      width: 35px;
+      height: 35px;
+    }
+
     @media screen and (max-width: vars.$screen-sm) {
       margin: 0;
       padding: 0;

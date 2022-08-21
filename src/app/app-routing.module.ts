@@ -12,12 +12,12 @@ const routes: Routes = [
     children: [
       {
         path: NavigationPath.HOME,
-        title: 'darktheater. Home',
+        title: 'Home',
         loadChildren: () => import('@features/pages/home/home.module').then((m) => m.HomeModule),
       },
       {
         path: NavigationPath.PROFILE,
-        title: 'darktheater. Profile',
+        title: 'Profile',
         loadChildren: () =>
           import('@features/pages/profile/profile.module').then((m) => m.ProfileModule),
       },
@@ -30,19 +30,19 @@ const routes: Routes = [
       { path: '', redirectTo: `/auth/${NavigationPath.SIGN_IN}`, pathMatch: 'full' },
       {
         path: NavigationPath.SIGN_IN,
-        title: 'darktheater. Sign In',
+        title: 'Sign In',
         loadChildren: () =>
           import('@features/pages/sign-in/sign-in.module').then((m) => m.SignInModule),
       },
       {
         path: NavigationPath.SIGN_UP,
-        title: 'darktheater. Sign Up',
+        title: 'Sign Up',
         loadChildren: () =>
           import('@features/pages/sign-up/sign-up.module').then((m) => m.SignUpModule),
       },
       {
         path: NavigationPath.RESET_PASSWORD,
-        title: 'darktheater. Reset Password',
+        title: 'Reset Password',
         loadChildren: () =>
           import('@features/pages/reset-password/reset-password.module').then(
             (m) => m.ResetPasswordModule,
@@ -50,7 +50,7 @@ const routes: Routes = [
       },
       {
         path: NavigationPath.CONFIRM,
-        title: 'darktheater. Confirm',
+        title: 'Confirm action page',
         loadChildren: () =>
           import('@features/pages/confirm/confirm.module').then((m) => m.ConfirmModule),
       },
