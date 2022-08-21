@@ -13,9 +13,15 @@ const routes: Routes = [
       {
         path: NavigationPath.HOME,
         title: 'darktheater. Home',
-        loadChildren: () => import('@features/pages/home/home.module').then(m => m.HomeModule),
+        loadChildren: () => import('@features/pages/home/home.module').then((m) => m.HomeModule),
       },
-    ]
+      {
+        path: NavigationPath.PROFILE,
+        title: 'darktheater. Profile',
+        loadChildren: () =>
+          import('@features/pages/profile/profile.module').then((m) => m.ProfileModule),
+      },
+    ],
   },
   {
     path: `${NavigationLayout.AUTH}`,
@@ -25,34 +31,41 @@ const routes: Routes = [
       {
         path: NavigationPath.SIGN_IN,
         title: 'darktheater. Sign In',
-        loadChildren: () => import('@features/pages/sign-in/sign-in.module').then(m => m.SignInModule),
+        loadChildren: () =>
+          import('@features/pages/sign-in/sign-in.module').then((m) => m.SignInModule),
       },
       {
         path: NavigationPath.SIGN_UP,
         title: 'darktheater. Sign Up',
-        loadChildren: () => import('@features/pages/sign-up/sign-up.module').then(m => m.SignUpModule),
+        loadChildren: () =>
+          import('@features/pages/sign-up/sign-up.module').then((m) => m.SignUpModule),
       },
       {
         path: NavigationPath.RESET_PASSWORD,
         title: 'darktheater. Reset Password',
-        loadChildren: () => import('@features/pages/reset-password/reset-password.module').then(m => m.ResetPasswordModule),
+        loadChildren: () =>
+          import('@features/pages/reset-password/reset-password.module').then(
+            (m) => m.ResetPasswordModule,
+          ),
       },
       {
         path: NavigationPath.CONFIRM,
         title: 'darktheater. Confirm',
-        loadChildren: () => import('@features/pages/confirm/confirm.module').then(m => m.ConfirmModule),
+        loadChildren: () =>
+          import('@features/pages/confirm/confirm.module').then((m) => m.ConfirmModule),
       },
-    ]
+    ],
   },
   {
     path: '**',
-    title: 'darktheater. Not found',
-    loadChildren: () => import('./features/pages/not-found/not-found.module').then(m => m.NotFoundModule)
-  }
+    title: 'Page not found',
+    loadChildren: () =>
+      import('./features/pages/not-found/not-found.module').then((m) => m.NotFoundModule),
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

@@ -15,7 +15,6 @@ import { AuthFormType } from '@features/auth/values/auth-form-type.enum';
 import { AuthFormService } from '@features/auth/services/auth-form.service';
 
 @Component({
-  selector: 'sign-in-page',
   templateUrl: './sign-in.component.html',
   styleUrls: ['./sign-in.component.scss'],
 })

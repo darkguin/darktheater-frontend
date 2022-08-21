@@ -4,4 +4,5 @@ export enum NavigationPath {
   RESET_PASSWORD = 'reset-password',
   CONFIRM = 'confirm',
   HOME = 'home',
+  PROFILE = 'profile',
 }

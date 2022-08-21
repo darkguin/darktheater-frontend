@@ -11,7 +11,6 @@ import { Credentials } from '@core/models';
 import { AuthFormType } from '@features/auth/values/auth-form-type.enum';
 
 @Component({
-  selector: 'confirm-page',
   templateUrl: './confirm.component.html',
   styleUrls: ['./confirm.component.scss'],
 })

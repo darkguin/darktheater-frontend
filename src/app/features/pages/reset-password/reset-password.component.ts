@@ -11,7 +11,6 @@ import { AuthFormType } from '@features/auth/values/auth-form-type.enum';
 import { AuthFormService } from '@features/auth/services/auth-form.service';
 
 @Component({
-  selector: 'reset-password-page',
   templateUrl: './reset-password.component.html',
   styleUrls: ['./reset-password.component.scss'],
 })
