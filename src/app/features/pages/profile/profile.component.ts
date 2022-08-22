@@ -4,6 +4,7 @@ import { Subject, takeUntil } from 'rxjs';
 import { User } from '@core/models';
 import { UserRoles } from '@core/values';
 import { Icon } from '@shared/components/icon';
+import { LoadingService } from '@core/services';
 
 @Component({
   templateUrl: './profile.component.html',
@@ -16,14 +17,17 @@ export class ProfileComponent implements OnInit, OnDestroy {
 
   user = this.accountService.currentUser;
 
-  constructor(private accountService: AccountService) {}
+  constructor(private accountService: AccountService, private loadingService: LoadingService) {}
 
   ngOnInit() {
+    this.loadingService.isLoading = true;
+
     this.accountService
       .getCurrentUser()
       .pipe(takeUntil(this.destroy))
       .subscribe((user: User) => {
         this.user = user;
+        this.loadingService.isLoading = false;
       });
   }
 

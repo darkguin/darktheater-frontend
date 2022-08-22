@@ -25,15 +25,11 @@ export class AuthInterceptor implements HttpInterceptor {
     return req.clone({ headers });
   }
 
-  private handleTokenUpdating(
-    request: HttpRequest<any>,
-    next: HttpHandler,
-    updatingCallback: () => Observable<any>,
-  ) {
+  private handleTokenUpdating(request: HttpRequest<any>, next: HttpHandler, accessToken: string) {
     if (!this.tokenUpdating) {
       this.tokenUpdating = true;
 
-      return updatingCallback().pipe(
+      return this.tokenService.refresh(accessToken).pipe(
         switchMap(() => {
           const { accessToken } = this.tokenService;
           const newRequest = this.addHeaders(request, accessToken);
@@ -56,8 +52,7 @@ export class AuthInterceptor implements HttpInterceptor {
     return next.handle(this.addHeaders(request, accessToken)).pipe(
       catchError(({ error, status }: HttpErrorResponse) => {
         if (error.error_code === ApiErrorCodes.INVALID_TOKEN && status === 401) {
-          const updatingCallback = () => this.tokenService.refresh(accessToken);
-          return this.handleTokenUpdating(request, next, updatingCallback);
+          return this.handleTokenUpdating(request, next, accessToken);
         }
 
         if (!!error.error_code) {
