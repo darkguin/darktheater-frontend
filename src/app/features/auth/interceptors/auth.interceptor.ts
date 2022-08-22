@@ -9,7 +9,7 @@ import {
 import { catchError, finalize, Observable, switchMap, throwError } from 'rxjs';
 import { AuthErrorService } from '@features/auth/services/auth-error.service';
 import { TokenService } from '@features/auth/services/token.service';
-import { HttpHeader } from '@core/values';
+import { ApiErrorCodes, HttpHeader } from '@core/values';
 
 @Injectable({
   providedIn: 'root',
@@ -55,7 +55,7 @@ export class AuthInterceptor implements HttpInterceptor {
 
     return next.handle(this.addHeaders(request, accessToken)).pipe(
       catchError(({ error, status }: HttpErrorResponse) => {
-        if (status === 401) {
+        if (error.error_code === ApiErrorCodes.INVALID_TOKEN && status === 401) {
           const updatingCallback = () => this.tokenService.refresh(accessToken);
           return this.handleTokenUpdating(request, next, updatingCallback);
         }
