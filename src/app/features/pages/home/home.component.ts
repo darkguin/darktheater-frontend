@@ -7,6 +7,7 @@ import { isEmpty } from '@core/utils/object.util';
 import { LoadingService } from '@core/services';
 import { SliderItem } from '@shared/components/slider';
 import { HomeSliderSlidesMock } from '@/app/mocks';
+import { AuthService } from '@features/auth/services/auth.service';
 
 @Component({
   selector: 'home-page',
@@ -23,7 +24,11 @@ export class HomeComponent implements OnInit, OnDestroy {
     return this.accountService.currentUser$;
   }
 
-  constructor(private accountService: AccountService, private loadingService: LoadingService) {}
+  constructor(
+    private accountService: AccountService,
+    private authService: AuthService,
+    private loadingService: LoadingService,
+  ) {}
 
   ngOnInit() {
     this.loadingService.isLoading = true;
@@ -33,7 +38,9 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   private fetchCurrentUser(): Observable<User> {
-    return isEmpty(this.accountService.currentUser)
+    console.log(this.accountService.currentUser);
+    console.log(isEmpty(this.accountService.currentUser));
+    return isEmpty(this.accountService.currentUser) && this.authService.authorized
       ? this.accountService.getCurrentUser()
       : this.accountService.currentUser$;
   }
