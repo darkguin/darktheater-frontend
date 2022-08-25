@@ -7,7 +7,8 @@
     height: 500px;
 
     @media screen and (max-width: vars.$screen-sm) {
-      height: 300px;
+      padding-top: 0;
+      max-height: 265px;
     }
   }
 
@@ -20,6 +21,10 @@
     border-radius: vars.$border-radius-sm;
     background: rgba(vars.$second-color, 0.3);
     padding: 20px;
+
+    @media screen and (max-width: vars.$screen-sm) {
+      display: none;
+    }
   }
 
   &__searchbar {

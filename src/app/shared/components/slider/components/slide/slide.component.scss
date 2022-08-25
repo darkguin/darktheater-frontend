@@ -90,5 +90,19 @@
 
   &__button {
     white-space: nowrap;
+
+    @media screen and (max-width: vars.$screen-sm) {
+      &-group {
+        display: flex;
+        justify-content: flex-end;
+        align-items: flex-start;
+        width: 100%;
+      }
+
+      min-height: 44px;
+      min-width: 44px;
+      font-size: 14px;
+      padding: 4px 24px !important;
+    }
   }
 }

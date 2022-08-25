@@ -20,6 +20,12 @@
   text-decoration: none;
   cursor: pointer;
 
+  user-select: none;
+  -ms-user-select: none;
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+
   &.btn--short {
     padding: 20px;
   }

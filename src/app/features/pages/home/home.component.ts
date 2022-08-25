@@ -38,8 +38,6 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   private fetchCurrentUser(): Observable<User> {
-    console.log(this.accountService.currentUser);
-    console.log(isEmpty(this.accountService.currentUser));
     return isEmpty(this.accountService.currentUser) && this.authService.authorized
       ? this.accountService.getCurrentUser()
       : this.accountService.currentUser$;

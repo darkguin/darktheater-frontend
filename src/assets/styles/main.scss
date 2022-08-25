@@ -1,16 +1,25 @@
-@use 'vars';
-@use 'fonts';
-@use 'icons';
+@use "vars";
+@use "fonts";
+@use "icons";
 
 * {
   box-sizing: border-box;
 }
 
-html, body {
+html,
+body {
   font-family: fonts.$base-font-family !important;
   margin: 0;
   padding: 0;
   background: vars.$dark-color;
   min-height: 100vh;
   height: 100%;
+}
+
+.unselectable {
+  user-select: none;
+  -ms-user-select: none;
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
 }

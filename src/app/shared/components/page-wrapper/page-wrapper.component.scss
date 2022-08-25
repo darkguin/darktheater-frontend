@@ -81,12 +81,14 @@
     }
 
     @media screen and (max-width: vars.$screen-sm) {
+      border-radius: vars.$border-radius-sm;
+
       &.active {
         width: auto;
-        top: calc(60px + 12px);
-        right: 12px;
-        bottom: 12px;
-        left: 12px;
+        top: calc(60px + 9px);
+        right: 9px;
+        bottom: 9px;
+        left: 9px;
       }
 
       &-control {
