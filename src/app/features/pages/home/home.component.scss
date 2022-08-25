@@ -1,0 +1,52 @@
+@use "~src/assets/styles/vars";
+
+.home-page {
+  &__slider {
+    padding-top: 20px;
+    width: 100%;
+    height: 500px;
+
+    @media screen and (max-width: vars.$screen-sm) {
+      height: 300px;
+    }
+  }
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 80px;
+    border-radius: vars.$border-radius-sm;
+    background: rgba(vars.$second-color, 0.3);
+    padding: 20px;
+  }
+
+  &__searchbar {
+    input {
+      min-width: 350px;
+
+      &.text-field--focus {
+        border-color: rgba(vars.$border-color, 0.05);
+      }
+    }
+
+    @media screen and (max-width: vars.$screen-sm) {
+      width: 100%;
+
+      input {
+        min-width: 100%;
+
+        &.text-field--focus {
+          min-width: 100%;
+        }
+      }
+    }
+
+    ::ng-deep {
+      .text-field__control.text-field--focus {
+        color: rgba(vars.$border-color, 0.05);
+      }
+    }
+  }
+}

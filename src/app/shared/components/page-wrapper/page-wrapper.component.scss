@@ -1,0 +1,115 @@
+@use "~src/assets/styles/vars";
+@use "~src/assets/styles/buttons";
+
+.page {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(500px, 2fr) minmax(200px, 400px);
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  padding: 20px;
+
+  @media screen and (max-width: vars.$screen-md) {
+    grid-template-columns: 1fr;
+    overflow: auto;
+    padding: 10px;
+  }
+
+  &__loader {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+  }
+
+  &__main {
+    overflow-y: auto;
+    padding-right: 20px;
+
+    @media screen and (max-width: vars.$screen-sm) {
+      padding: 0;
+    }
+  }
+
+  &__sidebar {
+    background: rgba(vars.$second-color, 0.3);
+    border-radius: vars.$border-radius-sm;
+    height: 100%;
+    overflow-y: auto;
+    padding: 20px;
+
+    &-control {
+      display: none;
+    }
+
+    @media screen and (max-width: vars.$screen-md) {
+      position: fixed;
+      top: 32px;
+      right: -432px;
+      bottom: 32px;
+      width: 400px;
+      height: auto;
+      border-radius: vars.$border-radius-md;
+      background: vars.$second-color;
+      z-index: 100;
+      visibility: hidden;
+      transition: all 500ms;
+
+      &.active {
+        visibility: visible;
+        right: 32px;
+        transition: all 500ms;
+      }
+
+      &-control {
+        display: block;
+        position: fixed;
+        right: 40px;
+        bottom: 40px;
+        padding: 8px !important;
+        z-index: 101;
+        transition: all 500ms;
+      }
+
+      &.active + &-control {
+        right: 48px;
+        bottom: 48px;
+        transition: all 500ms;
+      }
+    }
+
+    @media screen and (max-width: vars.$screen-sm) {
+      &.active {
+        width: auto;
+        top: calc(60px + 12px);
+        right: 12px;
+        bottom: 12px;
+        left: 12px;
+      }
+
+      &-control {
+        right: 20px;
+        bottom: 20px;
+      }
+
+      &.active + &-control {
+        right: 28px;
+        bottom: 28px;
+      }
+    }
+  }
+
+  &.page--without-sidebar {
+    grid-template-columns: 1fr;
+
+    .page__main {
+      padding-right: 0;
+    }
+
+    .page__sidebar {
+      display: none;
+    }
+  }
+}

@@ -4,13 +4,6 @@
 @use "~src/assets/styles/badge";
 
 .profile {
-  padding: 24px;
-  color: vars.$light-color;
-
-  @media screen and (max-width: vars.$screen-sm) {
-    padding: 0 18px;
-  }
-
   &__header {
     position: relative;
     width: 100%;

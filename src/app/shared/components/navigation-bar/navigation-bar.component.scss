@@ -216,7 +216,9 @@
   }
 
   // Узкий навигационный бар только на декстопе
-  @media screen and (min-width: vars.$screen-sm) {
+  $min-screen-width: calc(#{vars.$screen-sm} + 1px);
+
+  @media screen and (min-width: $min-screen-width) {
     &.nav-bar--short {
       width: 70px;
       align-items: center;

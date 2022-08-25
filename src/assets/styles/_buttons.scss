@@ -44,4 +44,30 @@
       transition: color 0.5s;
     }
   }
+
+  &.btn--secondary {
+    background: vars.$btn-light-color;
+    color: vars.$title-color;
+    transition: all 0.2s;
+
+    &:hover {
+      background: vars.$contrast-color;
+      color: vars.$dark-color;
+      opacity: 1;
+      transition: all 0.2s;
+    }
+  }
+
+  &.btn--outline {
+    background: none;
+    color: vars.$title-color;
+    border: 2px solid vars.$title-color;
+
+    &:hover {
+      color: vars.$contrast-color;
+      border: 2px solid vars.$contrast-color;
+      opacity: 1;
+      transition: color 0.5s;
+    }
+  }
 }

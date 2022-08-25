@@ -22,6 +22,10 @@ export class TextFieldComponent {
     return this.type === TextFieldType.PASSWORD;
   }
 
+  get isSearchFiled() {
+    return this.type === TextFieldType.SEARCH;
+  }
+
   get isInvalid() {
     return this.textField?.isInvalid;
   }

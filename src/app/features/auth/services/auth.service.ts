@@ -50,6 +50,7 @@ export class AuthService {
   signOut() {
     this.tokenService.clear();
     this.authorizationState.next(false);
+    this.accountService.updateCurrentUser(undefined);
     return of(true);
   }
 

@@ -1,0 +1,18 @@
+<page-wrapper>
+  <div class="home-page">
+    <header class="home-page__header">
+      <div class="home-page__spacer"></div>
+      <div class="home-page__searchbar" text-field [type]="textFieldType.SEARCH">
+        <input type="search" placeholder="Search" textFieldRef />
+      </div>
+    </header>
+
+    <div class="home-page__slider">
+      <slider [slides]="slides" [delay]="6000"></slider>
+    </div>
+  </div>
+
+  <ng-container ngProjectAs="sidebar">
+    <home-sidebar [user]="currentUser$ | async"></home-sidebar>
+  </ng-container>
+</page-wrapper>
