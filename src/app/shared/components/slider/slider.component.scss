@@ -15,7 +15,6 @@
   position: relative;
   display: block;
   width: 100%;
-  min-height: 400px;
   height: 100%;
   overflow: hidden;
   border-radius: vars.$border-radius-sm;
@@ -29,6 +28,13 @@
 .swiper {
   width: 100%;
   height: 100%;
+
+  @media screen and (max-width: vars.$screen-sm) {
+    &-button-prev,
+    &-button-next {
+      display: none !important;
+    }
+  }
 }
 
 .swiper-slide {
@@ -55,10 +61,3 @@
     min-height: 200px;
   }
 }
-
-//.swiper-slide img {
-//  display: block;
-//  width: 100%;
-//  height: 100%;
-//  object-fit: cover;
-//}

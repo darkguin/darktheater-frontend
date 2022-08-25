@@ -5,14 +5,14 @@
 >
   <header class="nav-bar__header">
     <a [href]="homePath" class="nav-bar__logo title-bold-4">
-      {{ isLargeBar ? appInfo.name : appInfo.shortName }}
+      <!--      {{ isLargeBar || isOpenBar ? appInfo.name : appInfo.shortName }}-->
 
-      <!--      <ng-template [ngIf]="isLargeBar" [ngIfElse]="icon_logo">-->
-      <!--        {{ appInfo.name }}-->
-      <!--      </ng-template>-->
-      <!--      <ng-template #icon_logo>-->
-      <!--        <img class="nav-bar__logo-icon" [src]="appInfo.logo" alt="{{ appInfo.name }}" />-->
-      <!--      </ng-template>-->
+      <ng-template [ngIf]="isLargeBar || isOpenBar" [ngIfElse]="icon_logo">
+        {{ appInfo.name }}
+      </ng-template>
+      <ng-template #icon_logo>
+        <img class="nav-bar__logo-icon" [src]="appInfo.logo" alt="{{ appInfo.name }}" />
+      </ng-template>
     </a>
 
     <div class="nav-bar__controls nav-bar__size-control">

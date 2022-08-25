@@ -119,6 +119,7 @@
         border-radius: vars.$border-radius-sm;
         border: 2px solid vars.$border-color;
         background: vars.$second-color;
+        z-index: 98;
 
         &:hover {
           color: vars.$contrast-color;
@@ -214,43 +215,46 @@
       }
     }
   }
+}
 
-  // Узкий навигационный бар только на декстопе
-  $min-screen-width: calc(#{vars.$screen-sm} + 1px);
+// Узкий навигационный бар только на декстопе
+$min-screen-width: calc(#{vars.$screen-sm} + 1px);
 
-  @media screen and (min-width: $min-screen-width) {
-    &.nav-bar--short {
-      width: 70px;
+@media screen and (min-width: $min-screen-width) {
+  .nav-bar.nav-bar--short {
+    width: 70px;
+    align-items: center;
+    padding: 28px 0;
+    transition: all 300ms;
+
+    .nav-bar__logo,
+    .nav-bar__item {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
       align-items: center;
-      padding: 28px 0;
-      transition: all 300ms;
+    }
 
-      .nav-bar__logo,
-      .nav-bar__item {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-      }
+    .nav-bar__category-title {
+      opacity: 0;
+      transition: all 100ms;
+    }
 
-      .nav-bar__category-title {
-        opacity: 0;
-        transition: all 100ms;
-      }
-
-      .nav-bar__item-title {
-        font-size: 0;
-        opacity: 0;
-        width: 0;
-        transition: font-size 0ms, opacity 300ms;
-      }
+    .nav-bar__item-title {
+      font-size: 0;
+      opacity: 0;
+      width: 0;
+      transition: font-size 0ms, opacity 300ms;
     }
   }
+}
 
-  @media screen and (max-width: vars.$screen-sm) {
+@media screen and (max-width: vars.$screen-sm) {
+  .nav-bar {
     position: fixed;
     height: fit-content;
     width: 100vw;
+    max-height: 92vh;
     padding: 8px 16px;
     transition: all 0s;
     border-right: none;
