@@ -17,6 +17,10 @@ export class ProfileComponent implements OnInit, OnDestroy {
 
   user = this.accountService.currentUser;
 
+  get isLoading$() {
+    return this.loadingService.isLoading$;
+  }
+
   constructor(private accountService: AccountService, private loadingService: LoadingService) {}
 
   ngOnInit() {

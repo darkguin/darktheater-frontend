@@ -1,0 +1,10 @@
+<div *ngIf="!!user" class="home-sidebar__header">
+  <a [routerLink]="profileRoute" class="home-sidebar__userinfo">
+    <div class="home-sidebar__avatar" avatar variant="square" [text]="user.username"></div>
+    <div class="title-medium-1">{{ user.username | slice: 0:10 }}</div>
+  </a>
+
+  <button class="home-sidebar__control btn btn--short btn--secondary">
+    <icon [name]="icon.NOTIFICATION_1"></icon>
+  </button>
+</div>

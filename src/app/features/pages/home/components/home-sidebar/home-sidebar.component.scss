@@ -1,0 +1,43 @@
+@use "~src/assets/styles/vars";
+@use "~src/assets/styles/buttons";
+
+.home-sidebar {
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+
+  &__userinfo {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    color: vars.$title-color;
+    margin-left: 10px;
+    text-decoration: none;
+
+    &:hover {
+      color: vars.$contrast-color;
+      transition: color 0.5s;
+
+      .home-sidebar__avatar {
+        border-color: vars.$contrast-color;
+        transition: border 0.5s;
+      }
+    }
+  }
+
+  &__avatar {
+    overflow: hidden;
+    border-radius: vars.$border-radius-sm;
+    border: 2px solid vars.$btn-light-color;
+    margin-right: 10px;
+    width: 54px;
+    height: 54px;
+  }
+
+  &__control {
+    padding: 8px !important;
+  }
+}

@@ -8,13 +8,13 @@ import { UserMapper } from '@core/mappers/user.mapper';
   providedIn: 'root',
 })
 export class AccountService {
-  private accountState = new BehaviorSubject<User>({} as User);
+  private accountState = new BehaviorSubject<User | undefined>(undefined);
 
   get currentUser$(): Observable<User> {
-    return this.accountState.asObservable();
+    return this.accountState.asObservable() as Observable<User>;
   }
 
-  get currentUser(): User {
+  get currentUser(): User | undefined {
     return this.accountState.value;
   }
 
@@ -29,7 +29,7 @@ export class AccountService {
     );
   }
 
-  updateCurrentUser(user: User) {
+  updateCurrentUser(user?: User) {
     this.accountState.next(user);
   }
 }

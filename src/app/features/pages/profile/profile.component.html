@@ -1,23 +1,23 @@
-<div class="profile">
+<page-wrapper [sidebar]="false">
   <profile-cover></profile-cover>
 
   <div class="profile__header">
     <div class="profile__avatar">
-      <avatar [text]="user.username" variant="square"></avatar>
+      <avatar [text]="user?.username || ''" variant="square"></avatar>
     </div>
     <div class="profile__information">
       <div class="profile__information-title title-bold-6">
-        {{ user.username }}
+        {{ user?.username }}
 
-        <ng-container *ngIf="user.role !== UserRoles.VIEWER">
+        <ng-container *ngIf="user?.role !== UserRoles.VIEWER">
           <icon class="badge admin-badge title-medium-4" [name]="Icons.VERIFIED"></icon>
         </ng-container>
       </div>
-      <div class="profile__information-subtitle title-medium-1">email: {{ user.email }}</div>
+      <div class="profile__information-subtitle title-medium-1">email: {{ user?.email }}</div>
     </div>
   </div>
 
   <div class="profile__container">
     <div class="profile__group"></div>
   </div>
-</div>
+</page-wrapper>

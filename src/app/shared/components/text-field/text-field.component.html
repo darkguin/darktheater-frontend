@@ -1,4 +1,8 @@
-<div class="text-field__wrapper">
+<div
+  class="text-field__wrapper"
+  [class.text-field__control--right]="isPasswordFiled"
+  [class.text-field__control--left]="isSearchFiled"
+>
   <div
     *ngIf="isPasswordFiled"
     class="text-field__control"
@@ -9,6 +13,10 @@
   >
     <icon *ngIf="isShowPassword" [name]="icons.HIDDEN"></icon>
     <icon *ngIf="!isShowPassword" [name]="icons.SHOW"></icon>
+  </div>
+
+  <div *ngIf="isSearchFiled" class="text-field__control" [class.text-field--focus]="hasFocus">
+    <icon [name]="icons.SEARCH"></icon>
   </div>
 
   <ng-content></ng-content>

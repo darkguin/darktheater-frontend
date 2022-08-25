@@ -1,0 +1,21 @@
+<ng-template [ngIf]="isLoading$ | async" [ngIfElse]="page_content">
+  <section class="page__loader">
+    <loader></loader>
+  </section>
+</ng-template>
+
+<ng-template #page_content>
+  <section class="page" [class.page--without-sidebar]="!sidebar">
+    <div class="page__main">
+      <ng-content></ng-content>
+    </div>
+
+    <div *ngIf="sidebar" class="page__sidebar" [class.active]="isOpenSidebar">
+      <ng-content select="sidebar"></ng-content>
+    </div>
+
+    <button class="page__sidebar-control btn btn--short btn--secondary" (click)="onSidebarToggle()">
+      <icon [name]="isOpenSidebar ? icon.CLOSE : icon.MENU"></icon>
+    </button>
+  </section>
+</ng-template>

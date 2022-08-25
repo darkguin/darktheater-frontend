@@ -5,6 +5,26 @@
   &__wrapper {
     position: relative;
     width: fit-content;
+    box-sizing: border-box;
+
+    &.text-field__control--right {
+      .text-field__control {
+        right: 14px;
+      }
+    }
+
+    &.text-field__control--left {
+      .text-field__control {
+        top: 0;
+        left: 14px;
+      }
+
+      ::ng-deep {
+        .text-field {
+          padding-left: 34px;
+        }
+      }
+    }
 
     @media screen and (max-width: vars.$screen-sm) {
       width: 100%;
@@ -23,7 +43,6 @@
   &__control {
     position: absolute;
     top: 4px;
-    right: 14px;
     bottom: 0;
     display: flex;
     flex-direction: column;
@@ -31,6 +50,7 @@
     align-items: center;
     cursor: pointer;
     color: vars.$btn-light-color;
+    box-sizing: border-box;
     transition: all 0.5s;
 
     &.text-field--focus {
@@ -80,6 +100,7 @@
     border-radius: vars.$border-radius-sm;
     background: vars.$input-bg-color;
     color: vars.$descriptions-color;
+    box-sizing: border-box;
     font-size: 18px;
     transition: all 0.5s;
 
