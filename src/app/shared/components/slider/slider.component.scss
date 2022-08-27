@@ -28,17 +28,12 @@
 .swiper {
   width: 100%;
   height: 100%;
-
-  @media screen and (max-width: vars.$screen-sm) {
-    &-button-prev,
-    &-button-next {
-      display: none !important;
-    }
-  }
 }
 
 .swiper-slide {
-  min-height: 400px;
+  aspect-ratio: 21 / 9;
+  width: 100%;
+
   text-align: center;
   font-size: 18px;
   background: rgba(vars.$second-color, 0.3);
@@ -56,8 +51,17 @@
   -ms-flex-align: center;
   -webkit-align-items: center;
   align-items: center;
+}
 
-  @media screen and (max-width: vars.$screen-sm) {
-    min-height: 200px;
+@media screen and (max-width: vars.$screen-sm) {
+  .swiper {
+    &-button-prev,
+    &-button-next {
+      display: none !important;
+    }
+  }
+
+  .swiper-slide {
+    aspect-ratio: 3 / 2;
   }
 }
