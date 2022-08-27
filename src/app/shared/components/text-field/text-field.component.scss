@@ -6,29 +6,6 @@
     position: relative;
     width: fit-content;
     box-sizing: border-box;
-
-    &.text-field__control--right {
-      .text-field__control {
-        right: 14px;
-      }
-    }
-
-    &.text-field__control--left {
-      .text-field__control {
-        top: 0;
-        left: 14px;
-      }
-
-      ::ng-deep {
-        .text-field {
-          padding-left: 34px;
-        }
-      }
-    }
-
-    @media screen and (max-width: vars.$screen-sm) {
-      width: 100%;
-    }
   }
 
   &__error-msg {
@@ -44,6 +21,7 @@
     position: absolute;
     top: 4px;
     bottom: 0;
+    right: 14px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -111,11 +89,6 @@
     font-size: 18px;
     transition: all 0.5s;
 
-    @media screen and (max-width: vars.$screen-sm) {
-      width: 100%;
-      min-width: 156px;
-    }
-
     &.text-field--focus {
       border-color: rgba(vars.$primary-color, 0.75);
       color: vars.$descriptions-color;
@@ -133,5 +106,16 @@
       color: rgba(vars.$danger-color, 0.75);
       -webkit-text-fill-color: rgba(vars.$danger-color, 0.75);
     }
+  }
+}
+
+@media screen and (max-width: vars.$screen-sm) {
+  .text-field__wrapper {
+    width: 100%;
+  }
+
+  :host ::ng-deep .text-field {
+    width: 100%;
+    min-width: 156px;
   }
 }

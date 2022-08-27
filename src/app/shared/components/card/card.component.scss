@@ -1,0 +1,11 @@
+@use "~src/assets/styles/vars";
+@use "~src/assets/styles/buttons";
+
+.card {
+  background: red;
+  width: 230px;
+  aspect-ratio: 4 / 5;
+  border-radius: vars.$border-radius-sm;
+
+  scroll-snap-align: start;
+}

@@ -26,11 +26,12 @@ export class AuthErrorService {
         message = detail;
         break;
       case ApiErrorCodes.USER_INACTIVE:
-        return;
       case ApiErrorCodes.INVALID_TOKEN:
-        return;
+      case ApiErrorCodes.ACCESS_TOKEN_EXPIRED:
       case ApiErrorCodes.NOT_FOUND:
+      default: {
         return;
+      }
     }
 
     this.toastService.error(message, 8000);

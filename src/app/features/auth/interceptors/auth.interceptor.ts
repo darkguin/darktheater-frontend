@@ -50,8 +50,8 @@ export class AuthInterceptor implements HttpInterceptor {
     const { accessToken } = this.tokenService;
 
     return next.handle(this.addHeaders(request, accessToken)).pipe(
-      catchError(({ error, status }: HttpErrorResponse) => {
-        if (error.error_code === ApiErrorCodes.INVALID_TOKEN && status === 401) {
+      catchError(({ error }: HttpErrorResponse) => {
+        if (error?.error_code === ApiErrorCodes.ACCESS_TOKEN_EXPIRED) {
           return this.handleTokenUpdating(request, next, accessToken);
         }
 

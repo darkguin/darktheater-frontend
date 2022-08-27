@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AuthApi, ConfirmApi } from '@core/services';
-import { BehaviorSubject, map, Observable, of, tap } from 'rxjs';
+import { BehaviorSubject, map, Observable, of } from 'rxjs';
 import { Credentials } from '@core/models';
 import { TokenService } from '@features/auth/services/token.service';
 import { UserMapper } from '@core/mappers/user.mapper';
