@@ -54,7 +54,7 @@ export class AuthService {
     return of(true);
   }
 
-  sendConfirmEmail(email: string, type: ConfirmationType): Observable<boolean> {
-    return this.confirmApi.sendConfirmEmail(email, type).pipe(map(() => true));
+  sendConfirmEmail(type: ConfirmationType, auth = false, email = ''): Observable<boolean> {
+    return this.confirmApi.sendConfirmEmail(type, auth, email).pipe(map(() => true));
   }
 }

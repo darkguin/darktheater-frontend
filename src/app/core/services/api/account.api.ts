@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { ApiPath } from '@values/api/api-path.enum';
 import { ApiSuccessResponse } from '@models/api/api-success-response.model';
-import { ApiAuthorization, ApiUser } from '@core/models';
+import { ApiUser } from '@core/models';
 
 @Injectable({
   providedIn: 'root',

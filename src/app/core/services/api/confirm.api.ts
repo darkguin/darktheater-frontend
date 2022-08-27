@@ -11,11 +11,14 @@ import { ApiAuthorization } from '@core/models';
 export class ConfirmApi {
   constructor(private api: HttpClient) {}
 
-  sendConfirmEmail(email: string, type: string): Observable<ApiAuthorization> {
-    return this.api.post<ApiAuthorization>(ApiPath.EMAIL_CONFIRMATION, {
-      email: email,
-      email_type: type,
-    });
+  sendConfirmEmail(type: string, auth?: boolean, email?: string): Observable<ApiAuthorization> {
+    const body: any = { email_type: type };
+
+    const apiPath = auth ? ApiPath.EMAIL_CONFIRMATION_WITH_AUTH : ApiPath.EMAIL_CONFIRMATION;
+
+    if (!auth) body.email = email;
+
+    return this.api.post<ApiAuthorization>(apiPath, body);
   }
 
   confirmEmail(token: string): Observable<ApiSuccessResponse> {

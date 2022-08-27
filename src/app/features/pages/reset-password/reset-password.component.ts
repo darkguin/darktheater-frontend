@@ -37,7 +37,7 @@ export class ResetPasswordComponent {
     this.loadingService.isLoading = true;
 
     this.authService
-      .sendConfirmEmail(email || '', ConfirmationType.PASSWORD_CHANGE)
+      .sendConfirmEmail(ConfirmationType.PASSWORD_CHANGE, false, email)
       .pipe(
         take(1),
         catchError(({ error_code }: ApiError) => {
