@@ -43,10 +43,12 @@ export class SignInComponent {
   ) {}
 
   private resendConfirmationEmail(email: string): Observable<boolean> {
-    return this.authService.sendConfirmEmail(email, ConfirmationType.EMAIL_VERIFICATION).pipe(
-      take(1),
-      map((data) => !!data),
-    );
+    return this.authService
+      .sendConfirmEmail(ConfirmationType.EMAIL_VERIFICATION, false, email)
+      .pipe(
+        take(1),
+        map((data) => !!data),
+      );
   }
 
   private handleInvalidSignIn({ error_code }: ApiError, email: string, modalOptions: ModalOptions) {
