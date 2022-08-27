@@ -4,17 +4,11 @@
 .page {
   position: relative;
   display: grid;
-  grid-template-columns: minmax(500px, 2fr) minmax(200px, 400px);
+  grid-template-columns: minmax(500px, 2fr) clamp(300px, 20%, 400px);
   width: 100%;
   height: 100%;
   overflow: hidden;
   padding: 20px;
-
-  @media screen and (max-width: vars.$screen-md) {
-    grid-template-columns: 1fr;
-    overflow: auto;
-    padding: 10px;
-  }
 
   &__loader {
     display: flex;
@@ -27,10 +21,6 @@
   &__main {
     overflow-y: auto;
     padding-right: 20px;
-
-    @media screen and (max-width: vars.$screen-sm) {
-      padding: 0;
-    }
   }
 
   &__sidebar {
@@ -43,8 +33,32 @@
     &-control {
       display: none;
     }
+  }
 
-    @media screen and (max-width: vars.$screen-md) {
+  &.page--without-sidebar {
+    grid-template-columns: 1fr;
+
+    .page__main {
+      padding-right: 0;
+    }
+
+    .page__sidebar {
+      display: none;
+    }
+  }
+}
+
+@media screen and (max-width: vars.$screen-lg) {
+  .page {
+    grid-template-columns: 1fr;
+    overflow: auto;
+    padding: 20px;
+
+    &__main {
+      padding-right: 0;
+    }
+
+    &__sidebar {
       position: fixed;
       top: 32px;
       right: -432px;
@@ -79,8 +93,16 @@
         transition: all 500ms;
       }
     }
+  }
+}
 
-    @media screen and (max-width: vars.$screen-sm) {
+@media screen and (max-width: vars.$screen-sm) {
+  .page {
+    &__main {
+      padding: 0;
+    }
+
+    &__sidebar {
       border-radius: vars.$border-radius-sm;
 
       &.active {
@@ -100,18 +122,6 @@
         right: 28px;
         bottom: 28px;
       }
-    }
-  }
-
-  &.page--without-sidebar {
-    grid-template-columns: 1fr;
-
-    .page__main {
-      padding-right: 0;
-    }
-
-    .page__sidebar {
-      display: none;
     }
   }
 }

@@ -12,15 +12,10 @@
   min-height: 100%;
   height: 100%;
 
-  @media screen and (max-width: vars.$screen-sm) {
-    align-items: flex-start;
-  }
-
   &__container {
-    max-width: 1440px;
-    width: 80%;
-    max-height: 720px;
-    height: 70%;
+    aspect-ratio: 16 / 9;
+    width: clamp(800px, 80%, 1440px);
+    height: clamp(500px, 70%, 720px);
     padding: 60px 80px;
     border-radius: vars.$border-radius-lg;
     box-shadow: 0 0 32px vars.$dark-color;
@@ -34,17 +29,11 @@
       url("~src/assets/images/auth-preview-carousel.jpeg") no-repeat 0 100%;
     background-size: auto 150%;
     background-position: right 30%;
+    overflow: hidden;
+    overflow-y: auto;
 
-    @media screen and (max-width: vars.$screen-sm) {
-      width: 100%;
-      height: 100%;
-      max-height: 100%;
-      margin: 0;
-      padding: 40px;
-
-      background: none;
-      box-shadow: none;
-      border-radius: 0;
+    &::-webkit-scrollbar-track {
+      margin: vars.$border-radius-lg 0;
     }
   }
 
@@ -60,5 +49,31 @@
   &__logo {
     text-decoration: none;
     color: vars.$contrast-color;
+  }
+}
+
+@media screen and (max-height: 865px) {
+  .auth-wrapper {
+    &__container {
+      padding: 40px 60px;
+    }
+  }
+}
+
+@media screen and (max-width: vars.$screen-sm) {
+  .auth-wrapper {
+    align-items: flex-start;
+
+    &__container {
+      width: 100%;
+      height: calc(100% - 20px);
+      max-height: 100%;
+      margin: 10px;
+      padding: 25px;
+
+      background: none;
+      box-shadow: none;
+      //border-radius: 0;
+    }
   }
 }
