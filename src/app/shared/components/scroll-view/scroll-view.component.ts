@@ -41,6 +41,12 @@ export class ScrollViewComponent implements AfterViewInit {
       lazy: true,
       slidesPerView: 'auto',
       spaceBetween: 20,
+      breakpoints: {
+        1920: {
+          slidesPerView: 5,
+          spaceBetween: 20,
+        },
+      },
     });
   }
 
