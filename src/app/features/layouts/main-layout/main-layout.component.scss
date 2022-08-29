@@ -36,8 +36,8 @@ $nav-bar-height: 60px;
   @media screen and (min-width: vars.$screen-xxl) {
     &__content {
       width: 100%;
-      display: flex;
-      justify-content: center;
+      display: grid;
+      justify-items: center;
     }
 
     &__page {

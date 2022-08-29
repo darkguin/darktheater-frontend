@@ -33,3 +33,13 @@
     }
   }
 }
+
+@media screen and (max-width: vars.$screen-xxl) {
+  .scroll-view {
+    ::ng-deep {
+      .swiper-slide {
+        width: auto !important;
+      }
+    }
+  }
+}
