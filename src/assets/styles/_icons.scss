@@ -24,6 +24,10 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-Add-Stroke:before {
+  content: "\e9dc";
+}
+
 .icon-Exit:before {
   content: "\e900";
 }

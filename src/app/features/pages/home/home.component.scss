@@ -1,15 +1,20 @@
 @use "~src/assets/styles/vars";
 
-.home-page {
+.home {
   &__slider {
     aspect-ratio: 21 / 9;
     width: 100%;
     height: clamp(400px, 30%, 550px);
   }
+
+  &__scroll-view {
+    width: 100%;
+    margin-top: 40px;
+  }
 }
 
 @media screen and (max-width: vars.$screen-sm) {
-  .home-page {
+  .home {
     &__slider {
       padding-top: 0;
       aspect-ratio: 3 / 2;

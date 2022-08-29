@@ -22,7 +22,6 @@
     "@angular/router": "^14.0.0",
     "@angular/service-worker": "^14.0.0",
     "dayjs": "^1.11.3",
-    "draggable": "^4.2.0",
     "jwt-decode": "^3.1.2",
     "rxjs": "~7.5.0",
     "swiper": "^8.3.2",
