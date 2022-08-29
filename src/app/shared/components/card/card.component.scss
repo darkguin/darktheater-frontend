@@ -2,10 +2,102 @@
 @use "~src/assets/styles/buttons";
 
 .card {
-  background: red;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
   width: 230px;
   aspect-ratio: 4 / 5;
-  border-radius: vars.$border-radius-sm;
 
-  scroll-snap-align: start;
+  background: vars.$second-color;
+  border-radius: vars.$border-radius-sm;
+  overflow: hidden;
+
+  &__image {
+    height: 100%;
+    object-fit: cover;
+    object-position: center center;
+  }
+
+  &__content {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    color: vars.$light-color;
+    background-color: rgba(vars.$second-color, 0.4);
+    transition: background-color 0.2s ease-in-out;
+
+    &:hover {
+      background-color: rgba(vars.$second-color, 0.7);
+      transition: background-color 0.2s ease-in-out;
+    }
+  }
+
+  &__title {
+    padding: 8px;
+    text-align: left;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    line-height: 1;
+    max-height: 70px;
+  }
+
+  &__btn-group {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    gap: 10px;
+  }
+
+  &__text-group {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding: 0 10px 10px 10px;
+    text-transform: lowercase;
+
+    .capitalize {
+      text-transform: capitalize;
+    }
+  }
+
+  &__btn {
+    height: 54px;
+
+    &.btn--secondary {
+      width: 100%;
+      padding: 0;
+
+      font-size: 22px;
+      color: vars.$light-color;
+      background: rgba(vars.$btn-light-color, 0.8);
+      backdrop-filter: blur(5px);
+    }
+
+    &.btn--contrast {
+      width: 100%;
+      padding: 0;
+
+      &:hover {
+        opacity: 1;
+        background: rgba(vars.$btn-light-color, 0.9);
+        backdrop-filter: blur(5px);
+        color: vars.$light-color;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: vars.$screen-sm) {
+  .card {
+    width: 180px;
+  }
 }

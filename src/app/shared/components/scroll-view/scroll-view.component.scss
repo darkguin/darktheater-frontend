@@ -1,0 +1,35 @@
+@use "~src/assets/styles/vars";
+@use "~src/assets/styles/icons";
+
+@use "node_modules/swiper/swiper";
+@use "node_modules/swiper/modules/navigation/navigation";
+
+.scroll-view {
+  width: 100%;
+  padding-bottom: 10px;
+  overflow: hidden;
+
+  &::-webkit-scrollbar,
+  &::-webkit-scrollbar-thumb,
+  &__control {
+    visibility: hidden;
+    opacity: 0;
+    transition: all 300ms;
+  }
+
+  &:hover {
+    &::-webkit-scrollbar,
+    &::-webkit-scrollbar-thumb,
+    .scroll-view__control {
+      visibility: visible;
+      opacity: 1;
+      transition: all 300ms;
+    }
+  }
+
+  ::ng-deep {
+    .swiper-slide {
+      width: auto !important;
+    }
+  }
+}

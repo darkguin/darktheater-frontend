@@ -1,0 +1,11 @@
+<div
+  #scroll_view
+  class="scroll-view swiper swiper-initialized swiper-horizontal swiper-pointer-events"
+>
+  <div class="swiper-wrapper" #scroll_container>
+    <ng-content></ng-content>
+  </div>
+
+  <div class="scroll-view__control swiper-button-next" (click)="onControlClick('next')"></div>
+  <div class="scroll-view__control swiper-button-prev" (click)="onControlClick('prev')"></div>
+</div>

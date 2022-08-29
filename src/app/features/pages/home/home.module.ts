@@ -10,6 +10,8 @@ import { AvatarModule } from '@shared/components/avatar';
 import { IconModule } from '@shared/components/icon';
 import { PageWrapperModule } from '@shared/components/page-wrapper';
 import { SliderModule } from '@shared/components/slider';
+import { ScrollViewComponent } from '@shared/components/scroll-view';
+import { CardComponent } from '@shared/components/card/card.component';
 
 @NgModule({
   declarations: [HomeComponent, HomeSidebarComponent],
@@ -21,6 +23,8 @@ import { SliderModule } from '@shared/components/slider';
     IconModule,
     PageWrapperModule,
     SliderModule,
+    ScrollViewComponent,
+    CardComponent,
   ],
 })
 export class HomeModule {}

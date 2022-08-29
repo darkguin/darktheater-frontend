@@ -4,7 +4,7 @@
 
 * {
   box-sizing: border-box;
-  scroll-behavior: smooth;
+  //scroll-behavior: auto !important;
 }
 
 html,
@@ -15,6 +15,7 @@ body {
   background: vars.$dark-color;
   min-height: 100vh;
   height: 100%;
+  overflow: hidden;
 }
 
 .unselectable {

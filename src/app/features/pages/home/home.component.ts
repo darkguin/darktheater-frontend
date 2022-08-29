@@ -8,6 +8,8 @@ import { LoadingService } from '@core/services';
 import { SliderItem } from '@shared/components/slider';
 import { HomeSliderSlidesMock } from '@/app/mocks';
 import { AuthService } from '@features/auth/services/auth.service';
+import { Card } from '@shared/components/card';
+import { HomeCardsMock } from '@mocks/home-cards.mock';
 
 @Component({
   selector: 'home-page',
@@ -19,6 +21,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   readonly textFieldType = TextFieldType;
 
   slides: SliderItem[] = HomeSliderSlidesMock;
+  cards: Card[] = HomeCardsMock;
 
   get currentUser$(): Observable<User> {
     return this.accountService.currentUser$;

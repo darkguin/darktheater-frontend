@@ -1,7 +1,13 @@
 <page-wrapper>
-  <div class="home-page">
-    <div class="home-page__slider">
+  <div class="home">
+    <div class="home__slider">
       <slider [slides]="slides" [delay]="6000"></slider>
+    </div>
+
+    <div class="home__scroll-view" scroll-view>
+      <ng-container *ngFor="let card of cards">
+        <card [title]="card.title" [src]="card.image"></card>
+      </ng-container>
     </div>
   </div>
 
