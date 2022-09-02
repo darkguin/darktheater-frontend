@@ -1,6 +1,11 @@
 import { Card } from '@shared/components/card/models/card.model';
 
-export const HomeCardsMock: Card[] = [
+export const HomeRecommendationMock: Card[] = [
+  {
+    title: 'Шоу Трумана',
+    image:
+      'https://viasat-small.cdnvideo.ru/viasat/production/contents/be534401-de4e-48bf-92cf-9baf04e76da3/backgrounds/mv99ak6xb190jjnc39aypx13x6d2?h=480',
+  } as Card,
   {
     title: 'Дети Уиндермира',
     image:
@@ -29,7 +34,7 @@ export const HomeCardsMock: Card[] = [
   {
     title: 'Вальдо',
     image:
-      'https://viasat-small.cdnvideo.ru/viasat/production/contents/f28fc701-1386-4246-851d-f2388d71a298/backgrounds/zf3lji8tpj942x7w5sv7ma1vxi4l?h=480',
+      'https://viasat-small.cdnvideo.ru/viasat/production/contents/4b97157f-0f02-4630-a806-917fbc287b0d/backgrounds/53iwdp5qeojxdnu0rrkdy6fjj4sc?h=480',
   } as Card,
   {
     title: 'Зверопой 2',

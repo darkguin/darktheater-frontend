@@ -1,6 +1,6 @@
 import { SliderItem } from '@shared/components/slider';
 
-export const HomeSliderSlidesMock: SliderItem[] = [
+export const HomeSliderMock: SliderItem[] = [
   {
     title: 'Криминальное чтиво',
     subtitle: 'IMDB 8.9, 2 ч 28 мин, 1994, Драма, США',
@@ -42,5 +42,11 @@ export const HomeSliderSlidesMock: SliderItem[] = [
     subtitle: 'IMDB 4.9, 1 ч 19 мин, 2018, Россия',
     image:
       'https://viasat-small.cdnvideo.ru/viasat/production/contents/a2023eb3-ace4-4e1c-b566-a11e017a5af9/backgrounds/f5sthe1h6rv29dr8jpvlyf7eghss?h=720',
+  } as SliderItem,
+  {
+    title: 'Шоу Трумана',
+    subtitle: 'IMDB 8.1, 1 ч 38 мин, 2018, CША',
+    image:
+      'https://viasat-small.cdnvideo.ru/viasat/production/contents/be534401-de4e-48bf-92cf-9baf04e76da3/backgrounds/mv99ak6xb190jjnc39aypx13x6d2?h=720',
   } as SliderItem,
 ];
