@@ -3,22 +3,23 @@
 $nav-bar-height: 60px;
 
 .main-layout {
+  position: relative;
   display: grid;
   grid-template-columns: fit-content(220px) 1fr;
-  grid-template-rows: fit-content(1fr);
+  grid-template-rows: minmax(100vh, 100vh);
+  width: 100%;
   height: 100%;
+  overflow: hidden;
   background: vars.$second-color;
 
-  &__content {
+  &__page {
+    position: relative;
+    max-width: 100%;
+    max-height: 100%;
     background: vars.$dark-color;
     border-radius: vars.$border-radius-md;
     margin: 12px 12px 12px 0;
     overflow: hidden;
-  }
-
-  &__page {
-    width: 100%;
-    height: 100%;
   }
 
   @media screen and (max-width: vars.$screen-sm) {
@@ -26,22 +27,10 @@ $nav-bar-height: 60px;
     grid-template-rows: $nav-bar-height 1fr;
     background: vars.$dark-color;
 
-    &__content {
+    &__page {
       margin: 0;
       background: none;
       border-radius: 0;
-    }
-  }
-
-  @media screen and (min-width: vars.$screen-xxl) {
-    &__content {
-      width: 100%;
-      display: grid;
-      justify-items: center;
-    }
-
-    &__page {
-      width: vars.$screen-xxl;
     }
   }
 }
