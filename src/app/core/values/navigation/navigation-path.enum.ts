@@ -5,4 +5,6 @@ export enum NavigationPath {
   CONFIRM = 'confirm',
   HOME = 'home',
   PROFILE = 'profile',
+  MOVIES = 'movies/:id',
+  SERIES = 'series/:id',
 }

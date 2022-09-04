@@ -32,7 +32,7 @@
             "styles": [
               "src/assets/styles/main.scss"
             ],
-            "scripts": [],
+            "scripts": ["src/plugins/playerjs.js"],
             "serviceWorker": true,
             "ngswConfigPath": "ngsw-config.json"
           },
@@ -41,8 +41,8 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "500kb",
-                  "maximumError": "1mb"
+                  "maximumWarning": "1500kb",
+                  "maximumError": "3mb"
                 },
                 {
                   "type": "anyComponentStyle",
@@ -102,10 +102,8 @@
               "src/assets/images",
               "src/manifest.webmanifest"
             ],
-            "styles": [
-              "src/assets/styles/main.scss"
-            ],
-            "scripts": []
+            "styles": ["src/assets/styles/main.scss"],
+            "scripts": ["src/plugins/playerjs.js"]
           }
         }
       }

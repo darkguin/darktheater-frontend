@@ -16,6 +16,18 @@ const routes: Routes = [
         loadChildren: () => import('@features/pages/home/home.module').then((m) => m.HomeModule),
       },
       {
+        path: NavigationPath.MOVIES,
+        title: 'Movie',
+        loadChildren: () =>
+          import('@features/pages/movies/movies.module').then((m) => m.MoviesModule),
+      },
+      {
+        path: NavigationPath.SERIES,
+        title: 'Series',
+        loadChildren: () =>
+          import('@features/pages/series/series.module').then((m) => m.SeriesModule),
+      },
+      {
         path: NavigationPath.PROFILE,
         title: 'Profile',
         loadChildren: () =>

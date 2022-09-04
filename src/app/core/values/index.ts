@@ -11,3 +11,6 @@ export * from './account/user-roles.enum';
 export * from './api/http-header.enum';
 export * from './api/api-path.enum';
 export * from './api/api-error-codes.enum';
+
+/* MEDIA */
+export * from './content/media-content-type.enum';

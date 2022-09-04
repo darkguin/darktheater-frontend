@@ -1,0 +1,10 @@
+@use "~src/assets/styles/vars";
+@use "~src/assets/styles/fonts";
+
+:host {
+  @include fonts.font-regular;
+
+  width: 100%;
+  border-radius: vars.$border-radius-sm;
+  overflow: hidden;
+}

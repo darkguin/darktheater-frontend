@@ -49,7 +49,6 @@
     height: 100%;
     overflow-x: hidden;
     overflow-y: scroll;
-    margin-right: 20px;
   }
 
   &__sidebar {
@@ -65,14 +64,18 @@
     }
   }
 
-  &.page--without-sidebar {
+  &__container.page--without-sidebar {
     grid-template-columns: 1fr;
 
     .page__main {
-      padding-right: 0;
+      margin-right: 0;
     }
 
     .page__sidebar {
+      display: none;
+    }
+
+    &-control {
       display: none;
     }
   }
@@ -122,6 +125,12 @@
         right: 48px;
         bottom: 48px;
         transition: all 500ms;
+      }
+    }
+
+    &__container.page--without-sidebar {
+      .page__sidebar-control {
+        display: none;
       }
     }
   }

@@ -1,5 +1,5 @@
 import { ImplementsStatic } from '@core/decorators/implements-static.decorator';
-import { ApiAuthorization, User, Mapper, ApiUser } from '@core/models';
+import { ApiUser, Mapper, User } from '@core/models';
 import { UserRoles } from '@core/values';
 
 @ImplementsStatic<Mapper<ApiUser, User>>()

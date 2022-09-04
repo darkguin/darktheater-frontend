@@ -6,11 +6,16 @@
     aspect-ratio: 21 / 9;
     width: 100%;
     height: clamp(400px, 30%, 550px);
+    padding-right: 20px;
   }
 
   &__cards {
     display: grid;
     grid-template-columns: 1fr;
+
+    card {
+      margin-right: 20px;
+    }
   }
 
   &__title {
@@ -23,12 +28,21 @@
   }
 }
 
+@media screen and (max-width: vars.$screen-lg) {
+  .home {
+    &__slider {
+      padding-right: 0;
+    }
+  }
+}
+
 @media screen and (max-width: vars.$screen-sm) {
   .home {
     &__slider {
       padding-top: 0;
       aspect-ratio: 3 / 2;
       height: auto;
+      padding-right: 0;
     }
 
     &__header {

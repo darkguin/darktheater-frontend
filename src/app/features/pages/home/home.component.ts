@@ -9,6 +9,8 @@ import { SliderItem } from '@shared/components/slider';
 import { HomeSliderMock, HomeRecommendationMock, HomeNewMotionPicturesMock } from '@/app/mocks';
 import { AuthService } from '@features/auth/services/auth.service';
 import { Card } from '@shared/components/card';
+import { MediaService } from '@services/content/media.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'home-page',
@@ -28,6 +30,8 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   constructor(
+    private router: Router,
+    private mediaService: MediaService,
     private accountService: AccountService,
     private authService: AuthService,
     private loadingService: LoadingService,
@@ -40,13 +44,20 @@ export class HomeComponent implements OnInit, OnDestroy {
       .subscribe(() => (this.loadingService.isLoading = false));
   }
 
+  ngOnDestroy() {
+    this.destroy.next(true);
+  }
+
   private fetchCurrentUser(): Observable<User> {
     return isEmpty(this.accountService.currentUser) && this.authService.authorized
       ? this.accountService.getCurrentUser()
       : this.accountService.currentUser$;
   }
 
-  ngOnDestroy() {
-    this.destroy.next(true);
+  onClickWatch(card: Card) {
+    const media = this.mediaService.getById(card.contentId || '');
+    if (!media) return;
+    const contentUrl = this.mediaService.createContentUrl(media);
+    this.router.navigate([contentUrl]);
   }
 }

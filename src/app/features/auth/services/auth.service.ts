@@ -30,12 +30,13 @@ export class AuthService {
 
   signIn({ email, password }: Credentials): Observable<boolean> {
     return this.authApi.signIn({ username: email, password }).pipe(
-      map(({ access_token, user }) => {
+      map(({ access_token, refresh_token, user }) => {
         const currentUser = UserMapper.map(user!);
 
         if (!currentUser.isActive) return false;
 
         this.tokenService.accessToken = access_token || '';
+        this.tokenService.refreshToken = refresh_token || '';
         this.authorizationState.next(currentUser.isActive);
         this.accountService.updateCurrentUser(currentUser);
         return true;

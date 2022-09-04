@@ -17,12 +17,19 @@
     left: 0;
     right: 0;
     z-index: 1;
+    //background: linear-gradient(
+    //  0deg,
+    //  rgba(32, 36, 44, 1) 0%,
+    //  rgba(32, 36, 44, 0.958058) 5.83%,
+    //  rgba(32, 36, 44, 0.607314) 28.27%,
+    //  rgba(32, 36, 44, 0) 58%
+    //);
     background: linear-gradient(
       0deg,
-      rgba(32, 36, 44, 1) 0%,
-      rgba(32, 36, 44, 0.958058) 5.83%,
-      rgba(32, 36, 44, 0.607314) 28.27%,
-      rgba(32, 36, 44, 0) 58%
+      rgba(vars.$dark-color, 1) 0%,
+      rgba(vars.$dark-color, 0.958058) 5.83%,
+      rgba(vars.$dark-color, 0.607314) 28.27%,
+      rgba(vars.$dark-color, 0) 58%
     );
   }
 

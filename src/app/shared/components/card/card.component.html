@@ -1,14 +1,14 @@
-<div class="card">
+<div class="card" (click)="onCardClick()">
   <img *ngIf="src" class="card__image" [src]="src" alt="card" />
   <div class="card__content">
     <div class="card__title title-bold-2">{{ title }}</div>
 
     <div class="card__group">
-      <div class="card__btn-group">
+      <div *ngIf="controls" class="card__btn-group">
         <button class="card__btn btn btn--short btn--secondary">
           <icon [name]="icon.ADD_STROKE"></icon>
         </button>
-        <button class="card__btn btn btn--contrast">Watch</button>
+        <button class="card__btn btn btn--contrast" (click)="onClickWatchButton()">Watch</button>
       </div>
     </div>
   </div>
