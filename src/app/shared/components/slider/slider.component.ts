@@ -15,13 +15,14 @@ export class SliderComponent implements OnDestroy {
 
   @Input() slides: SliderItem[] = [];
   @Input() delay = 5000;
+  @Input() pagination = true;
 
   config: SwiperOptions = {
     loop: true,
     slidesPerView: 'auto',
     spaceBetween: 0,
     navigation: true,
-    pagination: { clickable: true, dynamicBullets: true },
+    pagination: this.pagination ? { clickable: true, dynamicBullets: true } : false,
   };
 
   ngOnDestroy() {

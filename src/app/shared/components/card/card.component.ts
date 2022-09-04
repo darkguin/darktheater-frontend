@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Icon, IconModule } from '@shared/components/icon';
 
@@ -14,5 +14,16 @@ export class CardComponent {
   @Input() src = '';
   @Input() controls = true;
 
+  @Output() clickWatch = new EventEmitter();
+  @Output() clickCard = new EventEmitter();
+
   readonly icon = Icon;
+
+  onClickWatchButton() {
+    this.clickWatch.emit();
+  }
+
+  onCardClick() {
+    this.clickCard.emit();
+  }
 }

@@ -1,0 +1,65 @@
+@use "../../../../assets/styles/vars";
+@use "../../../../assets/styles/fonts";
+@use "../../../../assets/styles/colors";
+
+.content-cover {
+  height: 100%;
+
+  &__title {
+    padding: 0 0 10px 0;
+  }
+
+  &__poster {
+    max-width: 250px;
+    aspect-ratio: 2 / 2.8;
+    overflow: hidden;
+    border-radius: vars.$border-radius-sm;
+
+    &-img {
+      width: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &__info {
+    min-width: 280px;
+  }
+
+  &::ng-deep {
+    .media-tag {
+      padding-bottom: 20px;
+    }
+  }
+
+  &__group {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 20px;
+    padding-top: 20px;
+    color: vars.$descriptions-color;
+  }
+
+  &__row {
+    padding-bottom: 10px;
+  }
+
+  &__description {
+    color: vars.$descriptions-color;
+  }
+}
+
+@media screen and (max-width: vars.$screen-sm) {
+  .content-cover {
+    &__title {
+      font-size: 160%;
+    }
+
+    &__group {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+    }
+  }
+}

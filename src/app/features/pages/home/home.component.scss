@@ -12,6 +12,10 @@
   &__cards {
     display: grid;
     grid-template-columns: 1fr;
+
+    card {
+      margin-right: 20px;
+    }
   }
 
   &__title {

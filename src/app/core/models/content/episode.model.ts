@@ -25,4 +25,5 @@ export interface Episode {
   seriesName?: string;
   seasonName?: string;
   seasonIndex?: number;
+  hls?: string;
 }

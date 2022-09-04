@@ -14,27 +14,15 @@
   gap: 0 60px;
   color: vars.$light-color;
   overflow-y: scroll;
-
-  &__header {
-    display: flex;
-    justify-content: flex-start;
-    align-items: flex-end;
-    gap: 20px;
-    margin-bottom: 20px;
-
-    &-group {
-      text-align: left;
-      padding-bottom: 10px;
-    }
-  }
-
-  &__description {
-    color: vars.$descriptions-color;
-  }
+  padding: 10px;
 
   &__cards {
     display: grid;
     grid-template-columns: 1fr;
+
+    card {
+      margin-right: 20px;
+    }
   }
 }
 
@@ -44,9 +32,6 @@
 
 .info-container {
   grid-area: info;
-  background: vars.$second-color;
-  padding: 20px;
-  border-radius: vars.$border-radius-sm;
 }
 
 .common-container {
@@ -58,14 +43,6 @@
 @media screen and (max-width: vars.$screen-xs) {
   .content {
     gap: 20px;
-
-    &__meta {
-      font-size: 16px;
-    }
-
-    &__title {
-      font-size: 160%;
-    }
   }
 }
 
@@ -78,30 +55,6 @@
 
     .info-container {
       width: 100%;
-      padding: 10px;
-    }
-
-    &__header {
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-start;
-      align-items: center;
-      width: 100%;
-      gap: 0;
-      margin-bottom: 0;
-
-      &-group {
-        text-align: center;
-        padding-bottom: 0;
-      }
-    }
-
-    &__meta {
-      font-size: 16px;
-    }
-
-    &__title {
-      line-height: 0.8;
     }
   }
 }

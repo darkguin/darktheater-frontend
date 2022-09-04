@@ -2,23 +2,14 @@
   <div class="content">
     <player
       class="content__container player-container"
-      [poster]="media.preview || ''"
-      [src]="media.hls || ''"
-    >
-    </player>
+      [poster]="movie.background || ''"
+      [src]="movie.hls || ''"
+    ></player>
 
-    <div class="content__container info-container title-regular-1">
-      <div class="content__header">
-        <card [src]="media.background || ''" [controls]="false"></card>
-
-        <div class="content__header-group">
-          <h1 class="content__title title-bold-6">{{ media.title }}</h1>
-          <media-tag class="content__meta" [media]="media"></media-tag>
-        </div>
-      </div>
-      <p class="content__description title-semi-bold-2">Описание:</p>
-      <p class="content__description title-medium-1">{{ media.description }}</p>
-    </div>
+    <content-cover
+      class="content__container info-container title-regular-1"
+      [media]="movie"
+    ></content-cover>
 
     <div class="content__container common-container">
       <h1 class="content__title title-bold-4">You might like</h1>
