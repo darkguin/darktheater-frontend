@@ -10,6 +10,7 @@ import { catchError, finalize, Observable, switchMap, throwError } from 'rxjs';
 import { AuthErrorService } from '@features/auth/services/auth-error.service';
 import { TokenService } from '@features/auth/services/token.service';
 import { ApiErrorCodes, HttpHeader } from '@core/values';
+import { AuthService } from '@features/auth/services/auth.service';
 
 @Injectable({
   providedIn: 'root',
@@ -17,7 +18,11 @@ import { ApiErrorCodes, HttpHeader } from '@core/values';
 export class AuthInterceptor implements HttpInterceptor {
   private tokenUpdating = false;
 
-  constructor(private authErrorService: AuthErrorService, private tokenService: TokenService) {}
+  constructor(
+    private authErrorService: AuthErrorService,
+    private authService: AuthService,
+    private tokenService: TokenService,
+  ) {}
 
   private addHeaders(req: HttpRequest<any>, token: string): HttpRequest<any> {
     const bearerToken = `Bearer ${token}`;
@@ -25,11 +30,11 @@ export class AuthInterceptor implements HttpInterceptor {
     return req.clone({ headers });
   }
 
-  private handleTokenUpdating(request: HttpRequest<any>, next: HttpHandler, accessToken: string) {
+  private handleTokenUpdating(request: HttpRequest<any>, next: HttpHandler, refreshToken: string) {
     if (!this.tokenUpdating) {
       this.tokenUpdating = true;
 
-      return this.tokenService.refresh(accessToken).pipe(
+      return this.tokenService.refresh(refreshToken).pipe(
         switchMap(() => {
           const { accessToken } = this.tokenService;
           const newRequest = this.addHeaders(request, accessToken);
@@ -47,12 +52,17 @@ export class AuthInterceptor implements HttpInterceptor {
   }
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    const { accessToken } = this.tokenService;
+    const { accessToken, refreshToken } = this.tokenService;
 
     return next.handle(this.addHeaders(request, accessToken)).pipe(
       catchError(({ error }: HttpErrorResponse) => {
         if (error?.error_code === ApiErrorCodes.ACCESS_TOKEN_EXPIRED) {
-          return this.handleTokenUpdating(request, next, accessToken);
+          return this.handleTokenUpdating(request, next, refreshToken);
+        }
+
+        if (error?.error_code === ApiErrorCodes.REFRESH_TOKEN_NOTFOUND) {
+          this.authService.signOut();
+          return throwError(error);
         }
 
         if (!!error.error_code) {

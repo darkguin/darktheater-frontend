@@ -24,6 +24,7 @@
     ],
     "paths": {
       "@/*": ["src/*"],
+      "@plugins/*": ["src/plugins/*"],
       "@assets/*": ["src/assets/*"],
       "@mocks/*": ["src/app/mocks/*"],
       "@core/*": ["src/app/core/*"],

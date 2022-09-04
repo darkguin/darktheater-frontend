@@ -12,6 +12,7 @@ import { Icon, IconModule } from '@shared/components/icon';
 export class CardComponent {
   @Input() title = '';
   @Input() src = '';
+  @Input() controls = true;
 
   readonly icon = Icon;
 }

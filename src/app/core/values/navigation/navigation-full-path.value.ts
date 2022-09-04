@@ -1,15 +1,15 @@
-import { NavigationPath } from './navigation-path.enum';
-import { NavigationLayout } from './navigation-layout.enum';
+import { NavigationPath as Path } from './navigation-path.enum';
+import { NavigationLayout as Layout } from './navigation-layout.enum';
 
-const getPath = (layout: NavigationLayout) => (!!layout.length ? `/${layout}` : layout);
+const getPath = (layout: Layout) => (!!layout.length ? `/${layout}` : layout);
 
 export const NavigationFullPath = {
-  [NavigationPath.HOME]: `${getPath(NavigationLayout.MAIN)}/${NavigationPath.HOME}`,
-  [NavigationPath.PROFILE]: `${getPath(NavigationLayout.MAIN)}/${NavigationPath.PROFILE}`,
-  [NavigationPath.SIGN_IN]: `${getPath(NavigationLayout.AUTH)}/${NavigationPath.SIGN_IN}`,
-  [NavigationPath.SIGN_UP]: `${getPath(NavigationLayout.AUTH)}/${NavigationPath.SIGN_UP}`,
-  [NavigationPath.CONFIRM]: `${getPath(NavigationLayout.AUTH)}/${NavigationPath.CONFIRM}`,
-  [NavigationPath.RESET_PASSWORD]: `${getPath(NavigationLayout.AUTH)}/${
-    NavigationPath.RESET_PASSWORD
-  }`,
+  [Path.HOME]: `${getPath(Layout.MAIN)}/${Path.HOME}`,
+  [Path.MOVIES]: `${getPath(Layout.MAIN)}/${Path.MOVIES}`,
+  [Path.SERIES]: `${getPath(Layout.MAIN)}/${Path.SERIES}`,
+  [Path.PROFILE]: `${getPath(Layout.MAIN)}/${Path.PROFILE}`,
+  [Path.SIGN_IN]: `${getPath(Layout.AUTH)}/${Path.SIGN_IN}`,
+  [Path.SIGN_UP]: `${getPath(Layout.AUTH)}/${Path.SIGN_UP}`,
+  [Path.CONFIRM]: `${getPath(Layout.AUTH)}/${Path.CONFIRM}`,
+  [Path.RESET_PASSWORD]: `${getPath(Layout.AUTH)}/${Path.RESET_PASSWORD}`,
 };
