@@ -3,9 +3,9 @@ import { CommonModule } from '@angular/common';
 import { IconModule } from '@shared/components/icon';
 
 import { SwiperModule } from 'swiper/angular';
-import SwiperCore, { Navigation, Swiper } from 'swiper';
+import SwiperCore, { Lazy, Navigation, Swiper } from 'swiper';
 
-SwiperCore.use([Navigation]);
+SwiperCore.use([Navigation, Lazy]);
 
 @Component({
   selector: 'scroll-view, [scroll-view]',
@@ -23,6 +23,8 @@ export class ScrollViewComponent implements AfterViewInit {
   @ViewChild('scroll_container', { read: ElementRef })
   scrollContainer!: ElementRef;
 
+  @Input() loop = false;
+
   ngAfterViewInit() {
     setTimeout(() => {
       const scrollView = this.scrollView.nativeElement as HTMLElement;
@@ -38,7 +40,7 @@ export class ScrollViewComponent implements AfterViewInit {
   private initSwiper(scrollView: HTMLElement): Swiper {
     return new Swiper(scrollView, {
       navigation: true,
-      lazy: true,
+      loop: this.loop,
       slidesPerView: 'auto',
       spaceBetween: 20,
       breakpoints: {

@@ -12,7 +12,7 @@
   width: 100%;
   height: 100%;
   gap: 0 60px;
-  color: vars.$light-color;
+  color: var(--light-color);
   overflow-y: scroll;
   padding: 10px;
 
@@ -45,17 +45,17 @@
 
       &-item {
         width: fit-content;
-        background: vars.$second-color;
+        background: var(--second-color);
         border-radius: vars.$border-radius-sm;
-        color: vars.$title-color;
+        color: var(--title-color);
         padding: 10px 20px;
         transition: all 300ms ease-in-out;
         cursor: pointer;
 
         &.active,
         &:not(.active):hover {
-          background: vars.$contrast-color;
-          color: vars.$dark-color;
+          background: var(--contrast-color);
+          color: var(--dark-color);
           transition: all 300ms ease-in-out;
         }
       }
@@ -71,10 +71,9 @@
         border-radius: vars.$border-radius-sm;
         cursor: pointer;
 
-        &.active,
-        &:not(.active):hover {
-          border: 2px solid vars.$contrast-color;
-          color: vars.$dark-color;
+        &.active {
+          border: 2px solid var(--contrast-color);
+          color: var(--dark-color);
           transition: all 300ms ease-in-out;
         }
       }

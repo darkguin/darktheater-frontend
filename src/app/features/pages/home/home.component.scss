@@ -22,7 +22,7 @@
     @include fonts.font-bold;
 
     padding-top: 10px;
-    color: vars.$title-color;
+    color: var(--title-color);
     font-size: 30px;
     line-height: 1;
   }

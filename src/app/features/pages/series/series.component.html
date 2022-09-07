@@ -16,7 +16,7 @@
           </ng-container>
         </div>
 
-        <div class="playlist__body" scroll-view>
+        <div class="playlist__body" scroll-view [loop]="false">
           <ng-container *ngFor="let episode of episodes; let index = index">
             <card
               [class.active]="selectedEpisode === index"

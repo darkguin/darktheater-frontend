@@ -1,12 +1,12 @@
 @use "~src/assets/styles/vars";
 
 .media-tag {
-  color: vars.$btn-light-color;
+  color: rgba(var(--light-color-rgb), 0.3);
   line-height: 1.75;
 
   &__age-limit {
     padding: 4px 8px;
-    border: 2px solid vars.$btn-light-color;
+    border: 2px solid var(--third-color);
     border-radius: calc(#{vars.$border-radius-sm} / 1.2);
     margin-right: 12px;
   }

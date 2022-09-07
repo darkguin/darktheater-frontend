@@ -7,8 +7,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background: vars.$second-color;
-  color: vars.$light-color;
+  background: var(--second-color);
+  color: var(--light-color);
   line-height: 0;
 
   &__image {

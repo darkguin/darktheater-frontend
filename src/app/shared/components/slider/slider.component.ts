@@ -18,6 +18,7 @@ export class SliderComponent implements OnDestroy {
   @Input() pagination = true;
 
   config: SwiperOptions = {
+    lazy: true,
     loop: true,
     slidesPerView: 'auto',
     spaceBetween: 0,
