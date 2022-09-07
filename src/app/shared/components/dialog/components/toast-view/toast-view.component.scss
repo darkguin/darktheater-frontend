@@ -10,7 +10,7 @@
   margin: 9px 0;
   border-radius: vars.$border-radius-sm;
   background: vars.$primary-color;
-  color: vars.$dark-color;
+  color: var(--dark-color);
   pointer-events: visible;
   cursor: pointer;
   z-index: 1000;

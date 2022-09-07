@@ -13,16 +13,16 @@
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    color: vars.$title-color;
+    color: var(--title-color);
     margin-left: 10px;
     text-decoration: none;
 
     &:hover {
-      color: vars.$contrast-color;
+      color: var(--contrast-color);
       transition: color 0.5s;
 
       .home-sidebar__avatar {
-        border-color: vars.$contrast-color;
+        border-color: var(--contrast-color);
         transition: border 0.5s;
       }
     }
@@ -31,7 +31,7 @@
   &__avatar {
     overflow: hidden;
     border-radius: vars.$border-radius-sm;
-    border: 2px solid vars.$btn-light-color;
+    border: 2px solid var(--btn-light-color);
     margin-right: 10px;
     width: 54px;
     height: 54px;

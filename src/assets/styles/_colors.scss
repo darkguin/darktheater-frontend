@@ -1,7 +1,7 @@
 @use "vars";
 
 .text-contrast {
-  color: vars.$contrast-color;
+  color: var(--contrast-color);
 }
 
 .text-primary {

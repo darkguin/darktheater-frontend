@@ -28,8 +28,8 @@
     width: 150px;
     height: 150px;
     border-radius: 50%;
-    background: vars.$second-color;
-    border: 6px solid vars.$dark-color;
+    background: var(--second-color);
+    border: 6px solid var(--dark-color);
     overflow: hidden;
 
     @media screen and (max-width: vars.$screen-md) {
@@ -45,18 +45,18 @@
 
     &-title {
       margin-bottom: 8px;
-      color: vars.$title-color;
+      color: var(--title-color);
     }
 
     &-subtitle {
       margin-bottom: 8px;
-      color: vars.$descriptions-color;
+      color: var(--descriptions-color);
     }
   }
 
   &__container {
     margin-top: 8px;
-    border-top: 3px solid vars.$border-color;
+    border-top: 3px solid var(--border-color);
     border-radius: 3px;
   }
 }

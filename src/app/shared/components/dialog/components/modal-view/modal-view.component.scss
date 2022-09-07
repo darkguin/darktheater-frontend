@@ -11,8 +11,8 @@
   max-width: 85vw;
   min-height: 100px;
   max-height: 85vh;
-  background: vars.$dark-color;
-  border: 3px solid vars.$border-color;
+  background: var(--dark-color);
+  border: 3px solid var(--border-color);
   border-radius: vars.$border-radius-sm;
   z-index: 100;
   padding: 28px;
@@ -25,12 +25,12 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    color: vars.$title-color;
+    color: var(--title-color);
     margin-bottom: 38px;
   }
 
   &__body {
-    color: vars.$descriptions-color;
+    color: var(--descriptions-color);
     margin-bottom: 38px;
   }
 

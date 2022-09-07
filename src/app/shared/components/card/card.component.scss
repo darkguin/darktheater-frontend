@@ -10,7 +10,7 @@
   width: 230px;
   aspect-ratio: 4 / 5;
 
-  background: vars.$second-color;
+  background: var(--second-color);
   border-radius: vars.$border-radius-sm;
   overflow: hidden;
 
@@ -31,12 +31,12 @@
     flex-direction: column;
     justify-content: space-between;
     align-items: flex-start;
-    color: vars.$light-color;
-    background-color: rgba(vars.$second-color, 0.4);
+    color: var(--light-color);
+    background-color: rgba(var(--second-color-rgb), 0.4);
     transition: background-color 0.2s ease-in-out;
 
     &:hover {
-      background-color: rgba(vars.$second-color, 0.7);
+      background-color: rgba(var(--second-color-rgb), 0.7);
       transition: background-color 0.2s ease-in-out;
     }
   }
@@ -77,8 +77,8 @@
       padding: 0;
 
       font-size: 22px;
-      color: vars.$light-color;
-      background: rgba(vars.$btn-light-color, 0.8);
+      color: var(--light-color);
+      background: rgba(var(--btn-light-color-rgb), 0.8);
       backdrop-filter: blur(5px);
     }
 
@@ -88,9 +88,9 @@
 
       &:hover {
         opacity: 1;
-        background: rgba(vars.$btn-light-color, 0.9);
+        background: rgba(var(--btn-light-color-rgb), 0.9);
         backdrop-filter: blur(5px);
-        color: vars.$light-color;
+        color: var(--light-color);
       }
     }
   }

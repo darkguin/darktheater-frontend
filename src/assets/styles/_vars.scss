@@ -1,23 +1,12 @@
 @use "fonts";
 
-// MAIN COLORS
-$dark-color: rgba(21, 24, 30, 1);
-$second-color: rgba(32, 36, 44, 1);
-$light-color: rgba(249, 249, 249, 1);
-$contrast-color: rgba(0, 185, 174, 1);
-
+// SUPPORT COLORS
 $primary-color: rgba(67, 160, 255, 1);
-$success-color: $contrast-color;
+$success-color: rgba(0, 185, 174, 1);
 $danger-color: rgb(247, 114, 73);
 $warning-color: rgb(254, 222, 107);
 
-// OPTIONAL COLORS
-$descriptions-color: rgba(249, 249, 249, 0.7);
-$title-color: rgba(249, 249, 249, 0.6);
-$btn-light-color: rgb(82, 88, 90);
-$border-color: rgba(249, 249, 249, 0.1);
-$input-bg-color: #1e222a;
-
+// BORDER
 $border-radius-sm: 16px;
 $border-radius-md: 32px;
 $border-radius-lg: 50px;

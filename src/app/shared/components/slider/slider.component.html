@@ -1,7 +1,7 @@
 <div class="slider">
   <swiper [config]="config" (swiper)="onSwiper($event)" (slideChange)="onSlideChange($event)">
     <ng-template *ngFor="let slide of slides; let i = index" swiperSlide>
-      <slide class="slider__slide" [slide]="slide"></slide>
+      <slide class="slider__slide swiper-lazy" [slide]="slide"></slide>
     </ng-template>
   </swiper>
 </div>

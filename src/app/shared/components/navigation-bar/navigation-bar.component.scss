@@ -7,8 +7,8 @@
   align-items: flex-start;
   width: 230px;
   height: 100%;
-  background: vars.$second-color;
-  color: vars.$light-color;
+  background: var(--second-color);
+  color: var(--light-color);
   padding: 28px 0 28px 28px;
   transition: all 300ms;
 
@@ -29,7 +29,7 @@
 
   &__logo {
     text-decoration: none;
-    color: vars.$contrast-color;
+    color: var(--contrast-color);
 
     &-icon {
       width: 35px;
@@ -76,7 +76,7 @@
       .nav-bar__control {
         width: 38px;
         height: 3px;
-        background: vars.$light-color;
+        background: var(--light-color);
         border-radius: vars.$border-radius-lg;
         line-height: 0;
         padding: 0;
@@ -88,7 +88,7 @@
           display: block;
           height: 3px;
           opacity: 1;
-          background: vars.$light-color;
+          background: var(--light-color);
           border-radius: vars.$border-radius-lg;
           transition: all 300ms;
         }
@@ -113,17 +113,17 @@
         align-items: center;
         justify-content: center;
         cursor: pointer;
-        color: vars.$title-color;
+        color: var(--title-color);
         padding: 8px 12px;
         line-height: 0;
         border-radius: vars.$border-radius-sm;
-        border: 2px solid vars.$border-color;
-        background: vars.$second-color;
+        border: 2px solid var(--border-color);
+        background: var(--second-color);
         z-index: 98;
 
         &:hover {
-          color: vars.$contrast-color;
-          border-color: vars.$contrast-color;
+          color: var(--contrast-color);
+          border-color: var(--contrast-color);
           transition: all 700ms;
         }
       }
@@ -154,7 +154,7 @@
     &-title {
       margin-top: 40px;
       margin-bottom: 10px;
-      color: vars.$title-color;
+      color: var(--title-color);
     }
 
     &,
@@ -171,11 +171,11 @@
     padding: 10px 0;
     cursor: pointer;
     width: 100%;
-    border-right: 3px solid rgba(vars.$contrast-color, 0);
+    border-right: 3px solid rgba(var(--contrast-color-rgb), 0);
 
     &:hover {
-      color: vars.$contrast-color;
-      border-right: 3px solid vars.$contrast-color;
+      color: var(--contrast-color);
+      border-right: 3px solid var(--contrast-color);
       transition: color 300ms, border-right-color 500ms;
     }
 
@@ -258,7 +258,7 @@ $min-screen-width: calc(#{vars.$screen-sm} + 1px);
     padding: 8px 16px;
     transition: all 0s;
     border-right: none;
-    border-bottom: 2px solid vars.$border-color;
+    border-bottom: 2px solid var(--border-color);
     border-radius: 0 0 vars.$border-radius-sm vars.$border-radius-sm;
     z-index: 1000;
 

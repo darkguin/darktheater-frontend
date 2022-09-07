@@ -18,13 +18,13 @@
     height: clamp(500px, 70%, 720px);
     padding: 60px 80px;
     border-radius: vars.$border-radius-lg;
-    box-shadow: 0 0 32px vars.$dark-color;
-    color: vars.$light-color;
-    background: vars.$second-color;
+    box-shadow: 0 0 32px var(--dark-color);
+    color: var(--light-color);
+    background: var(--second-color);
     background: linear-gradient(
         90deg,
-        rgba(vars.$second-color, 1) 45%,
-        rgba(vars.$second-color, 0.6) 100%
+        rgba(var(--second-color-rgb), 1) 45%,
+        rgba(var(--second-color-rgb), 0.6) 100%
       ),
       url("~src/assets/images/auth-preview-carousel.jpeg") no-repeat 0 100%;
     background-size: auto 150%;
@@ -48,7 +48,7 @@
 
   &__logo {
     text-decoration: none;
-    color: vars.$contrast-color;
+    color: var(--contrast-color);
   }
 }
 

@@ -1,5 +1,5 @@
 <div class="card" (click)="onCardClick()">
-  <img *ngIf="src" class="card__image" [src]="src" alt="card" />
+  <img *ngIf="src" class="card__image" [src]="src" lazy-image alt="card" />
   <div class="card__content">
     <div class="card__title title-bold-2">{{ title }}</div>
 

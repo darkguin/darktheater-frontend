@@ -52,7 +52,7 @@
   }
 
   &__sidebar {
-    background: rgba(vars.$second-color, 0.3);
+    background: var(--second-color);
     border-radius: vars.$border-radius-sm;
     width: clamp(300px, 40%, 400px);
     height: 100%;
@@ -100,7 +100,7 @@
       width: 400px;
       height: auto;
       border-radius: vars.$border-radius-md;
-      background: vars.$second-color;
+      background: var(--second-color);
       z-index: 100;
       visibility: hidden;
       transition: all 500ms;

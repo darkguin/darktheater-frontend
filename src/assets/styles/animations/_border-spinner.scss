@@ -1,14 +1,14 @@
 @use "~src/assets/styles/vars";
 
 @mixin border-color-state($top, $right, $bottom, $left) {
-  border-top: 3px solid rgba(vars.$contrast-color, $top);
-  border-right: 3px solid rgba(vars.$contrast-color, $right);
-  border-bottom: 3px solid rgba(vars.$contrast-color, $bottom);
-  border-left: 3px solid rgba(vars.$contrast-color, $left);
+  border-top: 3px solid rgba(var(--contrast-color-rgb), $top);
+  border-right: 3px solid rgba(var(--contrast-color-rgb), $right);
+  border-bottom: 3px solid rgba(var(--contrast-color-rgb), $bottom);
+  border-left: 3px solid rgba(var(--contrast-color-rgb), $left);
 }
 
 @mixin shadow-state($x, $y) {
-  box-shadow: $x $y 32px rgba(vars.$contrast-color, 0.2);
+  box-shadow: $x $y 32px rgba(var(--contrast-color-rgb), 0.2);
 }
 
 .border-spinner {

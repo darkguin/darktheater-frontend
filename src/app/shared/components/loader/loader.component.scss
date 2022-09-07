@@ -6,7 +6,7 @@
   display: grid;
   border: 4.5px solid #0000;
   border-radius: 50%;
-  border-color: vars.$second-color #0000;
+  border-color: var(--second-color) #0000;
   animation: spinner-e04l1k 1s infinite linear;
 
   &::before,
@@ -19,7 +19,7 @@
   }
 
   &::before {
-    border-color: vars.$contrast-color #0000;
+    border-color: var(--contrast-color) #0000;
     animation: inherit;
     animation-duration: 0.5s;
     animation-direction: reverse;
