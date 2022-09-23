@@ -12,12 +12,15 @@ export interface Media {
   kinopoiskRating: number;
   kinopoiskRatingVoteCount: number;
   releaseDate: string;
+
   countries: string[];
   actors: string[];
   directors: string[];
   genres: string[];
+
   background?: string;
   poster?: string;
+
   image?: string;
   preview?: string;
   hls?: string;

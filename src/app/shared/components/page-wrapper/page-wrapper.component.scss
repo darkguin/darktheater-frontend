@@ -139,7 +139,7 @@
 @media screen and (max-width: vars.$screen-sm) {
   .page {
     &__main {
-      padding: 0;
+      padding: 0 2px 60px 0;
     }
 
     &__sidebar {
