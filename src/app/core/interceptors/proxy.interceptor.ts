@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import urlJoin from 'url-join';
 import { environment } from '@/environments/environment';
 
-export const BASE_API_URL = 'api';
+export const BASE_API_URL = 'auth/api';
 export const BASE_API_VERSION = 'v1';
 
 @Injectable({
