@@ -11,7 +11,7 @@ import { IconModule } from '@shared/components/icon';
 import { PageWrapperModule } from '@shared/components/page-wrapper';
 import { SliderModule } from '@shared/components/slider';
 import { ScrollViewComponent } from '@shared/components/scroll-view';
-import { CardComponent } from '@shared/components/card/card.component';
+import { CardModule } from '@shared/components/card';
 
 @NgModule({
   declarations: [HomeComponent, HomeSidebarComponent],
@@ -24,7 +24,7 @@ import { CardComponent } from '@shared/components/card/card.component';
     PageWrapperModule,
     SliderModule,
     ScrollViewComponent,
-    CardComponent,
+    CardModule,
   ],
 })
 export class HomeModule {}

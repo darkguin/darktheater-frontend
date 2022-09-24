@@ -1,6 +1,8 @@
 <section class="home" page-wrapper>
-  <div class="home__slider">
-    <slider [slides]="slides" [delay]="6000"></slider>
+  <div class="home__slider" slider [delay]="6000">
+    <ng-container *ngFor="let slide of slides">
+      <slide class="slider__slide swiper-lazy" [slide]="slide"></slide>
+    </ng-container>
   </div>
 
   <h1 class="home__title">Special for your</h1>

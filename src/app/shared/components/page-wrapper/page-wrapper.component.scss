@@ -49,6 +49,8 @@
     height: 100%;
     overflow-x: hidden;
     overflow-y: scroll;
+    padding-right: 8px;
+    margin-right: 8px;
   }
 
   &__sidebar {
@@ -138,8 +140,12 @@
 
 @media screen and (max-width: vars.$screen-sm) {
   .page {
+    &__container {
+      padding: 12px 8px 12px 12px;
+    }
+
     &__main {
-      padding: 0 2px 60px 0;
+      padding: 0 4px 60px 0;
     }
 
     &__sidebar {
