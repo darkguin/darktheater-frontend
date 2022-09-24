@@ -1,7 +1,10 @@
-<div class="slider">
-  <swiper [config]="config" (swiper)="onSwiper($event)" (slideChange)="onSlideChange($event)">
-    <ng-template *ngFor="let slide of slides; let i = index" swiperSlide>
-      <slide class="slider__slide swiper-lazy" [slide]="slide"></slide>
-    </ng-template>
-  </swiper>
+<div #slider_view class="slider swiper swiper-initialized swiper-horizontal swiper-pointer-events">
+  <div class="slider__wrapper swiper-wrapper" #slider_container>
+    <ng-content></ng-content>
+  </div>
+
+  <div class="swiper-pagination"></div>
+  <div class="slider-view__control swiper-button-next" (click)="onControlClick('next')"></div>
+  <div class="slider-view__control swiper-button-prev" (click)="onControlClick('prev')"></div>
+  <div class="swiper-scrollbar"></div>
 </div>

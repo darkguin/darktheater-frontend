@@ -1,15 +1,16 @@
-<div class="card" (click)="onCardClick()">
-  <img *ngIf="src" class="card__image" [src]="src" lazy-image alt="card" />
-  <div class="card__content">
-    <div class="card__title title-regular-1">{{ title }}</div>
-
-    <div class="card__group">
-      <div *ngIf="controls" class="card__btn-group">
-        <button class="card__btn btn btn--short btn--secondary">
+<div class="card__wrapper">
+  <div class="card unselectable" (click)="onCardClick()">
+    <img *ngIf="src" class="card__image" [src]="src" lazy-image alt="card" />
+    <div class="card__content">
+      <ng-container *ngIf="controls">
+        <card-button>
           <icon [name]="icon.ADD_STROKE"></icon>
-        </button>
-        <button class="card__btn btn btn--contrast" (click)="onClickWatchButton()">Watch</button>
-      </div>
+        </card-button>
+        <card-button variant="contrast" (click)="onClickWatchButton()">
+          <icon [name]="icon.SHOW"></icon>
+        </card-button>
+      </ng-container>
     </div>
   </div>
+  <div class="card__title title-light-1">{{ title }}</div>
 </div>
