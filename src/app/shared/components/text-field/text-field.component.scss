@@ -3,32 +3,32 @@
 
 .text-field {
   &__wrapper {
-    position: relative;
-    width: fit-content;
     box-sizing: border-box;
+    position: relative;
+    width: 100%;
   }
 
   &__error-msg {
-    max-width: 256px;
-    text-align: right;
-    margin-top: 8px;
-    text-wrap: normal;
-    overflow-wrap: break-word;
     color: rgba(vars.$danger-color, 0.75);
+    margin-top: 8px;
+    max-width: 256px;
+    overflow-wrap: break-word;
+    text-align: right;
+    text-wrap: normal;
   }
 
   &__control {
-    position: absolute;
-    top: 4px;
+    align-items: center;
     bottom: 0;
-    right: 14px;
+    box-sizing: border-box;
+    color: var(--btn-light-color);
+    cursor: pointer;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    color: var(--btn-light-color);
-    box-sizing: border-box;
+    position: absolute;
+    right: 14px;
+    top: 4px;
     transition: all 0.5s;
 
     &.text-field--focus {
@@ -68,26 +68,27 @@
   select:-webkit-autofill,
   select:-webkit-autofill:hover,
   select:-webkit-autofill:focus {
-    -webkit-text-fill-color: var(--descriptions-color);
     -webkit-box-shadow: 0 0 0 1000px var(--input-bg-color) inset;
+    -webkit-text-fill-color: var(--descriptions-color);
     transition: background-color 5000s ease-in-out 0s;
   }
 
   .text-field {
     @include fonts.font-regular;
 
-    outline: none;
-    box-shadow: none;
-    padding: 14px;
-    min-height: 38px;
-    min-width: 256px;
+    background: var(--input-bg-color);
     border: 2px solid var(--border-color);
     border-radius: vars.$border-radius-sm;
-    background: var(--input-bg-color);
-    color: var(--title-color);
+    box-shadow: none;
     box-sizing: border-box;
+    color: var(--title-color);
     font-size: 18px;
+    min-height: 38px;
+    min-width: 100%;
+    outline: none;
+    padding: 14px;
     transition: all 0.5s;
+    width: 100%;
 
     &.text-field--focus {
       border-color: rgba(vars.$primary-color, 0.75);
@@ -110,12 +111,8 @@
 }
 
 @media screen and (max-width: vars.$screen-sm) {
-  .text-field__wrapper {
+  .text-field__wrapper, :host ::ng-deep .text-field {
+    min-width: 100%;
     width: 100%;
-  }
-
-  :host ::ng-deep .text-field {
-    width: 100%;
-    min-width: 156px;
   }
 }

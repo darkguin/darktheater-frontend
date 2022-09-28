@@ -3,18 +3,18 @@
 
 .home-sidebar {
   &__header {
+    align-items: center;
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    width: 100%;
     margin-bottom: 32px;
+    width: 100%;
   }
 
   &__userinfo {
-    display: flex;
-    justify-content: flex-start;
     align-items: center;
     color: var(--title-color);
+    display: flex;
+    justify-content: flex-start;
     text-decoration: none;
 
     &:hover {
@@ -29,12 +29,12 @@
   }
 
   &__avatar {
-    overflow: hidden;
-    border-radius: vars.$border-radius-sm;
     border: 2px solid var(--btn-light-color);
-    margin-right: 10px;
-    width: 54px;
+    border-radius: vars.$border-radius-sm;
     height: 54px;
+    margin-right: 10px;
+    overflow: hidden;
+    width: 54px;
   }
 
   &__control {
@@ -42,12 +42,5 @@
   }
 
   .search-form {
-  }
-}
-
-::ng-deep {
-  .text-field__wrapper,
-  .text-field {
-    min-width: 100% !important;
   }
 }

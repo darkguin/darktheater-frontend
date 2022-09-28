@@ -21,6 +21,12 @@ export class NavigationBarComponent {
   navbarSize = this.navBarService.navbarSize;
   isOpenBar = false;
 
+  constructor(
+    private navBarService: NavBarService,
+    private authService: AuthService,
+    private router: Router,
+  ) {}
+
   get itemGroups() {
     return this.navBarService.itemGroups;
   }
@@ -37,13 +43,7 @@ export class NavigationBarComponent {
     return NavbarSize.BIG === this.navbarSize;
   }
 
-  constructor(
-    private navBarService: NavBarService,
-    private authService: AuthService,
-    private router: Router,
-  ) {}
-
-  onClickSizeControl(type: NavbarSize) {
+  onResize(type: NavbarSize) {
     this.navbarSize = type;
     this.navBarService.navbarSize = type;
   }
