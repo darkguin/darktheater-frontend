@@ -1,0 +1,9 @@
+<a [href]='href' [ngClass]='variant' class='navbar-logo title-bold-4'>
+  <ng-template [ngIfElse]='icon_logo' [ngIf]="variant === 'text'">
+    {{ text }}
+  </ng-template>
+
+  <ng-template #icon_logo>
+    <img [src]='image' alt='{{ text }}' class='navbar-logo__image' />
+  </ng-template>
+</a>

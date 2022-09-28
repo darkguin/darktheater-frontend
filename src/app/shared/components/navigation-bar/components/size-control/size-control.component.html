@@ -1,0 +1,13 @@
+<div class='size-control'>
+  <ng-template [ngIfElse]='shortTypeControl' [ngIf]='navbarSize === navbarSizes.BIG'>
+    <div (click)='onClickSizeControl(navbarSizes.SMALL)' class='size-control__button'>
+      <icon [name]='icons.LEFT_ARROW_1'></icon>
+    </div>
+  </ng-template>
+
+  <ng-template #shortTypeControl>
+    <div (click)='onClickSizeControl(navbarSizes.BIG)' class='size-control__button'>
+      <icon [name]='icons.RIGHT_ARROW_1'></icon>
+    </div>
+  </ng-template>
+</div>
