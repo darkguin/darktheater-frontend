@@ -1,10 +1,10 @@
-import { Episode } from '@models/content/episode.model';
-import { MediaContentType } from '@core/values';
+import { Episode } from '@models/content/mock/episode.model';
+import { ContentType } from '@core/values';
 
 export interface Season {
   id: string;
   title: string;
-  contentType: MediaContentType;
+  contentType: ContentType;
   description: string;
   year?: any;
   imdbRating?: any;
