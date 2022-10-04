@@ -13,6 +13,10 @@
   border-radius: vars.$border-radius-sm;
   overflow: hidden;
 
+  &.selected {
+    border: 2px solid var(--contrast-color);
+  }
+
   &__wrapper {
     width: 185px;
   }

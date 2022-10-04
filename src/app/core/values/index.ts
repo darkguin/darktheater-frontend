@@ -10,7 +10,8 @@ export * from './account/user-roles.enum';
 /* API */
 export * from './api/http-header.enum';
 export * from './api/api-path.enum';
+export * from './api/api-services.enum';
 export * from './api/api-error-codes.enum';
 
 /* MEDIA */
-export * from './content/media-content-type.enum';
+export * from './content/content-type.enum';

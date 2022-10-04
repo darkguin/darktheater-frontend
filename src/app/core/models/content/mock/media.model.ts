@@ -1,4 +1,4 @@
-import { MediaContentType } from '@core/values';
+import { ContentType } from '@core/values';
 
 export interface Media {
   id: string;
@@ -24,5 +24,5 @@ export interface Media {
   image?: string;
   preview?: string;
   hls?: string;
-  contentType?: MediaContentType;
+  contentType?: ContentType;
 }

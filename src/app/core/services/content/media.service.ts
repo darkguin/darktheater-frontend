@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { Media } from '@core/models';
 import { MediaMock } from '@mocks/media.mock';
-import { MediaContentType, NavigationFullPath, NavigationPath } from '@core/values';
+import { ContentType, NavigationFullPath, NavigationPath } from '@core/values';
 
 @Injectable({
   providedIn: 'root',
@@ -18,7 +18,7 @@ export class MediaService {
 
   createContentUrl({ id, contentType }: Media): string {
     return NavigationFullPath[
-      contentType === MediaContentType.MOVIE ? NavigationPath.MOVIES : NavigationPath.SERIES
+      contentType === ContentType.MOVIE ? NavigationPath.MOVIES : NavigationPath.SERIES
     ].replace(':id', id);
   }
 }

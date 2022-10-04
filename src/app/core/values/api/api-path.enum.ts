@@ -7,4 +7,6 @@ export enum ApiPath {
   EMAIL_CONFIRMATION = 'auth/send-email-confirmation/',
   EMAIL_CONFIRMATION_WITH_AUTH = 'users/me/send-email-confirmation/',
   EMAIL_VERIFICATION = 'auth/email-verification/',
+  MOVIES = 'content/movies/',
+  MOVIE = 'content/movies/:id/',
 }
