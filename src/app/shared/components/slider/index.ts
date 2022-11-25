@@ -1,2 +1,3 @@
 export * from './slider.module';
-export * from './models/slider-item.model';
+export * from './types/slide.type';
+

@@ -1,85 +1,67 @@
 import {
   AfterViewInit,
+  ChangeDetectionStrategy,
   Component,
   ElementRef,
+  EventEmitter,
   Input,
   OnDestroy,
+  OnInit,
+  Output,
   ViewChild,
-  ViewEncapsulation,
 } from '@angular/core';
-
-import SwiperCore, { Autoplay, Lazy, Navigation, Pagination, Swiper } from 'swiper';
-import { SliderItem } from '@shared/components/slider/models/slider-item.model';
-
-SwiperCore.use([Autoplay, Navigation, Pagination, Lazy]);
+import { Slide } from '@shared/components/slider/types/slide.type';
+import { sliderAnimation } from '@shared/components/slider/animation/slider.animation';
+import { Icon } from '@shared/components/icon';
 
 @Component({
   selector: 'slider, [slider]',
   templateUrl: './slider.component.html',
   styleUrls: ['./slider.component.scss'],
-  encapsulation: ViewEncapsulation.None,
+  changeDetection: ChangeDetectionStrategy.Default,
+  animations: [sliderAnimation('sliderAnimation')],
 })
-export class SliderComponent implements AfterViewInit, OnDestroy {
-  private swiper?: Swiper;
-  private autoplayInterval?: any;
+export class SliderComponent implements OnInit, AfterViewInit, OnDestroy {
+  readonly icon = Icon;
+  @Input() delay: number = 4000;
+  @Input() slides: Slide[] = [];
+  @Output() clickSlide = new EventEmitter();
+  @ViewChild('slider') slider!: ElementRef<HTMLDivElement>;
+  activeSlide: number = 0;
 
-  @Input() slides: SliderItem[] = [];
-  @Input() delay = 5000;
-  @Input() pagination = true;
+  timerId: unknown;
 
-  @ViewChild('slider_view', { read: ElementRef })
-  sliderView!: ElementRef;
-
-  @ViewChild('slider_container', { read: ElementRef })
-  sliderContainer!: ElementRef;
-
-  ngAfterViewInit() {
-    setTimeout(() => {
-      const scrollView = this.sliderView.nativeElement as HTMLElement;
-      const scrollContainer = this.sliderContainer.nativeElement as HTMLElement;
-
-      if (!scrollView || !scrollContainer) return;
-
-      this.addClassToSections(scrollContainer, 'swiper-slide');
-      this.swiper = this.initSwiper(scrollView);
-      this.runAutoplay(this.swiper, this.delay);
-    }, 1000);
+  ngOnInit() {
+    this.timerId = setInterval(() => this.nextSlide(), this.delay);
   }
+
+  ngAfterViewInit() {}
 
   ngOnDestroy() {
-    clearInterval(this.autoplayInterval);
+    clearInterval(this.timerId as number);
   }
 
-  private initSwiper(scrollView: HTMLElement): Swiper {
-    return new Swiper(scrollView, {
-      lazy: true,
-      loop: true,
-      slidesPerView: 'auto',
-      spaceBetween: 0,
-      navigation: true,
-      pagination: this.pagination ? { clickable: true, dynamicBullets: true } : false,
-    });
+  nextSlide(index = this.activeSlide + 1) {
+    if (index >= this.slides.length) index = 0;
+    this.activeSlide = index;
   }
 
-  private addClassToSections(scrollContainer: HTMLElement, styleClass: string) {
-    if (!scrollContainer) return;
-
-    scrollContainer.childNodes.forEach((section) => {
-      if (section.nodeType === 1) {
-        (section as HTMLElement).classList.add(styleClass);
-        (section as HTMLElement).style.background = 'transparent';
-      }
-    });
+  prevSlide(index = this.activeSlide - 1) {
+    if (index < 0) index = this.slides.length - 1;
+    this.activeSlide = index;
   }
 
-  onControlClick(action: 'prev' | 'next') {
-    if (!this.swiper) return;
-    action === 'prev' ? this.swiper.slidePrev() : this.swiper.slideNext();
+  onSliderClick(slide: Slide) {
+    this.clickSlide.emit(slide);
   }
 
-  private runAutoplay(swiper: Swiper, delay: number) {
-    this.autoplayInterval = setInterval(() => {
-      swiper.slideNext();
-    }, delay);
+  onSwipe(direction: 'left' | 'right') {
+    console.log(direction);
+    direction == 'left' ? this.prevSlide() : this.nextSlide();
+  }
+
+  trackBy(index: number, slide: Slide): string {
+    return slide.image;
   }
 }
+

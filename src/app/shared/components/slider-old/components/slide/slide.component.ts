@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { SliderItem } from '@shared/components/slider';
+import { SliderItem } from '@shared/components/slider-old';
 
 @Component({
   selector: 'slide, [slide]',

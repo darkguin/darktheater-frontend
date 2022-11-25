@@ -1,63 +1,56 @@
 @use "~src/assets/styles/vars";
-@use "~src/assets/styles/icons";
 
-@use "node_modules/swiper/swiper";
-@use "node_modules/swiper/modules/lazy/lazy";
-@use "node_modules/swiper/modules/navigation/navigation";
-@use "node_modules/swiper/modules/pagination/pagination";
-
-:root {
-  --swiper-pagination-color: #{var(--contrast-color)};
-  --swiper-navigation-color: #{var(--title-color)};
-  --swiper-navigation-size: 32px;
+:host {
+  width: 100%;
 }
 
 .slider {
   position: relative;
-  display: block;
-  width: 100%;
-  height: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
   overflow: hidden;
-  border-radius: vars.$border-radius-sm;
+  border-radius: vars.$border-radius-md;
 
-  &__slide {
-    min-width: 100%;
+  width: 100%;
+  height: 400px;
+
+  &__control {
+    display: none;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: clamp(50px, 10%, 100px);
     height: 100%;
-  }
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    font-size: 34px;
+    color: rgba(255, 255, 255, 0.5);
 
-  .swiper {
-    width: 100%;
-    height: 100%;
+    &.left {
+      left: 0;
+      background: linear-gradient(90deg, rgba(0, 0, 0, 1) 0%, rgba(255, 255, 255, 0) 100%);
+    }
 
-    &-slide {
-      text-align: center;
-      font-size: 18px;
-      background: rgba(var(--second-color-rgb), 0.3);
-
-      /* Center slide text vertically */
-      display: -webkit-box;
-      display: -ms-flexbox;
-      display: -webkit-flex;
-      display: flex;
-      -webkit-box-pack: center;
-      -ms-flex-pack: center;
-      -webkit-justify-content: center;
-      justify-content: center;
-      -webkit-box-align: center;
-      -ms-flex-align: center;
-      -webkit-align-items: center;
-      align-items: center;
+    &.right {
+      right: 0;
+      background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 1) 100%);
     }
   }
 
-  @media screen and (max-width: vars.$screen-sm) {
-    aspect-ratio: 4 / 3;
+  &:hover {
+    .slider__control {
+      display: flex;
+    }
+  }
+}
 
-    .swiper {
-      &-button-prev,
-      &-button-next {
-        display: none !important;
-      }
+@media screen and (max-width: 768px) {
+  .slider {
+    &__control {
+      display: none !important;
     }
   }
 }

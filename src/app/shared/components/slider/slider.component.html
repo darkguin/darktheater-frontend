@@ -1,10 +1,15 @@
-<div #slider_view class="slider swiper swiper-initialized swiper-horizontal swiper-pointer-events">
-  <div class="slider__wrapper swiper-wrapper" #slider_container>
-    <ng-content></ng-content>
-  </div>
+<div (swipeleft)='onSwipe("left")' (swiperight)='onSwipe("right")' class='slider unselectable'>
+  <ng-container *ngFor='let slide of slides; let i = index; trackBy:trackBy'>
+    <slide
+      (clickSlide)='onSliderClick(slide)'
+      *ngIf='activeSlide == i'
+      @sliderAnimation
+      [image]="slide.image || ''"
+      [subtitle]="slide.subtitle || ''"
+      [title]="slide.title || ''"
+    ></slide>
+  </ng-container>
 
-  <div class="swiper-pagination"></div>
-  <div class="slider-view__control swiper-button-next" (click)="onControlClick('next')"></div>
-  <div class="slider-view__control swiper-button-prev" (click)="onControlClick('prev')"></div>
-  <div class="swiper-scrollbar"></div>
+  <div (click)='prevSlide()' [name]='icon.LEFT_ARROW_1' class='slider__control left' icon></div>
+  <div (click)='nextSlide()' [name]='icon.RIGHT_ARROW_1' class='slider__control right' icon></div>
 </div>
