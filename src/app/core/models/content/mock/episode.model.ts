@@ -1,9 +1,9 @@
-import { MediaContentType } from '@core/values';
+import { ContentType } from '@core/values';
 
 export interface Episode {
   id: string;
   title: string;
-  contentType: MediaContentType;
+  contentType: ContentType;
   description: string;
   offset: number;
   releaseDate: string;

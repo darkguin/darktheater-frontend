@@ -1,3 +1,8 @@
-import { Media } from '@models/content/media.model';
+import { Content } from '@core/models';
 
-export interface Movie extends Media {}
+export interface Movie extends Content {
+  source: string;
+  preview: string;
+  duration: number;
+  createdAt: Date;
+}

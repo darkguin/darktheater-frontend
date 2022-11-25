@@ -3,7 +3,6 @@ import { BrowserModule, HammerModule } from '@angular/platform-browser';
 import { ServiceWorkerModule } from '@angular/service-worker';
 
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
-import { ProxyInterceptor } from '@core/interceptors';
 import { environment } from '@/environments/environment';
 
 import { MainLayoutModule } from '@features/layouts/main-layout/main-layout.module';
@@ -31,11 +30,6 @@ import { AuthInterceptor } from '@features/auth';
     DialogModule,
   ],
   providers: [
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: ProxyInterceptor,
-      multi: true,
-    },
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
