@@ -5,12 +5,12 @@ import { AccountService } from '@services/account.service';
 import { User } from '@core/models';
 import { isEmpty } from '@core/utils/object.util';
 import { LoadingService } from '@core/services';
-import { SliderItem } from '@shared/components/slider';
 import { HomeNewMotionPicturesMock, HomeRecommendationMock, HomeSliderMock } from '@/app/mocks';
 import { AuthService } from '@features/auth/services/auth.service';
 import { Card } from '@shared/components/card';
 import { MediaService } from '@services/content/media.service';
 import { Router } from '@angular/router';
+import { Slide } from '@shared/components/slider';
 
 @Component({
   selector: 'home-page',
@@ -19,7 +19,7 @@ import { Router } from '@angular/router';
 })
 export class HomeComponent implements OnInit, OnDestroy {
   readonly textFieldType = TextFieldType;
-  slides: SliderItem[] = HomeSliderMock;
+  slides: Slide[] = HomeSliderMock;
   recommendations: Card[] = HomeRecommendationMock;
   newNotionPictures: Card[] = HomeNewMotionPicturesMock;
   private destroy = new Subject();
@@ -49,6 +49,14 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   onClickCard(card: Card) {
     const media = this.mediaService.getById(card.contentId || '');
+    if (!media) return;
+    const contentUrl = this.mediaService.createContentUrl(media);
+    this.router.navigate([contentUrl]);
+  }
+
+  onSelectSlide(slide: Slide) {
+    console.log(slide);
+    const media = this.mediaService.getById(slide.id || '');
     if (!media) return;
     const contentUrl = this.mediaService.createContentUrl(media);
     this.router.navigate([contentUrl]);
