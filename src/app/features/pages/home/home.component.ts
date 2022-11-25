@@ -6,7 +6,7 @@ import { User } from '@core/models';
 import { isEmpty } from '@core/utils/object.util';
 import { LoadingService } from '@core/services';
 import { SliderItem } from '@shared/components/slider';
-import { HomeSliderMock, HomeRecommendationMock, HomeNewMotionPicturesMock } from '@/app/mocks';
+import { HomeNewMotionPicturesMock, HomeRecommendationMock, HomeSliderMock } from '@/app/mocks';
 import { AuthService } from '@features/auth/services/auth.service';
 import { Card } from '@shared/components/card';
 import { MediaService } from '@services/content/media.service';
@@ -18,16 +18,12 @@ import { Router } from '@angular/router';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit, OnDestroy {
-  private destroy = new Subject();
   readonly textFieldType = TextFieldType;
-
   slides: SliderItem[] = HomeSliderMock;
   recommendations: Card[] = HomeRecommendationMock;
   newNotionPictures: Card[] = HomeNewMotionPicturesMock;
-
-  get currentUser$(): Observable<User> {
-    return this.accountService.currentUser$;
-  }
+  activeSlide = 2;
+  private destroy = new Subject();
 
   constructor(
     private router: Router,
@@ -36,6 +32,10 @@ export class HomeComponent implements OnInit, OnDestroy {
     private authService: AuthService,
     private loadingService: LoadingService,
   ) {}
+
+  get currentUser$(): Observable<User> {
+    return this.accountService.currentUser$;
+  }
 
   ngOnInit() {
     this.loadingService.isLoading = true;
@@ -48,16 +48,20 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.destroy.next(true);
   }
 
-  private fetchCurrentUser(): Observable<User> {
-    return isEmpty(this.accountService.currentUser) && this.authService.authorized
-      ? this.accountService.getCurrentUser()
-      : this.accountService.currentUser$;
-  }
-
-  onClickWatch(card: Card) {
+  onClickCard(card: Card) {
     const media = this.mediaService.getById(card.contentId || '');
     if (!media) return;
     const contentUrl = this.mediaService.createContentUrl(media);
     this.router.navigate([contentUrl]);
+  }
+
+  onSelectSlide(index: number) {
+    this.activeSlide = index;
+  }
+
+  private fetchCurrentUser(): Observable<User> {
+    return isEmpty(this.accountService.currentUser) && this.authService.authorized
+      ? this.accountService.getCurrentUser()
+      : this.accountService.currentUser$;
   }
 }

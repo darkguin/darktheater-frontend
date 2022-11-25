@@ -1,0 +1,15 @@
+@use "~src/assets/styles/vars";
+
+:host {
+  width: 100%;
+}
+
+.flex-slider {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  overflow: hidden;
+
+  width: 100%;
+  height: 400px;
+}
