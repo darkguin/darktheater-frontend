@@ -1,4 +1,4 @@
-import { NavigationPath as Path } from './navigation-path.enum';
+import { RoutePath as Path } from './route-path.enum';
 import { NavigationLayout as Layout } from './navigation-layout.enum';
 
 const getPath = (layout: Layout) => (!!layout.length ? `/${layout}` : layout);

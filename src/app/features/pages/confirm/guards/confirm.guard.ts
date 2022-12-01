@@ -1,16 +1,11 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot } from '@angular/router';
 import { ConfirmationType } from '@features/auth/values/confirmation-type.enum';
-import { NavigationFullPath, NavigationPath } from '@core/values';
+import { NavigationFullPath, RoutePath } from '@core/values';
 
 @Injectable()
 export class ConfirmGuard implements CanActivate {
   constructor(private router: Router) {}
-
-  private navigateToSignIn() {
-    const signInPath = NavigationFullPath[NavigationPath.SIGN_IN];
-    this.router.navigate([signInPath]);
-  }
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
     const confirmationTypes = [
@@ -30,5 +25,10 @@ export class ConfirmGuard implements CanActivate {
     }
 
     return true;
+  }
+
+  private navigateToSignIn() {
+    const signInPath = NavigationFullPath[RoutePath.SIGN_IN];
+    this.router.navigate([signInPath]);
   }
 }
