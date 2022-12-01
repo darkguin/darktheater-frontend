@@ -1,5 +1,5 @@
-@use "~src/assets/styles/vars";
-@use "~src/assets/styles/mixins";
+@use "src/assets/styles/vars";
+@use "src/assets/styles/mixins";
 
 .auth-layout {
   @include mixins.main-bg-gradient;
