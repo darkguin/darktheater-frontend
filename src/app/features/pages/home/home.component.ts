@@ -1,5 +1,4 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { TextFieldType } from '@shared/components/text-field';
 import { Observable, Subject, take } from 'rxjs';
 import { AccountService } from '@services/account.service';
 import { User } from '@core/models';
@@ -11,6 +10,8 @@ import { Card } from '@shared/components/card';
 import { MediaService } from '@services/content/media.service';
 import { Router } from '@angular/router';
 import { Slide } from '@shared/components/slider';
+import { Meta, Title } from '@angular/platform-browser';
+import { MetaInfo } from '@core/values';
 
 @Component({
   selector: 'home-page',
@@ -18,7 +19,6 @@ import { Slide } from '@shared/components/slider';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit, OnDestroy {
-  readonly textFieldType = TextFieldType;
   slides: Slide[] = HomeSliderMock;
   recommendations: Card[] = HomeRecommendationMock;
   newNotionPictures: Card[] = HomeNewMotionPicturesMock;
@@ -26,11 +26,16 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   constructor(
     private router: Router,
+    private meta: Meta,
+    private title: Title,
     private mediaService: MediaService,
     private accountService: AccountService,
     private authService: AuthService,
     private loadingService: LoadingService,
-  ) {}
+  ) {
+    title.setTitle(MetaInfo.home.title());
+    meta.addTags([{ name: 'description', content: MetaInfo.home.description() }]);
+  }
 
   get currentUser$(): Observable<User> {
     return this.accountService.currentUser$;

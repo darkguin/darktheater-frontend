@@ -1,13 +1,13 @@
-<div class="card__wrapper">
-  <div class="card unselectable" [class.selected]="selected" (click)="onCardClick()">
-    <img *ngIf="src" class="card__image" [src]="src" lazy-image alt="card" />
-    <div class="card__content">
-      <ng-container *ngIf="controls">
+<div (click)='onCardClick()' class='card__wrapper'>
+  <div [class.selected]='selected' class='card unselectable'>
+    <img *ngIf='src' [ngSrc]='src' alt='card' class='card__image' fill />
+    <div class='card__content'>
+      <ng-container *ngIf='controls'>
         <card-button>
-          <icon [name]="icon.ADD_STROKE"></icon>
+          <icon [name]='icon.ADD_STROKE'></icon>
         </card-button>
       </ng-container>
     </div>
   </div>
-  <div class="card__title title-light-1">{{ title }}</div>
+  <div class='card__title title-light-1'>{{ title }}</div>
 </div>

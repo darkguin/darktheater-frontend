@@ -4,7 +4,7 @@ import { catchError, Observable, Subject, takeUntil, throwError } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ConfirmationType } from '@features/auth/values/confirmation-type.enum';
 import { ConfirmationService } from '@features/pages/confirm/services/confirmation.service';
-import { NavigationFullPath, NavigationPath } from '@core/values';
+import { NavigationFullPath, RoutePath } from '@core/values';
 import { ToastService } from '@shared/components/dialog';
 import { ConfirmMessages } from '@features/pages/confirm/values/confirm-messages.enum';
 import { Credentials } from '@core/models';
@@ -15,22 +15,10 @@ import { AuthFormType } from '@features/auth/values/auth-form-type.enum';
   styleUrls: ['./confirm.component.scss'],
 })
 export class ConfirmComponent implements OnInit, OnDestroy {
+  authFormType = AuthFormType;
   private destroy = new Subject();
   private token = '';
   private confirmationType!: ConfirmationType;
-  authFormType = AuthFormType;
-
-  get isLoading$(): Observable<boolean> {
-    return this.loadingService.isLoading$;
-  }
-
-  get signUpPath() {
-    return NavigationFullPath[NavigationPath.SIGN_UP];
-  }
-
-  get signInPath() {
-    return NavigationFullPath[NavigationPath.SIGN_IN];
-  }
 
   constructor(
     private router: Router,
@@ -39,6 +27,18 @@ export class ConfirmComponent implements OnInit, OnDestroy {
     private loadingService: LoadingService,
     private confirmationService: ConfirmationService,
   ) {}
+
+  get isLoading$(): Observable<boolean> {
+    return this.loadingService.isLoading$;
+  }
+
+  get signUpPath() {
+    return NavigationFullPath[RoutePath.SIGN_UP];
+  }
+
+  get signInPath() {
+    return NavigationFullPath[RoutePath.SIGN_IN];
+  }
 
   ngOnInit() {
     this.loadingService.isLoading = true;
@@ -56,12 +56,21 @@ export class ConfirmComponent implements OnInit, OnDestroy {
     this.confirmAction(this.confirmationType, this.token).subscribe(() => {
       this.loadingService.isLoading = false;
       this.toastService.success(ConfirmMessages.SUCCESS, 8000);
-      this.navigateTo(NavigationPath.SIGN_IN);
+      this.navigateTo(RoutePath.SIGN_IN);
     });
   }
 
   ngOnDestroy() {
     this.destroy.next(this);
+  }
+
+  onPasswordFormSubmit({ password }: Credentials) {
+    this.loadingService.isLoading = true;
+    this.confirmAction(ConfirmationType.PASSWORD_CHANGE, this.token, password).subscribe(() => {
+      this.loadingService.isLoading = false;
+      this.toastService.success(ConfirmMessages.RESET_PASSWORD_SUCCESS, 8000);
+      this.navigateTo(RoutePath.SIGN_IN);
+    });
   }
 
   private confirmAction(action: ConfirmationType, token: string, payload?: string) {
@@ -71,24 +80,15 @@ export class ConfirmComponent implements OnInit, OnDestroy {
         this.loadingService.isLoading = false;
 
         this.toastService.error(ConfirmMessages.ERROR, 8000);
-        this.navigateTo(NavigationPath.SIGN_IN);
+        this.navigateTo(RoutePath.SIGN_IN);
 
         return throwError(err);
       }),
     );
   }
 
-  private navigateTo(path: NavigationPath) {
+  private navigateTo(path: RoutePath) {
     const signInPath = NavigationFullPath[path];
     this.router.navigate([signInPath]);
-  }
-
-  onPasswordFormSubmit({ password }: Credentials) {
-    this.loadingService.isLoading = true;
-    this.confirmAction(ConfirmationType.PASSWORD_CHANGE, this.token, password).subscribe(() => {
-      this.loadingService.isLoading = false;
-      this.toastService.success(ConfirmMessages.RESET_PASSWORD_SUCCESS, 8000);
-      this.navigateTo(NavigationPath.SIGN_IN);
-    });
   }
 }

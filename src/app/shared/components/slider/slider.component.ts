@@ -1,6 +1,4 @@
 import {
-  AfterViewInit,
-  ChangeDetectionStrategy,
   Component,
   ElementRef,
   EventEmitter,
@@ -13,15 +11,16 @@ import {
 import { Slide } from '@shared/components/slider/types/slide.type';
 import { sliderAnimation } from '@shared/components/slider/animation/slider.animation';
 import { Icon } from '@shared/components/icon';
+import { RemoveHostDirective } from '@shared/directives/remove-host';
 
 @Component({
   selector: 'slider, [slider]',
   templateUrl: './slider.component.html',
   styleUrls: ['./slider.component.scss'],
-  changeDetection: ChangeDetectionStrategy.Default,
+  hostDirectives: [RemoveHostDirective],
   animations: [sliderAnimation('sliderAnimation')],
 })
-export class SliderComponent implements OnInit, AfterViewInit, OnDestroy {
+export class SliderComponent implements OnInit, OnDestroy {
   readonly icon = Icon;
   @Input() delay: number = 4000;
   @Input() slides: Slide[] = [];
@@ -34,8 +33,6 @@ export class SliderComponent implements OnInit, AfterViewInit, OnDestroy {
   ngOnInit() {
     this.timerId = setInterval(() => this.nextSlide(), this.delay);
   }
-
-  ngAfterViewInit() {}
 
   ngOnDestroy() {
     clearInterval(this.timerId as number);

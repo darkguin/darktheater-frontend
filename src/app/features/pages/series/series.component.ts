@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MediaService } from '@services/content/media.service';
 import { Episode, Season, Series } from '@core/models';
-import { NavigationFullPath, NavigationPath } from '@core/values';
+import { NavigationFullPath, RoutePath } from '@core/values';
 import { HomeRecommendationMock } from '@/app/mocks';
 
 @Component({
@@ -15,6 +15,22 @@ export class SeriesComponent {
   selectedEpisode = 0;
 
   readonly recommendations = HomeRecommendationMock;
+
+  constructor(
+    private router: Router,
+    private route: ActivatedRoute,
+    private mediaService: MediaService,
+  ) {
+    const mediaId = route.snapshot.paramMap.get('id') as string;
+    const media = mediaService.getById(mediaId);
+
+    if (!media) {
+      router.navigate([NavigationFullPath[RoutePath.HOME]]);
+      return;
+    }
+
+    this.series = media;
+  }
 
   get seasons(): Season[] {
     return this.series.seasons || [];
@@ -30,22 +46,6 @@ export class SeriesComponent {
 
   get preview(): string {
     return this.currentEpisode?.preview || this.series?.background || '';
-  }
-
-  constructor(
-    private router: Router,
-    private route: ActivatedRoute,
-    private mediaService: MediaService,
-  ) {
-    const mediaId = route.snapshot.paramMap.get('id') as string;
-    const media = mediaService.getById(mediaId);
-
-    if (!media) {
-      router.navigate([NavigationFullPath[NavigationPath.HOME]]);
-      return;
-    }
-
-    this.series = media;
   }
 
   onSelectSeason(season: number) {

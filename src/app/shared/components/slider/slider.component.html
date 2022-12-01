@@ -2,8 +2,9 @@
   <ng-container *ngFor='let slide of slides; let i = index; trackBy:trackBy'>
     <slide
       (clickSlide)='onSliderClick(slide)'
-      *ngIf='activeSlide == i'
+      *ngIf='i === activeSlide || i === activeSlide+1 || i === activeSlide-1'
       @sliderAnimation
+      [hidden]='activeSlide != i'
       [image]="slide.image || ''"
       [subtitle]="slide.subtitle || ''"
       [title]="slide.title || ''"

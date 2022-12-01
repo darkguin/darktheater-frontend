@@ -1,4 +1,4 @@
-@use "~src/assets/styles/vars";
+@use "src/assets/styles/vars";
 
 @mixin border-color-state($top, $right, $bottom, $left) {
   border-top: 3px solid rgba(var(--contrast-color-rgb), $top);

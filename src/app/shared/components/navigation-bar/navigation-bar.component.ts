@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { Icon } from '@shared/components/icon';
-import { AppInfo, NavigationFullPath, NavigationPath } from '@core/values';
+import { AppInfo, NavigationFullPath, RoutePath } from '@core/values';
 import { NavBarService } from './services/nav-bar.service';
 import { NavItem } from './models/nav-item.model';
 import { NavbarSize } from './values/navbar-size.enum';
@@ -36,7 +36,7 @@ export class NavigationBarComponent {
   }
 
   get homePath() {
-    return NavigationFullPath[NavigationPath.HOME];
+    return NavigationFullPath[RoutePath.HOME];
   }
 
   get isLargeBar() {

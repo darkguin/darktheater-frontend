@@ -1,4 +1,4 @@
-import { NavigationFullPath, NavigationPath } from '@core/values';
+import { NavigationFullPath, RoutePath } from '@core/values';
 import { NavItem } from '../models/nav-item.model';
 import { NavCategories } from './nav-categories.value';
 import { NavAction } from './nav-action.enum';
@@ -8,7 +8,7 @@ export const NavItems: NavItem[] = [
   {
     title: 'Home',
     action: NavAction.ROUTING,
-    routerPath: NavigationFullPath[NavigationPath.HOME],
+    routerPath: NavigationFullPath[RoutePath.HOME],
     category: NavCategories[0],
     icon: Icon.HOME,
     global: true,
@@ -62,7 +62,7 @@ export const NavItems: NavItem[] = [
   {
     title: 'Profile',
     action: NavAction.ROUTING,
-    routerPath: NavigationFullPath[NavigationPath.PROFILE],
+    routerPath: NavigationFullPath[RoutePath.PROFILE],
     category: NavCategories[2],
     icon: Icon.USER,
     global: false,
@@ -80,7 +80,7 @@ export const NavItems: NavItem[] = [
   {
     title: 'Sign In',
     action: NavAction.ROUTING,
-    routerPath: NavigationFullPath[NavigationPath.SIGN_IN],
+    routerPath: NavigationFullPath[RoutePath.SIGN_IN],
     category: NavCategories[2],
     icon: Icon.EXIT,
     global: false,

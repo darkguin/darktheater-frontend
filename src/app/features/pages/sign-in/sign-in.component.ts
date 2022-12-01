@@ -1,6 +1,6 @@
 import { Component, TemplateRef, ViewChild } from '@angular/core';
 import { TextFieldType } from '@shared/components/text-field/values/text-field-type.enum';
-import { NavigationFullPath, NavigationPath } from '@core/values';
+import { NavigationFullPath, RoutePath } from '@core/values';
 import { ModalOptions } from '@shared/components/dialog/models/modal-options.model';
 import { Router } from '@angular/router';
 import { AuthService } from '@features/auth/services/auth.service';
@@ -26,14 +26,6 @@ export class SignInComponent {
   @ViewChild('errorModal')
   public errorModalRef!: TemplateRef<any>;
 
-  get forgotPasswordPath() {
-    return NavigationFullPath[NavigationPath.RESET_PASSWORD];
-  }
-
-  get signUpPath() {
-    return NavigationFullPath[NavigationPath.SIGN_UP];
-  }
-
   constructor(
     private router: Router,
     private authService: AuthService,
@@ -41,6 +33,37 @@ export class SignInComponent {
     private loadingService: LoadingService,
     private authFormService: AuthFormService,
   ) {}
+
+  get forgotPasswordPath() {
+    return NavigationFullPath[RoutePath.RESET_PASSWORD];
+  }
+
+  get signUpPath() {
+    return NavigationFullPath[RoutePath.SIGN_UP];
+  }
+
+  onSubmit(credentials: Credentials) {
+    this.credentials = credentials;
+    this.loadingService.isLoading = true;
+
+    const modalOptions = this.initModalOptions();
+
+    this.authService
+      .signIn(credentials)
+      .pipe(
+        take(1),
+        catchError((err) => {
+          const email = credentials.email || '';
+          this.handleInvalidSignIn(err, email, modalOptions);
+          return throwError(err);
+        }),
+      )
+      .subscribe((_: boolean) => {
+        this.authFormService.resetForm();
+        this.loadingService.isLoading = false;
+        this.navigateTo(RoutePath.HOME);
+      });
+  }
 
   private resendConfirmationEmail(email: string): Observable<boolean> {
     return this.authService
@@ -68,30 +91,7 @@ export class SignInComponent {
     return options;
   }
 
-  private navigateTo(path: NavigationPath) {
+  private navigateTo(path: RoutePath) {
     this.router.navigate([NavigationFullPath[path]]);
-  }
-
-  onSubmit(credentials: Credentials) {
-    this.credentials = credentials;
-    this.loadingService.isLoading = true;
-
-    const modalOptions = this.initModalOptions();
-
-    this.authService
-      .signIn(credentials)
-      .pipe(
-        take(1),
-        catchError((err) => {
-          const email = credentials.email || '';
-          this.handleInvalidSignIn(err, email, modalOptions);
-          return throwError(err);
-        }),
-      )
-      .subscribe((_: boolean) => {
-        this.authFormService.resetForm();
-        this.loadingService.isLoading = false;
-        this.navigateTo(NavigationPath.HOME);
-      });
   }
 }

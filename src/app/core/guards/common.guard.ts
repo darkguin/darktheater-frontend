@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, Router } from '@angular/router';
 import { LocalStorageService } from '@core/services';
-import { NavigationFullPath, NavigationPath, StorageKey } from '@core/values';
+import { NavigationFullPath, RoutePath, StorageKey } from '@core/values';
 
 @Injectable({
   providedIn: 'root',
@@ -14,7 +14,7 @@ export class CommonGuard implements CanActivate {
       return true;
     }
 
-    this.router.navigate([NavigationFullPath[NavigationPath.HOME]]);
+    this.router.navigate([NavigationFullPath[RoutePath.HOME]]);
     return false;
   }
 }

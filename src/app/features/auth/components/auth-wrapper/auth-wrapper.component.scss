@@ -1,5 +1,5 @@
-@use "~src/assets/styles/vars";
-@use "~src/assets/styles/animations/border-spinner";
+@use "src/assets/styles/vars";
+@use "src/assets/styles/animations/border-spinner";
 
 .auth-wrapper {
   display: flex;
@@ -25,8 +25,8 @@
         90deg,
         rgba(var(--second-color-rgb), 1) 45%,
         rgba(var(--second-color-rgb), 0.6) 100%
-      ),
-      url("~src/assets/images/auth-preview-carousel.jpeg") no-repeat 0 100%;
+    ),
+    url("~src/assets/images/auth-preview-carousel.jpeg") no-repeat 0 100%;
     background-size: auto 150%;
     background-position: right 30%;
     overflow: hidden;

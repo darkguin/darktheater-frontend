@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AppInfo, NavigationFullPath, NavigationPath } from '@core/values';
+import { AppInfo, NavigationFullPath, RoutePath } from '@core/values';
 import { LoadingService } from '@core/services';
 import { Observable } from 'rxjs';
 
@@ -11,13 +11,13 @@ import { Observable } from 'rxjs';
 export class AuthWrapperComponent {
   appInfo = AppInfo;
 
+  constructor(private loadingService: LoadingService) {}
+
   get homePath() {
-    return NavigationFullPath[NavigationPath.HOME];
+    return NavigationFullPath[RoutePath.HOME];
   }
 
   get isLoading$(): Observable<boolean> {
     return this.loadingService.isLoading$;
   }
-
-  constructor(private loadingService: LoadingService) {}
 }

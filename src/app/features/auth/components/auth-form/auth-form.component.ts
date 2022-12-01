@@ -6,7 +6,7 @@ import { ValidationUtil } from '@features/auth/utils/validation.util';
 import { LoadingService } from '@core/services';
 import { Credentials } from '@core/models';
 import { AuthFormType } from '@features/auth/values/auth-form-type.enum';
-import { NavigationFullPath, NavigationPath } from '@core/values';
+import { NavigationFullPath, RoutePath } from '@core/values';
 import { AuthFormService } from '@features/auth/services/auth-form.service';
 import { AuthFormConfig } from '@features/auth/values/auth-form-config.value';
 
@@ -16,16 +16,27 @@ import { AuthFormConfig } from '@features/auth/values/auth-form-config.value';
   styleUrls: ['./auth-form.component.scss'],
 })
 export class AuthFormComponent implements OnInit, OnDestroy {
-  private destroy = new Subject();
-
   @Input() type = AuthFormType.SIGN_IN;
   @Output() submitted = new EventEmitter<Credentials>();
-
   authFormType = AuthFormType;
   textFieldType = TextFieldType;
+  authForm = new FormGroup({
+    email: new FormControl('', [Validators.required, ValidationUtil.email]),
+    username: new FormControl('', [Validators.required, Validators.minLength(3)]),
+    password: new FormControl('', [
+      Validators.required,
+      Validators.minLength(8),
+      ValidationUtil.numberContains,
+      ValidationUtil.upperCaseLetterContains,
+      ValidationUtil.lowerCaseLetterContains,
+    ]),
+  });
+  private destroy = new Subject();
+
+  constructor(private loadingService: LoadingService, private authFormService: AuthFormService) {}
 
   get forgotPasswordPath() {
-    return NavigationFullPath[NavigationPath.RESET_PASSWORD];
+    return NavigationFullPath[RoutePath.RESET_PASSWORD];
   }
 
   get formConfig() {
@@ -68,20 +79,6 @@ export class AuthFormComponent implements OnInit, OnDestroy {
     );
   }
 
-  authForm = new FormGroup({
-    email: new FormControl('', [Validators.required, ValidationUtil.email]),
-    username: new FormControl('', [Validators.required, Validators.minLength(3)]),
-    password: new FormControl('', [
-      Validators.required,
-      Validators.minLength(8),
-      ValidationUtil.numberContains,
-      ValidationUtil.upperCaseLetterContains,
-      ValidationUtil.lowerCaseLetterContains,
-    ]),
-  });
-
-  constructor(private loadingService: LoadingService, private authFormService: AuthFormService) {}
-
   ngOnInit() {
     this.disableUnusedControls();
 
@@ -94,14 +91,14 @@ export class AuthFormComponent implements OnInit, OnDestroy {
     this.destroy.next(true);
   }
 
+  onSubmit() {
+    if (this.isInvalidForm) return;
+    this.submitted.emit(this.authForm.value as Credentials);
+  }
+
   private disableUnusedControls() {
     if (!this.formConfig.usernameControl) this.usernameControl.clearValidators();
     if (!this.formConfig.emailControl) this.emailControl.clearValidators();
     if (!this.formConfig.passwordControl) this.passwordControl.clearValidators();
-  }
-
-  onSubmit() {
-    if (this.isInvalidForm) return;
-    this.submitted.emit(this.authForm.value as Credentials);
   }
 }

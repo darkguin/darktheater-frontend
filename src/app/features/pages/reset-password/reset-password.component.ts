@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavigationFullPath, NavigationPath } from '@core/values';
+import { NavigationFullPath, RoutePath } from '@core/values';
 import { Router } from '@angular/router';
 import { AuthService } from '@features/auth/services/auth.service';
 import { ToastService } from '@shared/components/dialog';
@@ -17,14 +17,6 @@ import { AuthFormService } from '@features/auth/services/auth-form.service';
 export class ResetPasswordComponent {
   authFormType = AuthFormType;
 
-  get signUpPath() {
-    return NavigationFullPath[NavigationPath.SIGN_UP];
-  }
-
-  get signInPath() {
-    return NavigationFullPath[NavigationPath.SIGN_IN];
-  }
-
   constructor(
     private router: Router,
     private authService: AuthService,
@@ -32,6 +24,14 @@ export class ResetPasswordComponent {
     private loadingService: LoadingService,
     private authFormService: AuthFormService,
   ) {}
+
+  get signUpPath() {
+    return NavigationFullPath[RoutePath.SIGN_UP];
+  }
+
+  get signInPath() {
+    return NavigationFullPath[RoutePath.SIGN_IN];
+  }
 
   onSubmit({ email }: Credentials) {
     this.loadingService.isLoading = true;
@@ -51,7 +51,7 @@ export class ResetPasswordComponent {
         this.loadingService.isLoading = false;
 
         this.toastService.success('An email to restore access to the account has been sent.', 8000);
-        this.router.navigate([NavigationFullPath[NavigationPath.SIGN_IN]]);
+        this.router.navigate([NavigationFullPath[RoutePath.SIGN_IN]]);
       });
   }
 }

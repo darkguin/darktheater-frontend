@@ -1,6 +1,6 @@
 import { Component, OnDestroy, TemplateRef, ViewChild } from '@angular/core';
 import { TextFieldType } from '@shared/components/text-field/values/text-field-type.enum';
-import { NavigationFullPath, NavigationPath } from '@core/values';
+import { NavigationFullPath, RoutePath } from '@core/values';
 import { AuthService } from '@features/auth/services/auth.service';
 import { Credentials } from '@core/models';
 import { catchError, Subject, take, takeUntil, throwError } from 'rxjs';
@@ -17,22 +17,12 @@ import { AuthFormService } from '@features/auth/services/auth-form.service';
   styleUrls: ['./sign-up.component.scss'],
 })
 export class SignUpComponent implements OnDestroy {
-  private destroy = new Subject();
-
   textFieldType = TextFieldType;
   authFormType = AuthFormType;
   credentials: Credentials = {};
-
   @ViewChild('successModal')
   public successModalRef!: TemplateRef<any>;
-
-  get forgotPasswordPath() {
-    return NavigationFullPath[NavigationPath.RESET_PASSWORD];
-  }
-
-  get signInPath() {
-    return NavigationFullPath[NavigationPath.SIGN_IN];
-  }
+  private destroy = new Subject();
 
   constructor(
     private router: Router,
@@ -41,6 +31,14 @@ export class SignUpComponent implements OnDestroy {
     private loadingService: LoadingService,
     private authFormService: AuthFormService,
   ) {}
+
+  get forgotPasswordPath() {
+    return NavigationFullPath[RoutePath.RESET_PASSWORD];
+  }
+
+  get signInPath() {
+    return NavigationFullPath[RoutePath.SIGN_IN];
+  }
 
   ngOnDestroy() {
     this.destroy.next(true);
