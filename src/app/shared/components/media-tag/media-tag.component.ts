@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Movie, Series } from '@core/models';
+import { MovieMock, Series } from '@core/models';
 import { CommonModule } from '@angular/common';
 import { DatetimeUtil } from '@core/utils/datetime.util';
 
@@ -11,7 +11,7 @@ import { DatetimeUtil } from '@core/utils/datetime.util';
   imports: [CommonModule],
 })
 export class MediaTagComponent {
-  @Input() media!: Movie & Series;
+  @Input() media!: MovieMock & Series;
 
   get episodes() {
     let episodes = 0;

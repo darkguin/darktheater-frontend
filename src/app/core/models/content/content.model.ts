@@ -1,5 +1,8 @@
 import { ContentType } from '@core/values';
-import { Actor, Country, Director, Genre } from '@core/models';
+import { Country } from '@models/content/country.model';
+import { Director } from '@models/content/director.model';
+import { Actor } from '@models/content/actor.model';
+import { Genre } from '@models/content/genre.model';
 
 export interface Content {
   id: number | string;

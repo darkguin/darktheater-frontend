@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MediaService } from '@services/content/media.service';
-import { Episode, Season, Series } from '@core/models';
+import { EpisodeMock, SeasonMock, Series } from '@core/models';
 import { NavigationFullPath, RoutePath } from '@core/values';
 import { HomeRecommendationMock } from '@/app/mocks';
 
@@ -32,15 +32,15 @@ export class SeriesComponent {
     this.series = media;
   }
 
-  get seasons(): Season[] {
+  get seasons(): SeasonMock[] {
     return this.series.seasons || [];
   }
 
-  get episodes(): Episode[] {
+  get episodes(): EpisodeMock[] {
     return this.series.seasons?.[this.selectedSeason].episodes || [];
   }
 
-  get currentEpisode(): Episode {
+  get currentEpisode(): EpisodeMock {
     return this.episodes[this.selectedEpisode];
   }
 

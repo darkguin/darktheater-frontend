@@ -1,6 +1,6 @@
 {
   "name": "darktheater",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "scripts": {
     "ng": "ng",
     "start": "ng serve --open",
@@ -13,6 +13,7 @@
   "private": true,
   "dependencies": {
     "@angular/animations": "^15.0.2",
+    "@angular/cdk": "^15.0.1",
     "@angular/common": "^15.0.2",
     "@angular/compiler": "^15.0.2",
     "@angular/core": "^15.0.2",

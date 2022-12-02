@@ -24,4 +24,4 @@ import { ContentCoverComponent } from '@shared/components/content-cover/content-
     ContentCoverComponent,
   ],
 })
-export class MoviesModule {}
+export default class MoviesModule {}

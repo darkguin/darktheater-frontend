@@ -1,0 +1,13 @@
+<section class='catalog' page-wrapper>
+  <catalog-tabs (selected)='onTabSelected($event)'></catalog-tabs>
+
+  <cdk-virtual-scroll-viewport class='viewport' itemSize='100'>
+    <ng-container *cdkVirtualFor='let card of contentItems$ | async'>
+      <card (clickCard)='onClickCard(card)' [controls]='false' [src]='card.poster' [title]='card.title'></card>
+    </ng-container>
+  </cdk-virtual-scroll-viewport>
+
+  <ng-container ngProjectAs='sidebar'>
+    <catalog-sidebar></catalog-sidebar>
+  </ng-container>
+</section>

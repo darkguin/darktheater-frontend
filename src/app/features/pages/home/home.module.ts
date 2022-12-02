@@ -30,4 +30,4 @@ import { RemoveHostDirective } from '@shared/directives/remove-host';
     RemoveHostDirective,
   ],
 })
-export class HomeModule {}
+export default class HomeModule {}

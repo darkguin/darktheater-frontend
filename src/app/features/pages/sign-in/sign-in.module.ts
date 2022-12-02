@@ -11,4 +11,4 @@ import { IconModule } from '@shared/components/icon';
   declarations: [SignInComponent],
   imports: [CommonModule, SignInRoutingModule, AuthModule, TextFieldModule, IconModule],
 })
-export class SignInModule {}
+export default class SignInModule {}
