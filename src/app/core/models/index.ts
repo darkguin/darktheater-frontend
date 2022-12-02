@@ -28,6 +28,10 @@ export * from './content/mock/series.model';
 /* CONTENT */
 export * from './content/content.model';
 export * from './content/genre.model';
+export * from './content/director.model';
 export * from './content/actor.model';
 export * from './content/country.model';
-export * from './content/director.model';
+export * from './content/movie.model';
+export * from './content/episode.model';
+export * from './content/season.model';
+export * from './content/serial.model';

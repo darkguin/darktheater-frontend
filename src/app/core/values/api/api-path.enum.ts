@@ -9,4 +9,9 @@ export enum ApiPath {
   EMAIL_VERIFICATION = 'auth/email-verification/',
   MOVIES = 'content/movies/',
   MOVIE = 'content/movies/:id/',
+  SERIALS = 'content/serials/',
+  SERIAL = 'content/serials/:id/',
+  USER_LIBRARY = 'users/me/library/',
+  GET_USER_LIBRARY = 'users/me/library/:type/',
+  USER_LIBRARY_ITEM = 'users/me/library/:id/',
 }

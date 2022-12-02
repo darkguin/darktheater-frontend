@@ -5,6 +5,7 @@ export enum RoutePath {
   CONFIRM = 'confirm',
   HOME = 'home',
   PROFILE = 'profile',
+  CATALOG = 'catalog',
   MOVIES = 'movies/:id',
   SERIES = 'series/:id',
 }

@@ -60,7 +60,6 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   onSelectSlide(slide: Slide) {
-    console.log(slide);
     const media = this.mediaService.getById(slide.id || '');
     if (!media) return;
     const contentUrl = this.mediaService.createContentUrl(media);

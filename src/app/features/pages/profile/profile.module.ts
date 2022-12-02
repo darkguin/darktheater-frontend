@@ -14,4 +14,4 @@ import { PageWrapperModule } from '@shared/components/page-wrapper/page-wrapper.
   imports: [CommonModule, ProfileRoutingModule, AvatarModule, IconModule, PageWrapperModule],
   providers: [LoadingService],
 })
-export class ProfileModule {}
+export default class ProfileModule {}

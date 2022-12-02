@@ -1,7 +1,7 @@
-import { Episode } from '@models/content/mock/episode.model';
+import { EpisodeMock } from '@models/content/mock/episode.model';
 import { ContentType } from '@core/values';
 
-export interface Season {
+export interface SeasonMock {
   id: string;
   title: string;
   contentType: ContentType;
@@ -22,6 +22,6 @@ export interface Season {
   actors?: any[];
   directors?: any[];
   genres: string[];
-  episodes: Episode[];
+  episodes: EpisodeMock[];
   seriesName?: string;
 }

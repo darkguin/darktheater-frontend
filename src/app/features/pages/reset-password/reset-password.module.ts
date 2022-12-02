@@ -17,4 +17,4 @@ import { AuthModule } from '@features/auth';
     AuthModule,
   ],
 })
-export class ResetPasswordModule {}
+export default class ResetPasswordModule {}

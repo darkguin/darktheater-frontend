@@ -3,44 +3,41 @@
 
 .home-sidebar {
   &__header {
-    align-items: center;
     display: flex;
+    align-items: center;
     justify-content: space-between;
-    margin-bottom: 32px;
     width: 100%;
+    margin-bottom: 32px;
   }
 
   &__userinfo {
-    align-items: center;
-    color: var(--title-color);
     display: flex;
+    align-items: center;
     justify-content: flex-start;
     text-decoration: none;
+    color: var(--title-color);
 
     &:hover {
-      color: var(--contrast-color);
       transition: color 0.5s;
+      color: var(--contrast-color);
 
       .home-sidebar__avatar {
-        border-color: var(--contrast-color);
         transition: border 0.5s;
+        border-color: var(--contrast-color);
       }
     }
   }
 
   &__avatar {
-    border: 2px solid var(--btn-light-color);
-    border-radius: vars.$border-radius-sm;
-    height: 54px;
-    margin-right: 10px;
     overflow: hidden;
     width: 54px;
+    height: 54px;
+    margin-right: 10px;
+    border: 2px solid var(--btn-light-color);
+    border-radius: vars.$border-radius-sm;
   }
 
   &__control {
     padding: 8px !important;
-  }
-
-  .search-form {
   }
 }

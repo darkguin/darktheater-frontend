@@ -19,4 +19,4 @@ import { IconModule } from '@shared/components/icon';
     IconModule,
   ],
 })
-export class SignUpModule {}
+export default class SignUpModule {}

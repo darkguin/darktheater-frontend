@@ -6,9 +6,6 @@ import { NotFoundRoutingModule } from './not-found-routing.module';
 
 @NgModule({
   declarations: [NotFoundComponent],
-  imports: [
-    CommonModule,
-    NotFoundRoutingModule,
-  ],
+  imports: [CommonModule, NotFoundRoutingModule],
 })
-export class NotFoundModule {}
+export default class NotFoundModule {}

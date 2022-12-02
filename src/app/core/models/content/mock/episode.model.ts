@@ -1,6 +1,6 @@
 import { ContentType } from '@core/values';
 
-export interface Episode {
+export interface EpisodeMock {
   id: string;
   title: string;
   contentType: ContentType;

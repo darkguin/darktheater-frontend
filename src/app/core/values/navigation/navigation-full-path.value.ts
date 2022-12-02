@@ -5,6 +5,7 @@ const getPath = (layout: Layout) => (!!layout.length ? `/${layout}` : layout);
 
 export const NavigationFullPath = {
   [Path.HOME]: `${getPath(Layout.MAIN)}/${Path.HOME}`,
+  [Path.CATALOG]: `${getPath(Layout.MAIN)}/${Path.CATALOG}`,
   [Path.MOVIES]: `${getPath(Layout.MAIN)}/${Path.MOVIES}`,
   [Path.SERIES]: `${getPath(Layout.MAIN)}/${Path.SERIES}`,
   [Path.PROFILE]: `${getPath(Layout.MAIN)}/${Path.PROFILE}`,

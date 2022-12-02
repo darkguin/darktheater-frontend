@@ -14,4 +14,4 @@ import { TextFieldModule } from '@shared/components/text-field/text-field.module
   providers: [ConfirmGuard, ConfirmationService],
   imports: [CommonModule, ConfirmRoutingModule, AuthModule, ReactiveFormsModule, TextFieldModule],
 })
-export class ConfirmModule {}
+export default class ConfirmModule {}

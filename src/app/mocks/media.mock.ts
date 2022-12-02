@@ -1,4 +1,4 @@
-import { Episode, Media, Movie, Season, Series } from '@core/models';
+import { EpisodeMock, Media, MovieMock, SeasonMock, Series } from '@core/models';
 import { ContentType } from '@core/values';
 
 export const MediaMock: Media[] = [
@@ -27,7 +27,7 @@ export const MediaMock: Media[] = [
       'https://viasat-small.cdnvideo.ru/viasat/production/contents/afd90b6a-77a0-41cf-9af2-4b3ee5b3417f/previews/u76zrgoiy7ly2wp0r890vd3xmw5t',
     countries: ['Республика Корея'],
     hls: 'https://video.platformcraft.ru/vod/62b5ff240e47cf22a7e7a573/playlist.m3u8',
-  } as Movie,
+  } as MovieMock,
   {
     id: '7c6455b1-f34f-460e-adaf-226089f8616f',
     title: 'Поворот не туда: Наследие',
@@ -53,7 +53,7 @@ export const MediaMock: Media[] = [
       'https://viasat-small.cdnvideo.ru/viasat/production/contents/7c6455b1-f34f-460e-adaf-226089f8616f/previews/dkyj1io771c28cfhrpb96qbxibui',
     countries: ['США', 'Германия'],
     hls: 'https://video.platformcraft.ru/vod/630147cc0e47cf4fa8ae049b/playlist.m3u8',
-  } as Movie,
+  } as MovieMock,
   {
     actors: [
       'Доминик Уэст',
@@ -112,7 +112,7 @@ export const MediaMock: Media[] = [
             preview:
               'https://viasat-small.cdnvideo.ru/viasat/production/contents/63102383-6a21-4777-b1f7-e342b4025c3c/previews/ujxxgnpgzq3xy9pr4mkjvzr9g8en',
             number: 1,
-          } as Episode,
+          } as EpisodeMock,
           {
             id: '33b1f63a-82a7-4d7c-b735-5b3d2ed15595',
             contentType: ContentType.EPISODE,
@@ -131,7 +131,7 @@ export const MediaMock: Media[] = [
             preview:
               'https://viasat-small.cdnvideo.ru/viasat/production/contents/33b1f63a-82a7-4d7c-b735-5b3d2ed15595/previews/5e2kd6ea4qymdvl2msioszg4r2yp',
             number: 2,
-          } as Episode,
+          } as EpisodeMock,
           {
             id: '58a38cb9-c573-45c7-bed9-42b869f49c51',
             contentType: ContentType.EPISODE,
@@ -150,7 +150,7 @@ export const MediaMock: Media[] = [
             preview:
               'https://viasat-small.cdnvideo.ru/viasat/production/contents/58a38cb9-c573-45c7-bed9-42b869f49c51/previews/gvqn0rl9sp97rckhvqky5zdpcml5',
             number: 3,
-          } as Episode,
+          } as EpisodeMock,
           {
             id: '2fb5c516-87f7-4659-9aad-0e7b39ef8e1c',
             contentType: ContentType.EPISODE,
@@ -169,7 +169,7 @@ export const MediaMock: Media[] = [
             preview:
               'https://viasat-small.cdnvideo.ru/viasat/production/contents/2fb5c516-87f7-4659-9aad-0e7b39ef8e1c/previews/7xn1bmvvpbjmzkf9cr1msey0klnh',
             number: 4,
-          } as Episode,
+          } as EpisodeMock,
           {
             id: '0974fdca-5d77-4ed1-967a-b54caf80df54',
             contentType: ContentType.EPISODE,
@@ -188,7 +188,7 @@ export const MediaMock: Media[] = [
             preview:
               'https://viasat-small.cdnvideo.ru/viasat/production/contents/0974fdca-5d77-4ed1-967a-b54caf80df54/previews/e43c6eyjidssaqa3oo1ekb6lb77f',
             number: 5,
-          } as Episode,
+          } as EpisodeMock,
           {
             id: '123be241-d2b6-4cfc-93ea-c93983de3179',
             contentType: ContentType.EPISODE,
@@ -207,9 +207,9 @@ export const MediaMock: Media[] = [
             preview:
               'https://viasat-small.cdnvideo.ru/viasat/production/contents/123be241-d2b6-4cfc-93ea-c93983de3179/previews/vji0gzkozqgjahf79qhdhnwuexd6',
             number: 6,
-          } as Episode,
+          } as EpisodeMock,
         ],
-      } as Season,
+      } as SeasonMock,
     ],
     id: 'd0b58f45-d78f-43c2-8541-abd4233e37f9',
     contentType: ContentType.SERIAL,
@@ -263,7 +263,7 @@ export const MediaMock: Media[] = [
       'https://viasat-small.cdnvideo.ru/viasat/production/contents/be534401-de4e-48bf-92cf-9baf04e76da3/previews/dcx69dc1uuu7mht9v7elsto8m1se',
     countries: ['США'],
     hls: 'https://video.platformcraft.ru/vod/61782d08ef3db50986013102/playlist.m3u8',
-  } as Movie,
+  } as MovieMock,
   {
     id: '64734808-06cf-4f7c-a4c4-92e48fa27006',
     actors: [],
@@ -290,7 +290,7 @@ export const MediaMock: Media[] = [
       'https://viasat-small.cdnvideo.ru/viasat/production/contents/64734808-06cf-4f7c-a4c4-92e48fa27006/previews/0pc3na0818msee6q1vk3mwb63l4r',
     countries: ['Великобритания', 'Германия'],
     hls: 'https://video.platformcraft.ru/vod/5ee8e8fcef3db55dce42f242/playlist.m3u8',
-  } as Movie,
+  } as MovieMock,
   {
     actors: ['Щин Ха-гюн', 'Ё Джин-гу', 'Чхве Сон-ын'],
     directors: ['Щим На-ён'],
@@ -350,7 +350,7 @@ export const MediaMock: Media[] = [
             preview:
               'https://viasat-small.cdnvideo.ru/viasat/production/contents/323bef96-2a6f-4822-a869-e561b1ad0890/previews/a5701pyqpw86yr3n3zpk0w7eim47',
             number: 1,
-          } as Episode,
+          } as EpisodeMock,
           {
             id: '34c73fc1-a115-4bea-9e14-b8f8a5ccaf63',
             contentType: ContentType.EPISODE,
@@ -371,7 +371,7 @@ export const MediaMock: Media[] = [
             preview:
               'https://viasat-small.cdnvideo.ru/viasat/production/contents/34c73fc1-a115-4bea-9e14-b8f8a5ccaf63/previews/8bq8etl82cshk6lxsx466v8setuq',
             number: 2,
-          } as Episode,
+          } as EpisodeMock,
           {
             id: '69379f42-5619-44db-a450-246248e0622d',
             contentType: ContentType.EPISODE,
@@ -392,7 +392,7 @@ export const MediaMock: Media[] = [
             preview:
               'https://viasat-small.cdnvideo.ru/viasat/production/contents/69379f42-5619-44db-a450-246248e0622d/previews/wiq5h0jdzyxajghllz815e90bjjb',
             number: 3,
-          } as Episode,
+          } as EpisodeMock,
           {
             id: '1ec2f53c-8b0c-4507-b758-94b6fa657dee',
             contentType: ContentType.EPISODE,
@@ -413,7 +413,7 @@ export const MediaMock: Media[] = [
             preview:
               'https://viasat-small.cdnvideo.ru/viasat/production/contents/1ec2f53c-8b0c-4507-b758-94b6fa657dee/previews/rbrzkbneskxk2ves21kacwlxnem5',
             number: 4,
-          } as Episode,
+          } as EpisodeMock,
           {
             id: '498809f8-a903-4cc5-8e6d-bd01b9aac84a',
             contentType: ContentType.EPISODE,
@@ -434,7 +434,7 @@ export const MediaMock: Media[] = [
             preview:
               'https://viasat-small.cdnvideo.ru/viasat/production/contents/498809f8-a903-4cc5-8e6d-bd01b9aac84a/previews/1kv96a6dqyud2e4i0cz8dp4mw6hw',
             number: 5,
-          } as Episode,
+          } as EpisodeMock,
           {
             id: '4b870acc-1233-4cd8-9fad-7590593d210d',
             contentType: ContentType.EPISODE,
@@ -455,7 +455,7 @@ export const MediaMock: Media[] = [
             preview:
               'https://viasat-small.cdnvideo.ru/viasat/production/contents/4b870acc-1233-4cd8-9fad-7590593d210d/previews/6qoguk0k5l7ltxm7w7tqhny7p6fx',
             number: 6,
-          } as Episode,
+          } as EpisodeMock,
           {
             id: '61eae0be-9192-40ae-9bc0-6fb8bbf75197',
             contentType: ContentType.EPISODE,
@@ -476,7 +476,7 @@ export const MediaMock: Media[] = [
             preview:
               'https://viasat-small.cdnvideo.ru/viasat/production/contents/61eae0be-9192-40ae-9bc0-6fb8bbf75197/previews/9hx7fwyku31efwd52vglu76vf2wj',
             number: 7,
-          } as Episode,
+          } as EpisodeMock,
           {
             id: 'b2b409f0-000f-492c-9d56-ee7dc31db4ab',
             contentType: ContentType.EPISODE,
@@ -497,7 +497,7 @@ export const MediaMock: Media[] = [
             preview:
               'https://viasat-small.cdnvideo.ru/viasat/production/contents/b2b409f0-000f-492c-9d56-ee7dc31db4ab/previews/853zpane7586p0oiacia9pe6dq75',
             number: 8,
-          } as Episode,
+          } as EpisodeMock,
           {
             id: '2d377c78-9d78-4373-bf78-13b60a0cf183',
             contentType: ContentType.EPISODE,
@@ -518,7 +518,7 @@ export const MediaMock: Media[] = [
             preview:
               'https://viasat-small.cdnvideo.ru/viasat/production/contents/2d377c78-9d78-4373-bf78-13b60a0cf183/previews/lr18kmc6fnngsxk9j9hhtnzyfwuc',
             number: 9,
-          } as Episode,
+          } as EpisodeMock,
           {
             id: '0f0b9770-da05-4401-9917-2859340cdca7',
             contentType: ContentType.EPISODE,
@@ -539,7 +539,7 @@ export const MediaMock: Media[] = [
             preview:
               'https://viasat-small.cdnvideo.ru/viasat/production/contents/0f0b9770-da05-4401-9917-2859340cdca7/previews/9b5o3q47zix4f5yk95pf9s2ty2jf',
             number: 10,
-          } as Episode,
+          } as EpisodeMock,
           {
             id: 'e287c54d-e4b8-4700-8f50-f128998ed5c1',
             contentType: ContentType.EPISODE,
@@ -560,7 +560,7 @@ export const MediaMock: Media[] = [
             preview:
               'https://viasat-small.cdnvideo.ru/viasat/production/contents/e287c54d-e4b8-4700-8f50-f128998ed5c1/previews/zm3c7r572h5ke5j6jcqk8uspmxx5',
             number: 11,
-          } as Episode,
+          } as EpisodeMock,
           {
             id: 'c7c6bf12-a172-4971-b091-0cc0e50dc73a',
             contentType: ContentType.EPISODE,
@@ -579,7 +579,7 @@ export const MediaMock: Media[] = [
             preview:
               'https://viasat-small.cdnvideo.ru/viasat/production/contents/c7c6bf12-a172-4971-b091-0cc0e50dc73a/previews/1z2jpcj2yuv8oeplxpcfpaj7akop',
             number: 12,
-          } as Episode,
+          } as EpisodeMock,
           {
             id: '48c16f36-ae78-4697-954d-8de8146a951d',
             contentType: ContentType.EPISODE,
@@ -598,7 +598,7 @@ export const MediaMock: Media[] = [
             preview:
               'https://viasat-small.cdnvideo.ru/viasat/production/contents/48c16f36-ae78-4697-954d-8de8146a951d/previews/wrlloyorullx6qvvo8fijrqsh8bi',
             number: 13,
-          } as Episode,
+          } as EpisodeMock,
           {
             id: 'dc22d2f2-215d-46d8-b499-1ecf7270b035',
             contentType: ContentType.EPISODE,
@@ -617,7 +617,7 @@ export const MediaMock: Media[] = [
             preview:
               'https://viasat-small.cdnvideo.ru/viasat/production/contents/dc22d2f2-215d-46d8-b499-1ecf7270b035/previews/3btxqmwzdsqzxizrbqroky8vepe1',
             number: 14,
-          } as Episode,
+          } as EpisodeMock,
           {
             id: 'fe1a9970-8c80-4fe2-b0eb-cecf4cc16bc2',
             contentType: ContentType.EPISODE,
@@ -636,7 +636,7 @@ export const MediaMock: Media[] = [
             preview:
               'https://viasat-small.cdnvideo.ru/viasat/production/contents/fe1a9970-8c80-4fe2-b0eb-cecf4cc16bc2/previews/xi5lgs61q4pgr3l0p56po1rw0ivt',
             number: 15,
-          } as Episode,
+          } as EpisodeMock,
           {
             id: 'f3d0f778-9cb4-47e3-bc1b-2e50921ab6dc',
             contentType: ContentType.EPISODE,
@@ -655,9 +655,9 @@ export const MediaMock: Media[] = [
             preview:
               'https://viasat-small.cdnvideo.ru/viasat/production/contents/f3d0f778-9cb4-47e3-bc1b-2e50921ab6dc/previews/7pgckclkqtubsnt1ro493msel359',
             number: 16,
-          } as Episode,
+          } as EpisodeMock,
         ],
-      } as Season,
+      } as SeasonMock,
     ],
   } as Series,
 ];
