@@ -1,32 +1,32 @@
-<section [sidebar]='false' page-wrapper>
-  <div class='content'>
-    <div class='content__container player-container'>
+<section [sidebar]="false" page-wrapper>
+  <div class="content">
+    <div class="content__container player-container">
       <player
         [poster]='preview  + "?w=1024"'
         [src]="currentEpisode.source || ''"
-        class='content__player'
+        class="content__player"
       ></player>
 
-      <div class='content__playlist playlist'>
-        <div class='playlist__header'>
-          <ng-container *ngFor='let season of seasons; let index = index'>
+      <div class="content__playlist playlist">
+        <div class="playlist__header">
+          <ng-container *ngFor="let season of seasons; let index = index">
             <div
-              (click)='onSelectSeason(index)'
-              [class.active]='index === selectedSeason'
-              class='playlist__header-item title-medium-1'
+              (click)="onSelectSeason(index)"
+              [class.active]="index === selectedSeason"
+              class="playlist__header-item title-medium-1"
             >
               Season {{ index + 1 }}
             </div>
           </ng-container>
         </div>
 
-        <div [loop]='false' class='playlist__body' scroll-view>
-          <ng-container *ngFor='let episode of episodes; let index = index'>
+        <div [loop]="false" class="playlist__body" scroll-view>
+          <ng-container *ngFor="let episode of episodes; let index = index">
             <card
-              (clickCard)='onSelectEpisode(index)'
-              [controls]='false'
-              [selected]='selectedEpisode === index'
-              [src]="episode.preview || serial.background || ''"
+              (clickCard)="onSelectEpisode(index)"
+              [controls]="false"
+              [selected]="selectedEpisode === index"
+              [src]="episode.preview + '?w=270' || serial.background  + '?w=270' || ''"
               [title]='"Episode " + (index + 1) +". " + episode.title'
             ></card>
           </ng-container>
@@ -34,14 +34,14 @@
       </div>
     </div>
 
-    <content-cover [content]='serial' class='content__container info-container title-regular-1'></content-cover>
+    <content-cover [content]="serial" class="content__container info-container title-regular-1"></content-cover>
 
-    <div class='content__container common-container'>
-      <h1 class='content__title title-bold-4'>You might like</h1>
+    <div class="content__container common-container">
+      <h1 class="content__title title-bold-4">You might like</h1>
 
-      <div class='content__cards' scroll-view>
-        <ng-container *ngFor='let card of recommendations'>
-          <card [controls]='false' [src]='card.image' [title]='card.title'></card>
+      <div class="content__cards" scroll-view>
+        <ng-container *ngFor="let card of recommendations">
+          <card [controls]="false" [src]="card.image" [title]="card.title"></card>
         </ng-container>
       </div>
     </div>

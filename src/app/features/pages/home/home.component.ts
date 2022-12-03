@@ -11,7 +11,7 @@ import { MediaService } from '@services/content/media.service';
 import { Router } from '@angular/router';
 import { Slide } from '@shared/components/slider';
 import { Meta, Title } from '@angular/platform-browser';
-import { MetaInfo } from '@core/values';
+import { ContentType, MetaInfo, NavigationFullPath, RoutePath } from '@core/values';
 
 @Component({
   selector: 'home-page',
@@ -52,18 +52,19 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.destroy.next(true);
   }
 
-  onClickCard(card: Card) {
-    const media = this.mediaService.getById(card.contentId || '');
-    if (!media) return;
-    const contentUrl = this.mediaService.createContentUrl(media);
-    this.router.navigate([contentUrl]);
+  onSelectSlide(slide: Slide) {
+    const contentUrl = this.createContentUrl(slide.id, slide.contentType);
+    this.router.navigateByUrl(contentUrl);
   }
 
-  onSelectSlide(slide: Slide) {
-    const media = this.mediaService.getById(slide.id || '');
-    if (!media) return;
-    const contentUrl = this.mediaService.createContentUrl(media);
-    this.router.navigate([contentUrl]);
+  getContentLink(content: any) {
+    return this.createContentUrl(content.id, content.contentType);
+  }
+
+  private createContentUrl(id: number | string, contentType: ContentType) {
+    return NavigationFullPath[
+      contentType === ContentType.MOVIE ? RoutePath.MOVIES : RoutePath.SERIES
+    ].replace(':id', id.toString());
   }
 
   private fetchCurrentUser(): Observable<User> {
