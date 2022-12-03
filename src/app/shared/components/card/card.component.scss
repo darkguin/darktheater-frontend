@@ -1,5 +1,9 @@
 @use "src/assets/styles/vars";
 
+:host {
+  text-decoration: none;
+}
+
 .card {
   position: relative;
   display: flex;
@@ -12,6 +16,7 @@
   border-radius: vars.$border-radius-sm;
   background: var(--second-color);
   aspect-ratio: 2 / 2.8;
+  text-decoration: none;
 
   &.selected {
     border: 2px solid var(--contrast-color);
@@ -49,6 +54,7 @@
   &__title {
     padding: 8px 0 0 4px;
     cursor: pointer;
+    text-decoration: none;
     color: var(--title-color);
 
     &:hover {

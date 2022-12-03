@@ -16,13 +16,14 @@
   >
     <div *ngIf='!(isLoading$ | async)' class='catalog__cards'>
       <ng-container *ngFor='let card of items'>
-        <card
-          (clickCard)='onClickCard(card)'
+        <a
           [controls]='false'
+          [href]="getContentLink(card)"
           [src]='card.poster + "?w=270"'
           [title]='card.title'
+          card
           width='100%'
-        ></card>
+        ></a>
       </ng-container>
 
       <ng-container *ngIf='isAdditionalLoading'>

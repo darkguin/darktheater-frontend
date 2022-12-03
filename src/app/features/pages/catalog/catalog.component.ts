@@ -65,6 +65,10 @@ export class CatalogComponent implements OnInit, OnDestroy {
     this.router.navigateByUrl(contentUrl);
   }
 
+  getContentLink(content: Content) {
+    return this.createContentUrl(content.id, content.contentType);
+  }
+
   private updateCatalog(action: 'new' | 'push', page = 1) {
     this.catalogService
       .loadItems(action, page)
