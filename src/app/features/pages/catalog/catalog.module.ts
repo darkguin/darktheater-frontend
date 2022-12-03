@@ -13,6 +13,8 @@ import { CatalogRoutingModule } from './catalog-routing.module';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 import { CatalogTabsComponent } from './components/catalog-tabs/catalog-tabs.component';
 import { TextFieldModule } from '@shared/components/text-field';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+import { CardSkeletonComponent } from '@shared/components/skeleton';
 
 @NgModule({
   declarations: [CatalogComponent, CatalogSidebarComponent, CatalogTabsComponent],
@@ -26,6 +28,8 @@ import { TextFieldModule } from '@shared/components/text-field';
     CatalogRoutingModule,
     ScrollingModule,
     TextFieldModule,
+    InfiniteScrollModule,
+    CardSkeletonComponent,
   ],
 })
 export default class CatalogModule {}

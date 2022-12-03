@@ -1,5 +1,5 @@
-import { Component, Input } from '@angular/core';
-import { Media } from '@core/models';
+import { Component, Input, OnChanges } from '@angular/core';
+import { Content } from '@core/models';
 import { MediaTagComponent } from '@shared/components/media-tag/media-tag.component';
 import { CommonModule } from '@angular/common';
 
@@ -10,22 +10,18 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./content-cover.component.scss'],
   imports: [MediaTagComponent, CommonModule],
 })
-export class ContentCoverComponent {
-  @Input() media!: Media;
+export class ContentCoverComponent implements OnChanges {
+  @Input() content!: Content;
 
-  get directors(): string {
-    return this.media.directors?.join(', ') || '';
-  }
+  directors = '';
+  genres = '';
+  actors = '';
+  countries = '';
 
-  get genres(): string {
-    return this.media.genres?.join(', ') || '';
-  }
-
-  get actors(): string {
-    return this.media.actors?.join(', ') || '';
-  }
-
-  get countries(): string {
-    return this.media.countries?.join(', ') || '';
+  ngOnChanges() {
+    this.directors = this.content.directors?.map(({ name }) => name).join(', ') || '';
+    this.genres = this.content.genres?.map(({ name }) => name).join(', ') || '';
+    this.actors = this.content.actors?.map(({ name }) => name).join(', ') || '';
+    this.countries = this.content.countries?.map(({ name }) => name).join(', ') || '';
   }
 }

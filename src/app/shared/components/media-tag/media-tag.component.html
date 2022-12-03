@@ -1,7 +1,7 @@
-<div class="media-tag">
-  <span *ngIf="!!media.ageLimit" class="media-tag__age-limit">+{{ media.ageLimit }}</span>
-  <span *ngIf="!!media.year" class="media-tag__meta">{{ media.year }}, </span>
-  <span *ngIf="!!duration" class="media-tag__meta">{{ duration }}, </span>
-  <span *ngIf="!!episodes" class="media-tag__meta"> {{ episodes }} episodes, </span>
-  <span *ngIf="!!media.imdbRating" class="media-tag__meta">IMDB {{ media.imdbRating }}</span>
+<div class='media-tag'>
+  <span *ngIf='!!content.ageLimit' class='media-tag__age-limit'>+{{ content.ageLimit }}</span>
+  <span *ngIf='!!content.year' class='media-tag__meta'>{{ content.year }}, </span>
+  <span *ngIf='!!duration' class='media-tag__meta'>{{ duration }}, </span>
+  <span *ngIf='!!episodes' class='media-tag__meta'> {{ episodes }} episodes, </span>
+  <span *ngIf='!!content.imdbRating' class='media-tag__meta'>IMDB {{ content.imdbRating }}</span>
 </div>

@@ -1,8 +1,6 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
 import { MediaService } from '@services/content/media.service';
-import { MovieMock } from '@core/models';
-import { NavigationFullPath, RoutePath } from '@core/values';
+import { Movie } from '@core/models';
 import { HomeRecommendationMock } from '@/app/mocks';
 
 @Component({
@@ -10,23 +8,11 @@ import { HomeRecommendationMock } from '@/app/mocks';
   styleUrls: ['./movies.component.scss'],
 })
 export class MoviesComponent {
-  movie!: MovieMock;
-
   readonly recommendations = HomeRecommendationMock;
 
-  constructor(
-    private router: Router,
-    private route: ActivatedRoute,
-    private mediaService: MediaService,
-  ) {
-    const mediaId = route.snapshot.paramMap.get('id') as string;
-    const movie = mediaService.getById(mediaId);
+  constructor(private mediaService: MediaService) {}
 
-    if (!movie) {
-      router.navigate([NavigationFullPath[RoutePath.HOME]]);
-      return;
-    }
-
-    this.movie = movie;
+  get movie() {
+    return this.mediaService.content as Movie;
   }
 }

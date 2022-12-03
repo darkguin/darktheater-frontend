@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { MovieMock, Series } from '@core/models';
+import { Content, Movie, Season, Serial } from '@core/models';
 import { CommonModule } from '@angular/common';
 import { DatetimeUtil } from '@core/utils/datetime.util';
 
@@ -11,17 +11,19 @@ import { DatetimeUtil } from '@core/utils/datetime.util';
   imports: [CommonModule],
 })
 export class MediaTagComponent {
-  @Input() media!: MovieMock & Series;
+  @Input() content!: Content;
 
   get episodes() {
     let episodes = 0;
-    this.media.seasons?.forEach((season) => (episodes += season.episodes?.length));
+    (this.content as Serial).seasons?.forEach((season: Season) => {
+      episodes += season.episodes?.length;
+    });
     return episodes;
   }
 
   get duration() {
-    if (!this.media.duration) return '';
-    const { h, m } = DatetimeUtil.toHms(this.media.duration);
+    if (!(this.content as Movie)?.duration) return '';
+    const { h, m } = DatetimeUtil.toHms((this.content as Movie).duration);
     return `${h} ч ${m} мин`;
   }
 }

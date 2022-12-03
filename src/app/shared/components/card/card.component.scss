@@ -1,17 +1,22 @@
 @use "src/assets/styles/vars";
 
+:host {
+  text-decoration: none;
+}
+
 .card {
   position: relative;
   display: flex;
-  justify-content: center;
+  overflow: hidden;
   align-items: center;
 
+  justify-content: center;
   width: 185px;
-  aspect-ratio: 2 / 2.8;
 
-  background: var(--second-color);
   border-radius: vars.$border-radius-sm;
-  overflow: hidden;
+  background: var(--second-color);
+  aspect-ratio: 2 / 2.8;
+  text-decoration: none;
 
   &.selected {
     border: 2px solid var(--contrast-color);
@@ -31,29 +36,30 @@
     position: absolute;
     top: 0;
     left: 0;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-end;
     width: 100%;
     height: 100%;
-    cursor: pointer;
-    display: flex;
-    justify-content: flex-end;
-    align-items: flex-start;
     padding: 10px;
+    cursor: pointer;
     gap: 4px;
 
     &:hover {
-      background-color: rgba(var(--second-color-rgb), 0.5);
       transition: background-color 0.2s ease-in-out;
+      background-color: rgba(var(--second-color-rgb), 0.5);
     }
   }
 
   &__title {
-    color: var(--title-color);
     padding: 8px 0 0 4px;
     cursor: pointer;
+    text-decoration: none;
+    color: var(--title-color);
 
     &:hover {
-      color: rgba(var(--title-color-rgb), 0.5);
       transition: color 0.2s ease-in-out;
+      color: rgba(var(--title-color-rgb), 0.5);
     }
   }
 }

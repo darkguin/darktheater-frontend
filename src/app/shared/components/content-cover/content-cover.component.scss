@@ -10,6 +10,7 @@
   }
 
   &__poster {
+    min-width: 170px;
     max-width: 250px;
     aspect-ratio: 2 / 2.8;
     overflow: hidden;
