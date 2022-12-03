@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { ApiGatewayService } from '@services/api-gateway.service';
 import { Observable } from 'rxjs';
 import { ApiPath, ApiService, ContentType, LibraryType } from '@core/values';
+import { HttpParams } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root',
@@ -11,8 +12,8 @@ export class LibraryApi {
 
   getAll(type: LibraryType, page = 1, limit = 10): Observable<any[]> {
     const path = ApiPath.GET_USER_LIBRARY.replace(':type', type);
-    const finalPath = `${path}?page=${page}&size=${limit}`;
-    return this.api.get<any[]>(finalPath, ApiService.CONTENT);
+    const params = new HttpParams().set('page', page).set('size', limit);
+    return this.api.get<any[]>(path, ApiService.CONTENT, { params });
   }
 
   add(

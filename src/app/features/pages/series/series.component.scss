@@ -38,6 +38,7 @@
     &__header {
       display: flex;
       justify-content: flex-start;
+      flex-wrap: wrap;
       align-items: center;
       width: 100%;
       gap: 10px;

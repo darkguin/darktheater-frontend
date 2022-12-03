@@ -11,6 +11,7 @@ export class CardComponent {
   @Input() src = '';
   @Input() controls = true;
   @Input() selected = false;
+  @Input() width = '';
 
   @Output() clickWatch = new EventEmitter();
   @Output() clickCard = new EventEmitter();

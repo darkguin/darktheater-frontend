@@ -25,7 +25,7 @@ export class SerialMapper {
       genres: api.genres as Genre[],
       actors: api.actors as Actor[],
       directors: api.directors as Director[],
-      seasons: api.seasons.map(SeasonsMapper.map),
+      seasons: api.seasons?.map(SeasonsMapper.map) || [],
     };
   }
 }

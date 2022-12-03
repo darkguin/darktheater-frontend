@@ -1,6 +1,6 @@
-<div (click)='onCardClick()' class='card__wrapper'>
-  <div [class.selected]='selected' class='card unselectable'>
-    <img *ngIf='src' [ngSrc]='src' alt='card' class='card__image' fill />
+<div (click)='onCardClick()' [style.width]='width' class='card__wrapper'>
+  <div [class.selected]='selected' [style.width]='width' class='card unselectable'>
+    <img *ngIf='src' [ngSrc]='src' alt='card' class='card__image' fill priority />
     <div class='card__content'>
       <ng-container *ngIf='controls'>
         <card-button>

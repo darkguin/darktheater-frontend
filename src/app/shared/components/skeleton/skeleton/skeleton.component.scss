@@ -1,0 +1,34 @@
+$skeleton-background-size: 50%;
+$skeleton-gradient: linear-gradient(
+    90.17deg,
+    rgba(0, 0, 0, 0.0416667) 0%,
+    //rgba(0, 2, 2, 0.0987162) 23.2%,
+    rgba(var(--dark-color-rgb), 0.6) 48.73%,
+    rgba(var(--dark-color-rgb), 0.6) 50.58%,
+    //rgba(0, 2, 2, 0.0772737) 73.84%,
+    rgba(0, 0, 0, 0.0416667) 100%
+);
+
+.skeleton {
+  display: block;
+  border: 1px solid transparent;
+  background: var(--second-color);
+
+  &--animated {
+    animation-name: skeleton-animation;
+    animation-duration: 1.6s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    background: $skeleton-gradient, var(--second-color);
+    background-size: $skeleton-background-size;
+  }
+}
+
+@keyframes skeleton-animation {
+  0% {
+    background-position: -$skeleton-background-size;
+  }
+  100% {
+    background-position: $skeleton-background-size;
+  }
+}

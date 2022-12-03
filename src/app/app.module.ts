@@ -12,6 +12,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AuthInterceptor } from '@features/auth';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+import { IconModule } from '@shared/components/icon';
 
 @NgModule({
   declarations: [AppComponent],
@@ -22,7 +24,9 @@ import { AuthInterceptor } from '@features/auth';
     MainLayoutModule,
     AuthLayoutModule,
     HttpClientModule,
+    InfiniteScrollModule,
     HammerModule,
+    IconModule,
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: environment.production,
       registrationStrategy: 'registerWhenStable:30000',

@@ -1,36 +1,36 @@
-<div class="content-cover">
-  <div class="content-cover__title title-bold-6">{{ media.title }}</div>
+<div class='content-cover'>
+  <div class='content-cover__title title-bold-6'>{{ content.title }}</div>
 
-  <div class="content-cover__group">
-    <div class="content-cover__poster">
-      <img class="content-cover__poster-img" [src]="media.poster || ''" />
+  <div class='content-cover__group'>
+    <div class='content-cover__poster'>
+      <img [src]="content.poster + '?w=270' || ''" class='content-cover__poster-img'/>
     </div>
 
-    <div class="content-cover__info">
-      <media-tag class="content-cover__meta" [media]="media"></media-tag>
+    <div class='content-cover__info'>
+      <media-tag [content]='content' class='content-cover__meta'></media-tag>
 
-      <div *ngIf="genres" class="content-cover__row title-regular-1">
-        <span class="title-semi-bold-1 text-contrast">Genres: </span>
+      <div *ngIf='genres' class='content-cover__row title-regular-1'>
+        <span class='title-semi-bold-1 text-contrast'>Genres: </span>
         {{ genres }}
       </div>
 
-      <div *ngIf="countries" class="content-cover__row title-regular-1">
-        <span class="title-semi-bold-1 text-contrast">Countries: </span>
+      <div *ngIf='countries' class='content-cover__row title-regular-1'>
+        <span class='title-semi-bold-1 text-contrast'>Countries: </span>
         {{ countries }}
       </div>
 
-      <div *ngIf="directors" class="content-cover__row title-regular-1">
-        <span class="title-semi-bold-1 text-contrast">Directors: </span>
+      <div *ngIf='directors' class='content-cover__row title-regular-1'>
+        <span class='title-semi-bold-1 text-contrast'>Directors: </span>
         {{ directors }}
       </div>
 
-      <div *ngIf="actors" class="content-cover__row title-regular-1">
-        <span class="title-semi-bold-1 text-contrast">Actors: </span>
+      <div *ngIf='actors' class='content-cover__row title-regular-1'>
+        <span class='title-semi-bold-1 text-contrast'>Actors: </span>
         {{ actors }}
       </div>
     </div>
   </div>
 
-  <p class="text-contrast title-semi-bold-2">Описание:</p>
-  <p class="content-cover__description title-regular-1">{{ media.description }}</p>
+  <p class='text-contrast title-semi-bold-2'>Описание:</p>
+  <p class='content-cover__description title-regular-1'>{{ content.description }}</p>
 </div>

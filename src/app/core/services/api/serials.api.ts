@@ -3,6 +3,7 @@ import { ApiGatewayService } from '@services/api-gateway.service';
 import { Observable } from 'rxjs';
 import { ApiPath, ApiService } from '@core/values';
 import { ApiSerial } from '@models/api/api-serial.model';
+import { HttpParams } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root',
@@ -10,9 +11,9 @@ import { ApiSerial } from '@models/api/api-serial.model';
 export class SerialsApi {
   constructor(private api: ApiGatewayService) {}
 
-  getAll(page = 1, limit = 10): Observable<ApiSerial[]> {
-    const path = `${ApiPath.SERIALS}?page=${page}&size=${limit}`;
-    return this.api.get<ApiSerial[]>(path, ApiService.CONTENT);
+  getAll(page = 1, limit = 10, short = true): Observable<ApiSerial[]> {
+    const params = new HttpParams().set('page', page).set('size', limit).set('short', short);
+    return this.api.get<ApiSerial[]>(ApiPath.SERIALS, ApiService.CONTENT, { params });
   }
 
   get(id: number | string): Observable<ApiSerial> {

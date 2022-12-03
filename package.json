@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve --open",
+    "start": "ng serve",
     "build": "ng build",
     "build-prod": "ng build --configuration production",
     "start-pwa": "ng build --configuration production&& http-server -p 8080 -c-1 dist/darktheater",
@@ -25,6 +25,7 @@
     "dayjs": "^1.11.3",
     "hammerjs": "^2.0.8",
     "jwt-decode": "^3.1.2",
+    "ngx-infinite-scroll": "^14.0.1",
     "rxjs": "~7.5.0",
     "swiper": "^8.3.2",
     "tslib": "^2.3.0",
