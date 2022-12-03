@@ -20,15 +20,15 @@ A video streaming service with an emphasis on an online cinema that provides acc
 - Ensure the protection of work with payment systems
 - Provide protection against the introduction of malicious code
 
-# Links
-**Demo:** [darktheater.net](https://darktheater.net) <br/>
-**Documentation:** [docs.darktheater.net](https://docs.darktheater.net)
-
-# Notion docs
+### Notion docs
 - [Исследование предметной области, пользователей и контекстов](https://factual-gander-26d.notion.site/485d5807def0436ea66ce5edc0838039)<br/>
 - [Информационная архитектура и оценка ранних концепций](https://factual-gander-26d.notion.site/cc7d97af131b437290fa85ca56a65f78)<br/>
 - [Концептуальной проектирование: разработка интерактивного прототипа интерфейса](https://factual-gander-26d.notion.site/b4fd23663ba64e5186a0487068fae182)<br/>
 - [Анализ и оценка проектного решения](https://factual-gander-26d.notion.site/f7a131794696477aafaec56fb2622ff4)<br/>
+
+# Links
+**Demo:** [darktheater.net](https://darktheater.net) <br/>
+**Documentation:** [docs.darktheater.net](https://docs.darktheater.net)
 
 # Other repositories
 **Backend:** [darkguin/darktheater-backend](https://github.com/darkguin/darktheater-backend) <br/>
