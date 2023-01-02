@@ -1,64 +1,56 @@
 import {
+  ChangeDetectionStrategy,
   Component,
-  ElementRef,
   EventEmitter,
   Input,
   OnDestroy,
-  OnInit,
   Output,
-  ViewChild,
+  ViewEncapsulation,
 } from '@angular/core';
-import { Slide } from '@shared/components/slider/types/slide.type';
-import { sliderAnimation } from '@shared/components/slider/animation/slider.animation';
-import { Icon } from '@shared/components/icon';
-import { RemoveHostDirective } from '@shared/directives/remove-host';
+
+import { Swiper, SwiperOptions } from 'swiper';
+import { Slide } from './types/slide.type';
 
 @Component({
   selector: 'slider, [slider]',
   templateUrl: './slider.component.html',
   styleUrls: ['./slider.component.scss'],
-  hostDirectives: [RemoveHostDirective],
-  animations: [sliderAnimation('sliderAnimation')],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  encapsulation: ViewEncapsulation.None,
 })
-export class SliderComponent implements OnInit, OnDestroy {
-  readonly icon = Icon;
-  @Input() delay: number = 4000;
+export class SliderComponent implements OnDestroy {
   @Input() slides: Slide[] = [];
   @Output() clickSlide = new EventEmitter();
-  @ViewChild('slider') slider!: ElementRef<HTMLDivElement>;
-  activeSlide: number = 0;
+  instance!: Swiper;
 
-  timerId: unknown;
-
-  ngOnInit() {
-    this.timerId = setInterval(() => this.nextSlide(), this.delay);
+  get config() {
+    return {
+      slidesPerView: 1,
+      slidesPerGroup: 1,
+      spaceBetween: 30,
+      navigation: true,
+      loop: true,
+      autoplay: {
+        delay: 2500,
+        disableOnInteraction: false,
+      },
+      pagination: { clickable: true },
+    } as SwiperOptions;
   }
 
   ngOnDestroy() {
-    clearInterval(this.timerId as number);
+    this.instance.destroy(true);
   }
 
-  nextSlide(index = this.activeSlide + 1) {
-    if (index >= this.slides.length) index = 0;
-    this.activeSlide = index;
-  }
-
-  prevSlide(index = this.activeSlide - 1) {
-    if (index < 0) index = this.slides.length - 1;
-    this.activeSlide = index;
+  onSwiper(swiper: Swiper) {
+    this.instance = swiper;
   }
 
   onSliderClick(slide: Slide) {
     this.clickSlide.emit(slide);
   }
 
-  onSwipe(direction: 'left' | 'right') {
-    console.log(direction);
-    direction == 'left' ? this.prevSlide() : this.nextSlide();
-  }
-
   trackBy(index: number, slide: Slide): string {
-    return slide.image;
+    return slide.id;
   }
 }
-

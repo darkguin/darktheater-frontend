@@ -9,10 +9,10 @@ import { TextFieldModule } from '@shared/components/text-field';
 import { AvatarModule } from '@shared/components/avatar';
 import { IconModule } from '@shared/components/icon';
 import { PageWrapperModule } from '@shared/components/page-wrapper';
-import { ScrollViewComponent } from '@shared/components/scroll-view';
+import { CardViewComponent } from '@shared/components/card-view';
 import { CardModule } from '@shared/components/card';
-import { SliderModule } from '@shared/components/slider';
 import { RemoveHostDirective } from '@shared/directives/remove-host';
+import { SliderModule } from '@shared/components/slider';
 
 @NgModule({
   declarations: [HomeComponent, HomeSidebarComponent],
@@ -24,9 +24,8 @@ import { RemoveHostDirective } from '@shared/directives/remove-host';
     IconModule,
     PageWrapperModule,
     SliderModule,
-    ScrollViewComponent,
+    CardViewComponent,
     CardModule,
-    SliderModule,
     RemoveHostDirective,
   ],
 })

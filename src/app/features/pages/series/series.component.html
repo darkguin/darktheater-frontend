@@ -38,12 +38,7 @@
 
     <div class="content__container common-container">
       <h1 class="content__title title-bold-4">You might like</h1>
-
-      <div class="content__cards" scroll-view>
-        <ng-container *ngFor="let card of recommendations">
-          <card [controls]="false" [src]="card.image" [title]="card.title"></card>
-        </ng-container>
-      </div>
+      <card-view [cards]="recommendations" class="content__cards"></card-view>
     </div>
   </div>
 </section>

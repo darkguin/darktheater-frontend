@@ -1,0 +1,11 @@
+<div class="flex-slide">
+  <img *ngIf="image" [src]="image" class="flex-slide__image" />
+
+  <div class="flex-slide__content">
+    <div class="flex-slide__header">
+      <div class="flex-slide__subtitle">{{ subtitle }}</div>
+      <div class="flex-slide__title">{{ title }}</div>
+    </div>
+  </div>
+  <div (click)="onClickSlide()" class="flex-slide__btn btn btn--short btn--contrast">watch</div>
+</div>

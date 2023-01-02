@@ -3,9 +3,7 @@ import { CommonModule } from '@angular/common';
 import { IconModule } from '@shared/components/icon';
 
 import { SwiperModule } from 'swiper/angular';
-import SwiperCore, { Lazy, Navigation, Swiper } from 'swiper';
-
-SwiperCore.use([Navigation, Lazy]);
+import { Swiper } from 'swiper';
 
 @Component({
   selector: 'scroll-view, [scroll-view]',
@@ -15,15 +13,12 @@ SwiperCore.use([Navigation, Lazy]);
   styleUrls: ['./scroll-view.component.scss'],
 })
 export class ScrollViewComponent implements AfterViewInit {
-  private swiper?: Swiper;
-
   @ViewChild('scroll_view', { read: ElementRef })
   scrollView!: ElementRef;
-
   @ViewChild('scroll_container', { read: ElementRef })
   scrollContainer!: ElementRef;
-
   @Input() loop = false;
+  private swiper?: Swiper;
 
   ngAfterViewInit() {
     setTimeout(() => {
@@ -35,6 +30,12 @@ export class ScrollViewComponent implements AfterViewInit {
       this.addClassToSections(scrollContainer, 'swiper-slide');
       this.swiper = this.initSwiper(scrollView);
     }, 1000);
+  }
+
+  onControlClick(action: 'prev' | 'next') {
+    if (!this.swiper) return;
+
+    action === 'prev' ? this.swiper.slidePrev() : this.swiper.slideNext();
   }
 
   private initSwiper(scrollView: HTMLElement): Swiper {
@@ -61,11 +62,5 @@ export class ScrollViewComponent implements AfterViewInit {
         (section as HTMLElement).style.background = 'transparent';
       }
     });
-  }
-
-  onControlClick(action: 'prev' | 'next') {
-    if (!this.swiper) return;
-
-    action === 'prev' ? this.swiper.slidePrev() : this.swiper.slideNext();
   }
 }

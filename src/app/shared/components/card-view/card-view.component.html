@@ -1,0 +1,25 @@
+<swiper (swiper)="onSwiper($event)" [config]="config" class="card-view unselectable">
+  <ng-container *ngFor="let card of cards; let i = index; trackBy:trackBy">
+    <ng-template swiperSlide>
+      <ng-template [ngIfElse]="cardAsBlock" [ngIf]="asContentLink">
+        <a
+          [controls]="false"
+          [href]="getContentLink(card)"
+          [src]="card.image"
+          [title]="card.title"
+          card
+        ></a>
+      </ng-template>
+      <ng-template #cardAsBlock>
+        <div
+          (clickCard)="onCardClick(card)"
+          [controls]="false"
+          [src]="card.image"
+          [title]="card.title"
+          card
+        ></div>
+      </ng-template>
+
+    </ng-template>
+  </ng-container>
+</swiper>
