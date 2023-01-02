@@ -57,10 +57,6 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.router.navigateByUrl(contentUrl);
   }
 
-  getContentLink(content: any) {
-    return this.createContentUrl(content.id, content.contentType);
-  }
-
   private createContentUrl(id: number | string, contentType: ContentType) {
     return NavigationFullPath[
       contentType === ContentType.MOVIE ? RoutePath.MOVIES : RoutePath.SERIES

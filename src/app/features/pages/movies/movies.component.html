@@ -1,21 +1,16 @@
-<section [sidebar]='false' page-wrapper>
-  <div class='content'>
+<section [sidebar]="false" page-wrapper>
+  <div class="content">
     <player
       [poster]="movie.background + '?w=1024' || ''"
       [src]="movie.source || ''"
-      class='content__container player-container'
+      class="content__container player-container"
     ></player>
 
-    <content-cover [content]='movie' class='content__container info-container title-regular-1'></content-cover>
+    <content-cover [content]="movie" class="content__container info-container title-regular-1"></content-cover>
 
-    <div class='content__container common-container'>
-      <h1 class='content__title title-bold-4'>You might like</h1>
-
-      <div class='content__cards' scroll-view>
-        <ng-container *ngFor='let card of recommendations'>
-          <card [controls]='false' [src]='card.image' [title]='card.title'></card>
-        </ng-container>
-      </div>
+    <div class="content__container common-container">
+      <h1 class="content__title title-bold-4">You might like</h1>
+      <card-view [cards]="recommendations" class="content__cards"></card-view>
     </div>
   </div>
 </section>

@@ -1,5 +1,6 @@
 @use "src/assets/styles/vars";
 @use "src/assets/styles/fonts";
+@use "src/assets/styles/buttons";
 
 :host-context {
   width: 100%;
@@ -45,5 +46,19 @@
   &__title {
     @include fonts.font-bold;
     font-size: 2.4rem;
+  }
+
+  &__btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    line-height: 0;
+    z-index: 3;
+
+    &:hover, &:active {
+      color: var(--contrast-color);
+      background: var(--dark-color);
+      opacity: 1;
+    }
   }
 }

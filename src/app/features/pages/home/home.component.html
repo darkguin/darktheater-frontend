@@ -1,19 +1,11 @@
 <section class="home" page-wrapper>
-  <slider (clickSlide)="onSelectSlide($event)" [delay]="6000" [slides]="slides"></slider>
+  <slider (clickSlide)="onSelectSlide($event)" [slides]="slides" class="home__slider"></slider>
 
   <h1 class="home__title">Special for your</h1>
-  <div class="home__cards" scroll-view>
-    <ng-container *ngFor="let card of recommendations">
-      <a [controls]="false" [href]="getContentLink(card)" [src]="card.image" [title]="card.title" card></a>
-    </ng-container>
-  </div>
+  <card-view [cards]="recommendations" class="home__cards"></card-view>
 
   <h1 class="home__title">New motion pictures</h1>
-  <div class="home__cards" scroll-view>
-    <ng-container *ngFor="let card of newNotionPictures">
-      <a [controls]="false" [href]="getContentLink(card)" [src]="card.image" [title]="card.title" card></a>
-    </ng-container>
-  </div>
+  <card-view [cards]="newNotionPictures" class="home__cards"></card-view>
 
   <ng-container ngProjectAs="sidebar">
     <home-sidebar [user]="currentUser$ | async"></home-sidebar>

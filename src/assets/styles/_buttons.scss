@@ -37,7 +37,7 @@
 
   &:hover {
     opacity: 0.5;
-    transition: opacity 0.5s;
+    transition: all 0.5s;
   }
 
   &.btn--contrast-text {
@@ -47,7 +47,7 @@
     &:hover {
       color: var(--contrast-color);
       opacity: 1;
-      transition: color 0.5s;
+      transition: all 0.5s;
     }
   }
 

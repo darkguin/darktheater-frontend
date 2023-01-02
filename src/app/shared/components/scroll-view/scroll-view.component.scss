@@ -30,6 +30,10 @@
     }
   }
 
+  .swiper-slide {
+    width: auto !important;
+  }
+
   ::ng-deep {
     .swiper-slide {
       width: auto !important;

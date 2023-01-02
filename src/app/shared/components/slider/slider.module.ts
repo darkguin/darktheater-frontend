@@ -1,15 +1,13 @@
-import { CommonModule, NgOptimizedImage } from '@angular/common';
+import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 
+import { SwiperModule } from 'swiper/angular';
 import { SliderComponent } from './slider.component';
-import { SlideComponent } from './components/slide.component';
-import { LazyImageDirective } from '@shared/directives/lazy-image';
-import { RemoveHostDirective } from '@shared/directives/remove-host';
-import { IconModule } from '@shared/components/icon';
+import { SlideComponent } from './components/slide/slide.component';
 
 @NgModule({
   declarations: [SliderComponent, SlideComponent],
-  imports: [CommonModule, LazyImageDirective, RemoveHostDirective, IconModule, NgOptimizedImage],
-  exports: [SliderComponent, SlideComponent],
+  imports: [CommonModule, SwiperModule],
+  exports: [SliderComponent],
 })
 export class SliderModule {}
