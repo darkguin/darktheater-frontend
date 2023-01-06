@@ -13,6 +13,7 @@ import { CardViewComponent } from '@shared/components/card-view';
 import { CardModule } from '@shared/components/card';
 import { RemoveHostDirective } from '@shared/directives/remove-host';
 import { SliderModule } from '@shared/components/slider';
+import { PromoBannerComponent } from '@shared/components/promo-banner/promo-banner.component';
 
 @NgModule({
   declarations: [HomeComponent, HomeSidebarComponent],
@@ -27,6 +28,7 @@ import { SliderModule } from '@shared/components/slider';
     CardViewComponent,
     CardModule,
     RemoveHostDirective,
+    PromoBannerComponent,
   ],
 })
 export default class HomeModule {}

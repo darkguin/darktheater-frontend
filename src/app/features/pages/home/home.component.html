@@ -4,6 +4,13 @@
   <h1 class="home__title">Special for your</h1>
   <card-view [cards]="recommendations" class="home__cards"></card-view>
 
+  <promo-banner
+    (btnClick)="onPromoBannerClick()"
+    *ngIf="!(authService.authorized$ | async)"
+    btnName="Sign up"
+    title="Hey, what’s up?"
+  ></promo-banner>
+
   <h1 class="home__title">New motion pictures</h1>
   <card-view [cards]="newNotionPictures" class="home__cards"></card-view>
 

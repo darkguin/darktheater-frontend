@@ -211,9 +211,19 @@ $base-font-family: "Gilroy" !important;
     font-size: 14px;
   }
 
+  &-light-0_5 {
+    @include font-light;
+    font-size: 16px;
+  }
+
   &-light-1 {
     @include font-light;
     font-size: 18px;
+  }
+
+  &-light-2 {
+    @include font-light;
+    font-size: 22px;
   }
 
   &-regular-0 {

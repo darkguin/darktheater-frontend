@@ -30,8 +30,8 @@ export class HomeComponent implements OnInit, OnDestroy {
     private title: Title,
     private mediaService: MediaService,
     private accountService: AccountService,
-    private authService: AuthService,
     private loadingService: LoadingService,
+    public authService: AuthService,
   ) {
     title.setTitle(MetaInfo.home.title());
     meta.addTags([{ name: 'description', content: MetaInfo.home.description() }]);
@@ -55,6 +55,10 @@ export class HomeComponent implements OnInit, OnDestroy {
   onSelectSlide(slide: Slide) {
     const contentUrl = this.createContentUrl(slide.id, slide.contentType);
     this.router.navigateByUrl(contentUrl);
+  }
+
+  onPromoBannerClick() {
+    this.router.navigate([NavigationFullPath[RoutePath.SIGN_UP]]);
   }
 
   private createContentUrl(id: number | string, contentType: ContentType) {

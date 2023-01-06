@@ -1,13 +1,13 @@
-<div (click)='onCardClick()' [style.width]='width' class='card__wrapper'>
-  <div [class.selected]='selected' [style.width]='width' class='card unselectable'>
-    <img *ngIf='src' [ngSrc]='src' alt='card' class='card__image' fill priority />
-    <div class='card__content'>
-      <ng-container *ngIf='controls'>
+<div (click)="onCardClick()" [style.width]="width" class="card__wrapper">
+  <div [class.selected]="selected" [style.width]="width" class="card unselectable">
+    <img *ngIf="src" [ngSrc]="src" alt="card" class="card__image" fill priority />
+    <div class="card__content">
+      <ng-container *ngIf="controls">
         <card-button>
-          <icon [name]='icon.ADD_STROKE'></icon>
+          <icon [name]="icon.ADD_STROKE"></icon>
         </card-button>
       </ng-container>
     </div>
   </div>
-  <div class='card__title title-light-1'>{{ title }}</div>
+  <div class="card__title title-light-0_5">{{ title }}</div>
 </div>
