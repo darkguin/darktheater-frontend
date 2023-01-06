@@ -3,7 +3,9 @@
 @use "src/assets/styles/mixins";
 @use "src/assets/styles/badge";
 
+
 .profile {
+  position: relative;
   width: 100%;
 
   &__header {
@@ -58,5 +60,39 @@
     margin-top: 8px;
     border-top: 3px solid var(--border-color);
     border-radius: 3px;
+  }
+
+  &__btn {
+    &-group {
+      position: absolute;
+      top: 24px;
+      right: 12px;
+    }
+
+    background: none;
+    border: none;
+    cursor: pointer;
+    line-height: 1;
+
+    padding: 12px;
+    border-radius: 12px;
+    background: var(--btn-light-color);
+    color: var(--title-color);
+    transition: all 0.4s;
+
+    &:hover, &:active {
+      background: var(--contrast-color);
+      color: var(--dark-color);
+      opacity: 1;
+      transition: all 0.4s;
+    }
+
+    &.logout {
+      color: vars.$danger-color;
+
+      &:hover, &:active {
+        color: var(--dark-color);
+      }
+    }
   }
 }

@@ -1,5 +1,4 @@
 import { Component, TemplateRef, ViewChild } from '@angular/core';
-import { TextFieldType } from '@shared/components/text-field/values/text-field-type.enum';
 import { NavigationFullPath, RoutePath } from '@core/values';
 import { ModalOptions } from '@shared/components/dialog/models/modal-options.model';
 import { Router } from '@angular/router';
@@ -19,7 +18,6 @@ import { AuthFormService } from '@features/auth/services/auth-form.service';
   styleUrls: ['./sign-in.component.scss'],
 })
 export class SignInComponent {
-  textFieldType = TextFieldType;
   authFormType = AuthFormType;
   credentials: Credentials = {};
 

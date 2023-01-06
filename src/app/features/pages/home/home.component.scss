@@ -4,9 +4,9 @@
 
 .home {
   &__slider {
-    position: sticky;
     display: grid;
     grid-template-columns: 1fr;
+    width: 100%;
   }
 
   &__cards {

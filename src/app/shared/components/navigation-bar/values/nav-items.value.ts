@@ -86,12 +86,4 @@ export const NavItems: NavItem[] = [
     global: false,
     auth: false,
   } as NavItem,
-  {
-    title: 'Sign out',
-    action: NavAction.SIGN_OUT,
-    category: NavCategories[2],
-    icon: Icon.EXIT,
-    global: false,
-    auth: true,
-  } as NavItem,
 ];

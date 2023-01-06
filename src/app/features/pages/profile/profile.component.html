@@ -1,4 +1,4 @@
-<section page-wrapper [sidebar]="false">
+<section [sidebar]="false" page-wrapper>
   <div class="profile">
     <profile-cover></profile-cover>
 
@@ -11,10 +11,16 @@
           {{ user?.username }}
 
           <ng-container *ngIf="user?.role !== UserRoles.VIEWER">
-            <icon class="badge admin-badge title-medium-4" [name]="Icons.VERIFIED"></icon>
+            <icon [name]="Icons.VERIFIED" class="badge admin-badge title-medium-4"></icon>
           </ng-container>
         </div>
         <div class="profile__information-subtitle title-medium-1">email: {{ user?.email }}</div>
+      </div>
+
+      <div class="profile__btn-group">
+        <button (click)="onSignOutBtnClick()" class="profile__btn logout title-medium-1">
+          <icon [name]="Icons.EXIT"></icon>
+        </button>
       </div>
     </div>
 
