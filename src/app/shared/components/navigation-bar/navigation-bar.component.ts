@@ -14,7 +14,6 @@ import { NavAction } from '@shared/components/navigation-bar/values/nav-action.e
   styleUrls: ['./navigation-bar.component.scss'],
 })
 export class NavigationBarComponent {
-  readonly navbarSizes = NavbarSize;
   readonly appInfo = AppInfo;
   readonly icons = Icon;
 
@@ -58,9 +57,6 @@ export class NavigationBarComponent {
     switch (item.action) {
       case NavAction.ROUTING:
         this.router.navigate([item.routerPath || '/']);
-        break;
-      case NavAction.SIGN_OUT:
-        this.authService.signOut();
         break;
     }
   }
