@@ -11,7 +11,7 @@
   align-items: center;
 
   justify-content: center;
-  width: 185px;
+  width: 165px;
 
   border-radius: vars.$border-radius-sm;
   background: var(--second-color);
@@ -23,7 +23,7 @@
   }
 
   &__wrapper {
-    width: 185px;
+    width: 165px;
   }
 
   &__image {
@@ -66,6 +66,6 @@
 
 @media screen and (max-width: vars.$screen-sm) {
   .card {
-    width: 180px;
+    width: 160px;
   }
 }

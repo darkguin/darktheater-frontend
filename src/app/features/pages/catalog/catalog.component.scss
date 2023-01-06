@@ -20,27 +20,27 @@
     grid-template-columns: repeat(2, 1fr);
 
     @media screen and (min-width: vars.$screen-xxl) {
-      grid-template-columns: repeat(6, 1fr);
+      grid-template-columns: repeat(7, 1fr);
     }
 
     @media screen and (max-width: vars.$screen-xxl) {
-      grid-template-columns: repeat(5, 1fr);
+      grid-template-columns: repeat(6, 1fr);
     }
 
     @media screen and (max-width: vars.$screen-xl) {
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(5, 1fr);
     }
 
     @media screen and (max-width: vars.$screen-xs) {
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(5, 1fr);
     }
 
     @media screen and (max-width: vars.$screen-lg) {
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(5, 1fr);
     }
 
     @media screen and (max-width: vars.$screen-md) {
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(4, 1fr);
     }
 
     @media screen and (max-width: vars.$screen-sm) {
