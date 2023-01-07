@@ -27,6 +27,7 @@ import { ContentType, NavigationFullPath, RoutePath } from '@core/values';
 export class CardViewComponent implements OnDestroy {
   @Input() cards: Card[] = [];
   @Input() asContentLink = true;
+  @Input() userListControls = false;
   @Output() clickCard = new EventEmitter<Card>();
   instance!: Swiper;
 

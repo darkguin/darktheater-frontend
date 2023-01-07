@@ -12,11 +12,11 @@ export const MetaInfo = {
   },
   catalog: {
     title: () => {
-      return 'Исчите, просматривайте и сохраняйте в коллекции топовые фильмы, сериалы и аниме только на darktheater';
+      return 'Ищите, просматривайте и сохраняйте в коллекции топовые фильмы, сериалы и аниме только на darktheater';
     },
     description: () => {
       return (
-        'Исчите, просматривайте и сохраняйте в коллекции топовые фильмы, сериалы и аниме только на darktheater. ' +
+        'Ищите, просматривайте и сохраняйте в коллекции топовые фильмы, сериалы и аниме только на darktheater. ' +
         'Search, view and save top movies, TV series and anime in the collection only on darktheater'
       );
     },

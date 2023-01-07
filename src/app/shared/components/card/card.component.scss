@@ -32,25 +32,6 @@
     object-position: center center;
   }
 
-  &__content {
-    position: absolute;
-    top: 0;
-    left: 0;
-    display: flex;
-    align-items: flex-start;
-    justify-content: flex-end;
-    width: 100%;
-    height: 100%;
-    padding: 10px;
-    cursor: pointer;
-    gap: 4px;
-
-    &:hover {
-      transition: background-color 0.2s ease-in-out;
-      background-color: rgba(var(--second-color-rgb), 0.5);
-    }
-  }
-
   &__title {
     padding: 8px 0 0 4px;
     cursor: pointer;

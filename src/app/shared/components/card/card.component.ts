@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { Icon } from '@shared/components/icon';
+import { AuthService } from '@features/auth/services/auth.service';
 
 @Component({
   selector: 'card, [card]',
@@ -9,17 +9,17 @@ import { Icon } from '@shared/components/icon';
 export class CardComponent {
   @Input() title = '';
   @Input() src = '';
-  @Input() controls = true;
+  @Input() userListControls = false;
+  @Input() controls = false;
   @Input() selected = false;
   @Input() width = '';
 
-  @Output() clickWatch = new EventEmitter();
   @Output() clickCard = new EventEmitter();
 
-  readonly icon = Icon;
+  constructor(private authService: AuthService) {}
 
-  onClickWatchButton() {
-    this.clickWatch.emit();
+  get isAuthorized$() {
+    return this.authService.authorized$;
   }
 
   onCardClick() {

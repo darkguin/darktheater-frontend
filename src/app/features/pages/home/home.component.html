@@ -2,7 +2,11 @@
   <slider (clickSlide)="onSelectSlide($event)" [slides]="slides" class="home__slider"></slider>
 
   <h1 class="home__title">Special for your</h1>
-  <card-view [cards]="recommendations" class="home__cards"></card-view>
+  <card-view
+    [cards]="recommendations"
+    [userListControls]="true"
+    class="home__cards"
+  ></card-view>
 
   <promo-banner
     (btnClick)="onPromoBannerClick()"
@@ -12,7 +16,11 @@
   ></promo-banner>
 
   <h1 class="home__title">New motion pictures</h1>
-  <card-view [cards]="newNotionPictures" class="home__cards"></card-view>
+  <card-view
+    [cards]="newNotionPictures"
+    [userListControls]="true"
+    class="home__cards"
+  ></card-view>
 
   <ng-container ngProjectAs="sidebar">
     <home-sidebar [user]="currentUser$ | async"></home-sidebar>
