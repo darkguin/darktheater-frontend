@@ -1,12 +1,12 @@
 import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { CardComponent } from '@shared/components/card/card.component';
-import { CardButtonComponent } from '@shared/components/card/components/card-button/card-button.component';
 import { IconModule } from '@shared/components/icon';
 import { LazyImageDirective } from '@shared/directives/lazy-image';
+import { UserListsControlsComponent } from './components/user-lists-controls/user-lists-controls.component';
 
 @NgModule({
-  declarations: [CardComponent, CardButtonComponent],
+  declarations: [CardComponent, UserListsControlsComponent],
   imports: [CommonModule, IconModule, LazyImageDirective, NgOptimizedImage],
   exports: [CardComponent],
 })
