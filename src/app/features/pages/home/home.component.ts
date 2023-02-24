@@ -4,14 +4,15 @@ import { AccountService } from '@services/account.service';
 import { User } from '@core/models';
 import { isEmpty } from '@core/utils/object.util';
 import { LoadingService } from '@core/services';
-import { HomeNewMotionPicturesMock, HomeRecommendationMock, HomeSliderMock } from '@/app/mocks';
 import { AuthService } from '@features/auth/services/auth.service';
-import { Card } from '@shared/components/card';
 import { MediaService } from '@services/content/media.service';
 import { Router } from '@angular/router';
 import { Slide } from '@shared/components/slider';
 import { Meta, Title } from '@angular/platform-browser';
-import { ContentType, MetaInfo, NavigationFullPath, RoutePath } from '@core/values';
+import { ContentType, MetaInfo, NavigationFullPath, PlaylistType, RoutePath } from '@core/values';
+import { HomePageDataService } from '@features/pages/home/services/home-page-data.service';
+import { PageItem } from '@features/pages/home/types';
+import { Card } from '@shared/components/card';
 
 @Component({
   selector: 'home-page',
@@ -19,9 +20,8 @@ import { ContentType, MetaInfo, NavigationFullPath, RoutePath } from '@core/valu
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit, OnDestroy {
-  slides: Slide[] = HomeSliderMock;
-  recommendations: Card[] = HomeRecommendationMock;
-  newNotionPictures: Card[] = HomeNewMotionPicturesMock;
+  PlaylistType = PlaylistType;
+  playlists: PageItem[] = [];
   private destroy = new Subject();
 
   constructor(
@@ -32,6 +32,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     private accountService: AccountService,
     private loadingService: LoadingService,
     public authService: AuthService,
+    public dataService: HomePageDataService,
   ) {
     title.setTitle(MetaInfo.home.title());
     meta.addTags([{ name: 'description', content: MetaInfo.home.description() }]);
@@ -45,7 +46,32 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.loadingService.isLoading = true;
     this.fetchCurrentUser()
       .pipe(take(1))
-      .subscribe(() => (this.loadingService.isLoading = false));
+      .subscribe(() => {
+        if (!this.dataService.items.length) return;
+        this.loadingService.isLoading = false;
+      });
+
+    const cachedData = this.dataService.items;
+    if (cachedData.length) {
+      this.playlists = cachedData;
+      return;
+    }
+
+    this.dataService
+      .fetchPlaylist()
+      .pipe(take(1))
+      .subscribe((data) => {
+        this.playlists = data;
+        this.loadingService.isLoading = false;
+      });
+  }
+
+  trackBy(index: number, item: PageItem) {
+    return item.title;
+  }
+
+  castSlides(items: Card[] | Slide[]) {
+    return items as Slide[];
   }
 
   ngOnDestroy() {
@@ -64,7 +90,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   private createContentUrl(id: number | string, contentType: ContentType) {
     return NavigationFullPath[
       contentType === ContentType.MOVIE ? RoutePath.MOVIES : RoutePath.SERIES
-    ].replace(':id', id.toString());
+    ].replace(':id', id?.toString());
   }
 
   private fetchCurrentUser(): Observable<User> {

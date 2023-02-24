@@ -8,9 +8,11 @@
 
     <content-cover [content]="movie" class="content__container info-container title-regular-1"></content-cover>
 
-    <div class="content__container common-container">
-      <h1 class="content__title title-bold-4">You might like</h1>
-      <card-view [cards]="recommendations" class="content__cards"></card-view>
-    </div>
+    <ng-container *ngFor="let playlist of playlists">
+      <div class="content__container common-container">
+        <h1 class="content__title title-bold-4">{{playlist.title}}</h1>
+        <card-view [cards]="playlist.items" class="content__cards"></card-view>
+      </div>
+    </ng-container>
   </div>
 </section>

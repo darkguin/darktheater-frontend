@@ -17,3 +17,4 @@ export * from './api/api-error-codes.enum';
 /* MEDIA */
 export * from './content/content-type.enum';
 export * from './content/library-type.enum';
+export * from './content/playlist-type.enum';

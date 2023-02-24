@@ -1,26 +1,54 @@
 <section class="home" page-wrapper>
-  <slider (clickSlide)="onSelectSlide($event)" [slides]="slides" class="home__slider"></slider>
 
-  <h1 class="home__title">Special for your</h1>
-  <card-view
-    [cards]="recommendations"
-    [userListControls]="true"
-    class="home__cards"
-  ></card-view>
+  <ng-container *ngFor="let playlist of (playlists); let i = index; trackBy:trackBy">
+    <slider
+      (clickSlide)="onSelectSlide($event)"
+      *ngIf="playlist.type == 'highlights'"
+      [slides]="castSlides(playlist.items)"
+      class="home__slider"
+    >
+    </slider>
 
-  <promo-banner
-    (btnClick)="onPromoBannerClick()"
-    *ngIf="!(authService.authorized$ | async)"
-    btnName="Sign up"
-    title="Hey, what’s up?"
-  ></promo-banner>
+    <ng-container *ngIf="playlist.type == PlaylistType.Cards">
+      <h1 class="home__title">{{ playlist.title }}</h1>
+      <card-view
+        [cards]="playlist.items"
+        [userListControls]="true"
+        class="home__cards"
+      ></card-view>
+    </ng-container>
 
-  <h1 class="home__title">New motion pictures</h1>
-  <card-view
-    [cards]="newNotionPictures"
-    [userListControls]="true"
-    class="home__cards"
-  ></card-view>
+    <promo-banner
+      (btnClick)="onPromoBannerClick()"
+      *ngIf="!(authService.authorized$ | async) && i == 1"
+      btnName="Sign up"
+      title="Hey, what’s up?"
+    ></promo-banner>
+
+  </ng-container>
+
+  <!--  <slider (clickSlide)="onSelectSlide($event)" [slides]="slides" class="home__slider"></slider>-->
+
+  <!--  <h1 class="home__title">Special for your</h1>-->
+  <!--  <card-view-->
+  <!--    [cards]="recommendations"-->
+  <!--    [userListControls]="true"-->
+  <!--    class="home__cards"-->
+  <!--  ></card-view>-->
+
+  <!--  <promo-banner-->
+  <!--    (btnClick)="onPromoBannerClick()"-->
+  <!--    *ngIf="!(authService.authorized$ | async)"-->
+  <!--    btnName="Sign up"-->
+  <!--    title="Hey, what’s up?"-->
+  <!--  ></promo-banner>-->
+
+  <!--  <h1 class="home__title">New motion pictures</h1>-->
+  <!--  <card-view-->
+  <!--    [cards]="newNotionPictures"-->
+  <!--    [userListControls]="true"-->
+  <!--    class="home__cards"-->
+  <!--  ></card-view>-->
 
   <ng-container ngProjectAs="sidebar">
     <home-sidebar [user]="currentUser$ | async"></home-sidebar>
