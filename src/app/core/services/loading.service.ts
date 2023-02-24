@@ -1,8 +1,5 @@
 import { Injectable } from '@angular/core';
-import { AuthApi } from '@services/index';
-import { BehaviorSubject, catchError, map, Observable, throwError } from 'rxjs';
-import { Credentials } from '@core/models';
-import { TokenService } from '@features/auth/services/token.service';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',

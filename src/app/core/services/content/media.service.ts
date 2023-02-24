@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, map, Observable, tap } from 'rxjs';
-import { Content, Media, Movie, Serial } from '@core/models';
-import { MediaMock } from '@mocks/media.mock';
-import { ContentType, NavigationFullPath, RoutePath } from '@core/values';
+import { Content, Movie, Serial } from '@core/models';
 import { SerialsApi } from '@services/api/serials.api';
 import { MovieApi } from '@services/api/movie.api';
 import { MovieMapper, SerialMapper } from '@core/mappers';
@@ -11,7 +9,6 @@ import { MovieMapper, SerialMapper } from '@core/mappers';
   providedIn: 'root',
 })
 export class MediaService {
-  private data = new BehaviorSubject<Media[]>(MediaMock);
   private _data = new BehaviorSubject<Content>({} as Content);
 
   constructor(private serialApi: SerialsApi, private movieApi: MovieApi) {}
@@ -36,15 +33,5 @@ export class MediaService {
       map(SerialMapper.map),
       tap((c) => this._data.next(c)),
     );
-  }
-
-  getById(id: string): Media | undefined {
-    return this.data.value.find((item: Media) => item.id === id);
-  }
-
-  createContentUrl({ id, contentType }: Media): string {
-    return NavigationFullPath[
-      contentType === ContentType.MOVIE ? RoutePath.MOVIES : RoutePath.SERIES
-    ].replace(':id', id);
   }
 }

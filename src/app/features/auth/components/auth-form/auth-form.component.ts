@@ -18,6 +18,7 @@ import { AuthFormConfig } from '@features/auth/values/auth-form-config.value';
 export class AuthFormComponent implements OnInit, OnDestroy {
   @Input() type = AuthFormType.SIGN_IN;
   @Output() submitted = new EventEmitter<Credentials>();
+
   authFormType = AuthFormType;
   textFieldType = TextFieldType;
   authForm = new FormGroup({

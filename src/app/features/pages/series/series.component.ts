@@ -1,20 +1,24 @@
 import { Component } from '@angular/core';
 import { MediaService } from '@services/content/media.service';
 import { Episode, Season, Serial } from '@core/models';
-import { HomeRecommendationMock } from '@/app/mocks';
+import { PageItem } from '@features/pages/home/types';
+import { map, take } from 'rxjs';
+import { PlaylistsService } from '@services/playlists.service';
+
+const PLAYLIST_ID = 5;
 
 @Component({
   templateUrl: './series.component.html',
   styleUrls: ['./series.component.scss'],
 })
 export class SeriesComponent {
-  readonly recommendations = HomeRecommendationMock;
+  playlists: PageItem[] = [];
   selectedEpisode = 0;
   selectedSeason = 0;
   isLoading = false;
   currentEpisode: Episode = this.episodes[this.selectedEpisode];
 
-  constructor(private mediaService: MediaService) {}
+  constructor(private mediaService: MediaService, private playlistService: PlaylistsService) {}
 
   get serial() {
     return this.mediaService.content as Serial;
@@ -30,6 +34,18 @@ export class SeriesComponent {
 
   get preview(): string {
     return this.currentEpisode?.preview || this.serial?.background || '';
+  }
+
+  ngOnInit() {
+    this.playlistService
+      .get(PLAYLIST_ID)
+      .pipe(
+        take(1),
+        map((p) => this.playlistService.mapPlaylistsToItems([p])),
+      )
+      .subscribe((data: PageItem[]) => {
+        this.playlists = data;
+      });
   }
 
   onSelectSeason(season: number) {

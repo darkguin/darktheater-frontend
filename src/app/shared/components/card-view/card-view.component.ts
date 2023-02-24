@@ -43,8 +43,8 @@ export class CardViewComponent implements OnDestroy {
     this.instance.destroy(true);
   }
 
-  getContentLink(content: any) {
-    return this.createContentUrl(content.id, content.contentType);
+  getContentLink(content: Card) {
+    return this.createContentUrl(content.contentId!, content.contentType);
   }
 
   onSwiper(swiper: Swiper) {
@@ -62,6 +62,6 @@ export class CardViewComponent implements OnDestroy {
   private createContentUrl(id: number | string, contentType: ContentType) {
     return NavigationFullPath[
       contentType === ContentType.MOVIE ? RoutePath.MOVIES : RoutePath.SERIES
-    ].replace(':id', id.toString());
+    ].replace(':id', id?.toString());
   }
 }
