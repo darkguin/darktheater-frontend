@@ -29,6 +29,5 @@ A video streaming service with an emphasis on an online cinema that provides acc
 **Documentation:** [darkguin/darktheater-documentation](https://github.com/darkguin/darktheater-documentation)
 
 # Contributors
-- `Alexey Varfolomeev` - Project manager + analyst
 - `Andrei Petrov` - Team Leader, Frontend developer +  UI/UX Designer
 - `Pavel Hardzei` - Backend developer; Python: Django, fastApi 
